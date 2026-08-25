@@ -299,7 +299,7 @@ const ClassroomExercise = (() => {
           data-dot="${idx}"
           class="cursor-pointer transition-all flex items-center justify-center font-mono font-bold text-xs rounded-xl"
           style="width:36px;height:36px;background:${dotBg};border:2px solid ${dotBorder};color:${textColor};transform:${isCur ? 'scale(1.1)' : 'scale(1)'};box-shadow:${isCur ? '0 4px 12px rgba(79,70,229,0.3)' : 'none'}"
-          title="ข้อที่ ${idx + 1}: ${it.tag}"
+          title="ข้อที่ ${idx + 1}: ${escapeHtml(it.tag)}"
         >
           ${iconOrNum}
         </button>
@@ -655,7 +655,7 @@ const ClassroomExercise = (() => {
           ${statusIcon}
           <div style="flex:1;min-width:0">
             <div style="display:flex;align-items:center;gap:10px;margin-bottom:4px">
-              <span style="font-family:monospace;font-weight:800;color:#0f172a;font-size:14px">${it.tag}</span>
+              <span style="font-family:monospace;font-weight:800;color:#0f172a;font-size:14px">${escapeHtml(it.tag)}</span>
               <span style="font-size:11px;font-weight:700;padding:2px 8px;border-radius:999px;background:${it.category === 'system' ? '#f5f3ff;color:#7c3aed' : '#fff1f2;color:#e11d48'}">
                 ${it.category === 'system' ? '⚙️ กลุ่มควบคุมระบบ' : '🖥️ กลุ่มแสดงผล'}
               </span>
@@ -836,6 +836,16 @@ const ClassroomExercise = (() => {
         renderUI();
       });
     }
+  }
+
+  function escapeHtml(str) {
+    if (!str) return '';
+    return String(str)
+      .replace(/&/g, "&amp;")
+      .replace(/</g, "&lt;")
+      .replace(/>/g, "&gt;")
+      .replace(/"/g, "&quot;")
+      .replace(/'/g, "&#039;");
   }
 
   return { init, reset: resetState };
