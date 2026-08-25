@@ -1,6 +1,6 @@
 /**
  * Gamified Classroom Exercise (4.2 แบบฝึกหัดในชั้นเรียน)
- * โหมดเฉลยและตรวจคำตอบทันทีรายข้อ (Instant Per-Question Check & Feedback)
+ * 6 แท็กโครงสร้างหลัก HTML5: ตรวจคำตอบเฉลยทันทีรายข้อ + สุ่มสลับตัวเลือก
  */
 
 const ClassroomExercise = (() => {
@@ -64,45 +64,39 @@ const ClassroomExercise = (() => {
       meaningText: "เป็นส่วนที่แสดงเนื้อหาบนหน้าเว็บ (พื้นที่สีขาว)",
       explanation: "พื้นที่แสดงผลหลัก (Viewport) ที่บรรจุเนื้อหาทั้งหมดที่ผู้ใช้มองเห็นและมีปฏิสัมพันธ์ได้บนหน้าจอ",
       hint: "ผืนผ้าใบสีขาวสำหรับแสดงผลเนื้อหาทั้งหมด"
-    },
-    {
-      id: "h1",
-      tag: "<h1>",
-      tagDisplay: `<span style="color:#808080">&lt;</span><span style="color:#569cd6;font-weight:bold">h1</span><span style="color:#808080">&gt;</span>`,
-      category: "display",
-      correctMeaning: "h1",
-      meaningText: "แสดงหัวข้อบนหน้าเว็บ (Heading)",
-      explanation: "แท็กแสดงผลหัวข้อหลักขนาดใหญ่บนหน้าจอผู้ใช้ มีความสำคัญสูงสุดต่อโครงสร้างเนื้อหาและ SEO",
-      hint: "หัวข้อหลักขนาดใหญ่ที่สุดบนหน้าเว็บ"
-    },
-    {
-      id: "p",
-      tag: "<p>",
-      tagDisplay: `<span style="color:#808080">&lt;</span><span style="color:#569cd6;font-weight:bold">p</span><span style="color:#808080">&gt;</span>`,
-      category: "display",
-      correctMeaning: "p",
-      meaningText: "แสดงข้อความบนหน้าเว็บ (Paragraph)",
-      explanation: "แท็กแสดงผลข้อความย่อหน้าหรือพารากราฟทั่วไปสำหรับเนื้อหาบนหน้าจอผู้ใช้",
-      hint: "ย่อหน้าข้อความทั่วไปบนหน้าเว็บ"
     }
   ];
 
-  const meaningOptions = [
+  // Base 6 Meaning Options (Will be shuffled dynamically)
+  const baseMeaningOptions = [
     { value: "doctype", text: "กำหนดมาตรฐาน HTML5 / ไม่แสดงผลบนหน้าเว็บ", icon: "file-code-2" },
     { value: "html",    text: "ครอบคลุมโครงสร้างของเว็บเพจทั้งหมด (Root Element)", icon: "box" },
     { value: "head",    text: "กำหนดข้อมูลและการตั้งค่าของเอกสาร (Metadata)", icon: "settings-2" },
     { value: "title",   text: "แสดงชื่อบนแท็บของเว็บเบราว์เซอร์ (Tab Bar)", icon: "app-window" },
     { value: "charset", text: "กำหนดรหัสภาษา UTF-8 ป้องกันภาษาต่างดาว", icon: "languages" },
-    { value: "body",    text: "เป็นส่วนที่แสดงเนื้อหาบนหน้าเว็บ (พื้นที่สีขาว)", icon: "layout-template" },
-    { value: "h1",      text: "แสดงหัวข้อบนหน้าเว็บ (Heading)", icon: "heading" },
-    { value: "p",       text: "แสดงข้อความบนหน้าเว็บ (Paragraph)", icon: "align-left" }
+    { value: "body",    text: "เป็นส่วนที่แสดงเนื้อหาบนหน้าเว็บ (พื้นที่สีขาว)", icon: "layout-template" }
   ];
 
   // Game state per item: { [id]: { category: '', meaning: '', checked: false, isCorrect: false } }
   let itemStates = {};
+  let currentMeaningOptions = [];
   let currentPage = 0;
   let showSummary = false;
   let soundEnabled = true;
+
+  function shuffleMeaningOptions() {
+    const shuffled = [...baseMeaningOptions];
+    for (let i = shuffled.length - 1; i > 0; i--) {
+      const j = Math.floor(Math.random() * (i + 1));
+      [shuffled[i], shuffled[j]] = [shuffled[j], shuffled[i]];
+    }
+    // Ensure the 1st option is not always the 1st question for anti-order bias
+    if (shuffled[0].value === 'doctype' && shuffled.length > 1) {
+      const swapIdx = Math.floor(Math.random() * (shuffled.length - 1)) + 1;
+      [shuffled[0], shuffled[swapIdx]] = [shuffled[swapIdx], shuffled[0]];
+    }
+    return shuffled;
+  }
 
   // Web Audio Synthesizer for Interactive Sound Effects
   const AudioEffects = (() => {
@@ -228,6 +222,7 @@ const ClassroomExercise = (() => {
     items.forEach(item => {
       itemStates[item.id] = { category: '', meaning: '', checked: false, isCorrect: false };
     });
+    currentMeaningOptions = shuffleMeaningOptions();
     currentPage = 0;
     showSummary = false;
   }
@@ -336,8 +331,8 @@ const ClassroomExercise = (() => {
       }
     }
 
-    // ── Meaning Grid Option Cards ─────────────────────────────
-    const meaningOptionsHtml = meaningOptions.map((opt, optIdx) => {
+    // ── Shuffled Meaning Grid Option Cards ────────────────────
+    const meaningOptionsHtml = currentMeaningOptions.map((opt, optIdx) => {
       const isSelected = state.meaning === opt.value;
       const isThisCorrect = opt.value === item.correctMeaning;
 
@@ -466,14 +461,14 @@ const ClassroomExercise = (() => {
               <i data-lucide="gamepad-2" style="width:14px;height:14px"></i> ภารกิจพิชิต HTML5 (4.2 แบบฝึกหัด)
             </div>
             <h3 style="font-size:20px;font-weight:800;color:#0f172a;margin:0 0 2px;letter-spacing:-0.01em">
-              จำแนกกลุ่มและหน้าที่ของ Tag (เฉลยทีละข้อ)
+              จำแนกกลุ่มและหน้าที่ของโครงสร้าง Tag ทั้ง 6 ตัว
             </h3>
             <p style="font-size:12.5px;color:#64748b;font-family:Sarabun,sans-serif;margin:0">
               เลือกคำตอบแล้วกด <strong>"ตรวจคำตอบ & ดูเฉลยข้อนี้"</strong> เพื่อรับคำอธิบายทันทีก่อนไปข้อถัดไป
             </p>
           </div>
 
-          <!-- Controls: Sound, Solve All, Reset -->
+          <!-- Controls: Sound, Solve Current, Reset -->
           <div style="display:flex;align-items:center;gap:8px;flex-wrap:wrap">
             <button id="exercise-sound-btn" style="padding:8px 12px;border-radius:12px;background:#f8fafc;color:#475569;border:1.5px solid #cbd5e1;font-size:12px;cursor:pointer;display:flex;align-items:center;gap:6px" title="เปิด/ปิดเสียง">
               <i data-lucide="${soundEnabled ? 'volume-2' : 'volume-x'}" style="width:15px;height:15px"></i>
@@ -481,8 +476,8 @@ const ClassroomExercise = (() => {
             <button id="exercise-solve-current-btn" style="padding:9px 14px;border-radius:12px;background:#fffbeb;color:#92400e;font-size:12.5px;font-weight:600;border:1.5px solid #fde68a;cursor:pointer;display:flex;align-items:center;gap:6px" title="เฉลยข้อปัจจุบัน">
               <i data-lucide="lightbulb" style="width:15px;height:15px"></i> เฉลยข้อนี้
             </button>
-            <button id="exercise-reset-btn" style="padding:9px 12px;border-radius:12px;background:#f1f5f9;color:#475569;font-size:13px;border:1.5px solid #e2e8f0;cursor:pointer" title="เริ่มใหม่ทั้งหมด">
-              <i data-lucide="rotate-ccw" style="width:16px;height:16px"></i>
+            <button id="exercise-reset-btn" style="padding:9px 12px;border-radius:12px;background:#f1f5f9;color:#475569;font-size:13px;border:1.5px solid #e2e8f0;cursor:pointer" title="สุ่มสลับตัวเลือก & เริ่มใหม่ทั้งหมด">
+              <i data-lucide="shuffle" style="width:16px;height:16px"></i> สลับตัวเลือก
             </button>
           </div>
         </div>
@@ -589,11 +584,11 @@ const ClassroomExercise = (() => {
             </div>
           </div>
 
-          <!-- Question 2: Meaning Selection Grid -->
+          <!-- Question 2: Meaning Selection Grid (Shuffled) -->
           <div>
             <label style="display:flex;align-items:center;gap:8px;font-size:14px;font-weight:800;color:#0f172a;font-family:Sarabun,sans-serif;margin-bottom:12px">
               <span style="width:22px;height:22px;border-radius:6px;background:#eef2ff;color:#4f46e5;display:flex;align-items:center;justify-content:center;font-size:12px;font-weight:800">2</span>
-              เลือกหน้าที่ / ความหมาย / ตำแหน่งที่ทำงาน:
+              เลือกหน้าที่ / ความหมาย / ตำแหน่งที่ทำงาน (สลับตัวเลือก):
             </label>
 
             <div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(280px, 1fr));gap:10px">
@@ -632,7 +627,7 @@ const ClassroomExercise = (() => {
     `;
   }
 
-  // ─── Summary Report Screen (After completing all 8) ────────
+  // ─── Summary Report Screen (After completing all 6) ────────
   function buildSummaryHTML() {
     let score = 0;
     items.forEach(it => {
@@ -683,14 +678,14 @@ const ClassroomExercise = (() => {
 
           <div style="display:flex;justify-content:center;gap:12px">
             <button id="summary-replay-btn" style="padding:12px 24px;border-radius:14px;background:#ffffff;color:#0f172a;font-weight:800;font-size:14px;border:none;cursor:pointer;box-shadow:0 4px 14px rgba(0,0,0,0.15);display:flex;align-items:center;gap:8px">
-              <i data-lucide="rotate-ccw" style="width:16px;height:16px"></i> เล่นใหม่อีกครั้ง
+              <i data-lucide="rotate-ccw" style="width:16px;height:16px"></i> สลับตัวเลือก & เล่นใหม่อีกครั้ง
             </button>
           </div>
         </div>
 
         <!-- Breakdown List -->
         <h3 style="font-size:17px;font-weight:800;color:#0f172a;margin-bottom:16px;display:flex;align-items:center;gap:8px">
-          <i data-lucide="list-checks" style="width:20px;height:20px;color:#4f46e5"></i> สรุปเฉลยและคำอธิบายทั้ง 8 ข้อ:
+          <i data-lucide="list-checks" style="width:20px;height:20px;color:#4f46e5"></i> สรุปเฉลยและคำอธิบายทั้ง 6 ข้อ:
         </h3>
 
         <div style="display:flex;flex-direction:column;gap:12px">
@@ -819,7 +814,7 @@ const ClassroomExercise = (() => {
       });
     }
 
-    // Reset Button
+    // Reset / Shuffle Button
     const resetBtn = document.getElementById('exercise-reset-btn');
     if (resetBtn) {
       resetBtn.addEventListener('click', () => {
