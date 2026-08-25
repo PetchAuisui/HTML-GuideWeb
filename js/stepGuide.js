@@ -215,12 +215,12 @@ const StepGuide = (() => {
   }
 
   const stepNavInfo = [
-    { num: 1, title: "Plain Text", desc: "ข้อความดิบ" },
-    { num: 2, title: "<!DOCTYPE>", desc: "ประกาศ HTML5" },
-    { num: 3, title: "<html>", desc: "Root Element" },
-    { num: 4, title: "<head>", desc: "ตั้งค่า UTF-8" },
-    { num: 5, title: "<title>", desc: "ชื่อแท็บบนสุด" },
-    { num: 6, title: "<body>", desc: "พื้นที่แสดงผล" }
+    { num: 1, title: "Plain Text", desc: "ข้อความดิบ", icon: "file-text" },
+    { num: 2, title: "<!DOCTYPE>", desc: "ประกาศ HTML5", icon: "file-code-2" },
+    { num: 3, title: "<html>", desc: "Root Element", icon: "box" },
+    { num: 4, title: "<head>", desc: "ตั้งค่า UTF-8", icon: "settings-2" },
+    { num: 5, title: "<title>", desc: "ชื่อแท็บบนสุด", icon: "app-window" },
+    { num: 6, title: "<body>", desc: "พื้นที่แสดงผล", icon: "layout-template" }
   ];
 
   function renderStepNav() {
@@ -228,28 +228,28 @@ const StepGuide = (() => {
     if (!navContainer) return;
 
     navContainer.innerHTML = steps.map((s, idx) => {
-      const info = stepNavInfo[idx] || { num: s.step, title: s.targetTag, desc: `ขั้นตอนที่ ${s.step}` };
+      const info = stepNavInfo[idx] || { num: s.step, title: s.targetTag, desc: `ขั้นตอนที่ ${s.step}`, icon: "code" };
       const isActive = s.step === currentStep;
       const isDone = s.step < currentStep;
 
       let statusClass = "step-indicator-pending";
-      let icon = `<span class="text-xs font-mono font-bold">${s.step}</span>`;
+      let icon = `<i data-lucide="${info.icon}" class="w-4 h-4 text-slate-500"></i>`;
 
       if (isActive) {
         statusClass = "step-indicator-active";
-        icon = `<span class="text-xs font-mono font-bold">${s.step}</span>`;
+        icon = `<i data-lucide="${info.icon}" class="w-4 h-4 text-white"></i>`;
       } else if (isDone) {
         statusClass = "step-indicator-done";
-        icon = `<svg class="w-3.5 h-3.5 shrink-0" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="3" stroke-linecap="round" stroke-linejoin="round"><polyline points="20 6 9 17 4 12"></polyline></svg>`;
+        icon = `<i data-lucide="check-circle-2" class="w-4 h-4 text-emerald-600"></i>`;
       }
 
       return `
         <button 
-          class="step-nav-btn w-full p-2.5 rounded-xl border transition-all text-left flex items-center gap-2 ${statusClass} cursor-pointer"
+          class="step-nav-btn w-full p-2.5 rounded-xl border transition-all text-left flex items-center gap-2.5 ${statusClass} cursor-pointer"
           data-step="${s.step}"
           title="ขั้นตอนที่ ${s.step}: ${escapeHtml(info.title)}"
         >
-          <div class="w-6 h-6 rounded-lg flex items-center justify-center shrink-0">
+          <div class="w-7 h-7 rounded-lg flex items-center justify-center shrink-0">
             ${icon}
           </div>
           <div class="truncate min-w-0 flex-1">

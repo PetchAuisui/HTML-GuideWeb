@@ -754,6 +754,17 @@ html:not(.dark) #quiz-container .border-slate-800.pb-4 {
   box-shadow: 0 6px 20px rgba(99, 102, 241, 0.12);
 }
 
+/* Deep-Dive Tag Tab Buttons in Light Mode */
+html:not(.dark) .tag-tab-btn:not(.bg-indigo-600) {
+  background-color: #f1f5f9 !important;
+  color: #475569 !important;
+  border: 1px solid #cbd5e1 !important;
+}
+html:not(.dark) .tag-tab-btn:not(.bg-indigo-600):hover {
+  background-color: #e2e8f0 !important;
+  color: #0f172a !important;
+}
+
 /* ========================================================
    LIGHT MODE Step Indicator Buttons (High Contrast)
    ======================================================== */
