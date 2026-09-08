@@ -62,7 +62,7 @@
         <div class="leading-tight">
           <div class="font-bold text-sm sm:text-base text-white tracking-tight flex items-center gap-1.5 whitespace-nowrap">
             HTML5 System Tags
-            <span class="text-[10px] px-1.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 font-mono border border-indigo-500/30">5 Core Tags</span>
+            <span class="text-[10px] px-1.5 py-0.5 rounded-full bg-indigo-500/20 text-indigo-300 font-mono border border-indigo-500/30">6 Core Tags</span>
           </div>
           <p class="text-[10px] text-slate-400 font-sarabun hidden sm:block">คู่มือและห้องทดลองโครงสร้างพื้นฐานเว็บ</p>
         </div>
@@ -144,7 +144,7 @@
           <div class="space-y-1">
             <a href="#hero" class="sidebar-link" data-section="hero">
               <i data-lucide="home" class="w-4 h-4 text-indigo-400 shrink-0"></i>
-              <span>ภาพรวม 5 แท็กหลัก</span>
+              <span>ภาพรวม 6 แท็กหลัก</span>
             </a>
             <a href="#learning-goals" class="sidebar-link" data-section="learning-goals">
               <i data-lucide="target" class="w-4 h-4 text-emerald-400 shrink-0"></i>
@@ -184,10 +184,10 @@
           </div>
         </div>
 
-        <!-- Group 4: Deep Dive 5 Tags -->
+        <!-- Group 4: Deep Dive 6 Tags -->
         <div>
           <div class="px-2 mb-1.5 text-[10px] font-mono uppercase tracking-wider text-slate-500 font-bold">
-            เจาะลึก 5 แท็ก (Deep-Dive)
+            เจาะลึก 6 แท็ก (Deep-Dive)
           </div>
           <div class="space-y-1">
             <a href="#deep-dive" data-sidebar-tag="doctype" class="sidebar-link" data-section="deep-dive">
@@ -199,7 +199,7 @@
               <span class="font-mono text-xs">&lt;html&gt;</span>
             </a>
             <a href="#deep-dive" data-sidebar-tag="head" class="sidebar-link" data-section="deep-dive">
-              <i data-lucde="box" class="w-4 h-4 text-orange-400 shrink-0"></i>
+              <i data-lucide="box" class="w-4 h-4 text-orange-400 shrink-0"></i>
               <span class="font-mono text-xs">&lt;head&gt;</span>
             </a>
             <a href="#deep-dive" data-sidebar-tag="title" class="sidebar-link" data-section="deep-dive">
@@ -209,6 +209,10 @@
             <a href="#deep-dive" data-sidebar-tag="charset" class="sidebar-link" data-section="deep-dive">
               <i data-lucide="type" class="w-4 h-4 text-orange-400 shrink-0"></i>
               <span class="font-mono text-xs">&lt;meta charset="UTF-8"&gt;</span>
+            </a>
+            <a href="#deep-dive" data-sidebar-tag="body" class="sidebar-link" data-section="deep-dive">
+              <i data-lucide="layout-template" class="w-4 h-4 text-rose-400 shrink-0"></i>
+              <span class="font-mono text-xs">&lt;body&gt;</span>
             </a>
           </div>
         </div>
@@ -269,8 +273,8 @@
             หากเว็บไซต์ของคุณไม่มีแท็กเหล่านี้ จะเกิดอะไรขึ้น? ทำไมข้อความถึงกลายเป็น <span class="text-amber-400 font-mono font-semibold">ภาษาต่างดาว</span>, ทำไมโครงสร้างเอกสารถึง <span class="text-rose-400 font-semibold">แสดงผลผิดเพี้ยน</span>, หรือทำไม Google ถึงหาชื่อเว็บของคุณไม่เจอ? มาดูการทดลองจริงกันเลย!
           </p>
 
-        <!-- The 5 Tag Cards from user's image -->
-        <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-5 gap-3 max-w-4xl mx-auto">
+        <!-- The 6 essential HTML structure tag cards -->
+        <div class="mt-8 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-3 max-w-6xl mx-auto">
           <a href="#deep-dive" data-tag-target="doctype" class="p-3.5 rounded-2xl glass-card text-center group border border-orange-500/30 hover:border-orange-500">
             <span class="text-xs font-mono text-orange-400 group-hover:text-orange-300 font-bold block transition">&lt;!DOCTYPE html&gt;</span>
             <span class="text-[11px] text-slate-400 font-sarabun mt-1 block">โหมดมาตรฐาน HTML5</span>
@@ -291,9 +295,14 @@
             <span class="text-[11px] text-slate-400 font-sarabun mt-1 block">ชื่อแท็บและผลค้นหา</span>
           </a>
 
-          <a href="#deep-dive" data-tag-target="charset" class="p-3.5 rounded-2xl glass-card text-center group border border-orange-500/30 hover:border-orange-500 col-span-2 sm:col-span-1">
-            <span class="text-xs font-mono text-orange-400 group-hover:text-orange-300 font-bold block transition">&lt;meta charset="UTF-8"&gt;</span>
+          <a href="#deep-dive" data-tag-target="charset" class="p-3.5 rounded-2xl glass-card text-center group border border-orange-500/30 hover:border-orange-500">
+            <span class="text-[11px] font-mono text-orange-400 group-hover:text-orange-300 font-bold block transition whitespace-nowrap">&lt;meta charset="UTF-8"&gt;</span>
             <span class="text-[11px] text-slate-400 font-sarabun mt-1 block">การเข้ารหัสภาษาไทย</span>
+          </a>
+
+          <a href="#deep-dive" data-tag-target="body" class="p-3.5 rounded-2xl glass-card text-center group border border-rose-500/30 hover:border-rose-500">
+            <span class="text-xs font-mono text-rose-400 group-hover:text-rose-300 font-bold block transition">&lt;body&gt;</span>
+            <span class="text-[11px] text-slate-400 font-sarabun mt-1 block">พื้นที่แสดงเนื้อหา</span>
           </a>
         </div>
       </div>
@@ -860,7 +869,7 @@
     </div>
   </section>
 
-  <!-- ================= SECTION 2: DEEP-DIVE 5 SYSTEM TAGS ================= -->
+  <!-- ================= SECTION 2: DEEP-DIVE 6 ESSENTIAL TAGS ================= -->
   <section id="deep-dive" class="py-16 border-t border-slate-800/80">
     <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
       
@@ -869,14 +878,14 @@
           <i data-lucide="book-open" class="w-4 h-4"></i> Deep-Dive Guide
         </div>
         <h2 class="text-2xl sm:text-4xl font-bold text-white tracking-tight">
-          เจาะลึก 5 แท็กควบคุมระบบพื้นฐาน
+          เจาะลึก 6 แท็กพื้นฐานของ HTML
         </h2>
         <p class="mt-2 text-sm text-slate-400 font-sarabun">
           ทำความเข้าใจหน้าที่ ไวยากรณ์ และตารางเปรียบเทียบผลกระทบ "เมื่อมี" vs "เมื่อไม่มี" แบบละเอียด
         </p>
 
         <!-- Tag Selection Tabs -->
-        <div class="mt-6 flex flex-wrap items-center justify-center gap-2 p-1.5 rounded-2xl glass-panel max-w-3xl mx-auto">
+        <div class="mt-6 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-2 p-1.5 rounded-2xl glass-panel max-w-5xl mx-auto">
           <button data-tag-target="doctype" class="tag-tab-btn px-3.5 py-2 rounded-xl bg-indigo-600 text-white text-xs font-mono font-semibold transition shadow-lg shadow-indigo-500/25 flex items-center gap-1.5 cursor-pointer">
             <i data-lucide="file-code-2" class="w-3.5 h-3.5"></i>
             <span>&lt;!DOCTYPE html&gt;</span>
@@ -893,9 +902,13 @@
             <i data-lucide="app-window" class="w-3.5 h-3.5"></i>
             <span>&lt;title&gt;</span>
           </button>
-          <button data-tag-target="charset" class="tag-tab-btn px-3.5 py-2 rounded-xl bg-slate-800/80 text-slate-400 hover:bg-slate-700/80 hover:text-slate-200 text-xs font-mono font-semibold transition flex items-center gap-1.5 cursor-pointer">
+          <button data-tag-target="charset" class="tag-tab-btn min-w-0 px-3 py-2 rounded-xl bg-slate-800/80 text-slate-400 hover:bg-slate-700/80 hover:text-slate-200 text-[11px] font-mono font-semibold transition flex items-center justify-center gap-1.5 cursor-pointer">
             <i data-lucide="languages" class="w-3.5 h-3.5"></i>
-            <span>&lt;meta charset="UTF-8"&gt;</span>
+            <span class="whitespace-nowrap">&lt;meta charset="UTF-8"&gt;</span>
+          </button>
+          <button data-tag-target="body" class="tag-tab-btn px-3.5 py-2 rounded-xl bg-slate-800/80 text-slate-400 hover:bg-slate-700/80 hover:text-slate-200 text-xs font-mono font-semibold transition flex items-center justify-center gap-1.5 cursor-pointer">
+            <i data-lucide="layout-template" class="w-3.5 h-3.5"></i>
+            <span>&lt;body&gt;</span>
           </button>
         </div>
       </div>
@@ -1328,6 +1341,56 @@
   <span class="code-token-punct">&lt;</span><span class="code-token-tag">meta</span> <span class="code-token-attr">charset</span>=<span class="code-token-val">"UTF-8"</span><span class="code-token-punct">&gt;</span>
   <span class="code-token-comment">&lt;!-- วางไว้บนสุดของ head ก่อนแท็ก title หรือข้อมูลอื่นๆ เสมอ --&gt;</span>
 <span class="code-token-punct">&lt;/</span><span class="code-token-tag">head</span><span class="code-token-punct">&gt;</span></code></pre>
+            </div>
+          </div>
+        </div>
+
+        <!-- ================= PANEL 6: BODY ================= -->
+        <div id="tag-panel-body" class="tag-detail-panel hidden space-y-6">
+          <div class="glass-card p-6 sm:p-8 rounded-3xl border border-rose-500/30">
+            <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800">
+              <div>
+                <div class="flex items-center gap-2">
+                  <span class="px-3 py-1 rounded-lg bg-rose-500/20 text-rose-400 font-mono text-sm font-bold border border-rose-500/30">&lt;body&gt;</span>
+                  <span class="text-xs text-slate-400 font-sarabun">Document Body</span>
+                </div>
+                <h3 class="text-xl font-bold text-white mt-2">พื้นที่สำหรับเนื้อหาที่แสดงบนหน้าเว็บ</h3>
+              </div>
+              <div class="text-xs font-mono text-slate-400 bg-slate-900 px-3 py-1.5 rounded-xl border border-slate-800 shrink-0">
+                ตำแหน่ง: <span class="text-rose-400">อยู่ถัดจาก &lt;head&gt; ภายใน &lt;html&gt;</span>
+              </div>
+            </div>
+
+            <div class="py-4 text-sm text-slate-300 font-sarabun leading-relaxed space-y-2">
+              <p><strong>&lt;body&gt;</strong> ครอบเนื้อหาทั้งหมดที่ผู้ใช้มองเห็นและโต้ตอบได้ เช่น หัวข้อ ย่อหน้า รูปภาพ ลิงก์ ปุ่ม แบบฟอร์ม และส่วนประกอบต่าง ๆ ของหน้าเว็บ เอกสาร HTML หนึ่งหน้าควรมีแท็ก <strong>&lt;body&gt;</strong> เพียงหนึ่งชุด</p>
+            </div>
+
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-4 mt-4">
+              <div class="p-5 rounded-2xl bg-emerald-950/30 border border-emerald-500/30 space-y-3">
+                <div class="flex items-center gap-2 text-emerald-400 font-bold text-sm"><i data-lucide="check-circle" class="w-4 h-4"></i> ผลลัพธ์เมื่อมีแท็กนี้ (With)</div>
+                <ul class="text-xs text-slate-300 space-y-2 font-sarabun">
+                  <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5"></i><span>โครงสร้างเนื้อหาชัดเจนและถูกต้องตามมาตรฐาน HTML5</span></li>
+                  <li class="flex items-start gap-2"><i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400 shrink-0 mt-0.5"></i><span>เบราว์เซอร์และเครื่องมือช่วยการเข้าถึงระบุพื้นที่เนื้อหาหลักได้ถูกต้อง</span></li>
+                </ul>
+              </div>
+              <div class="p-5 rounded-2xl bg-rose-950/30 border border-rose-500/30 space-y-3">
+                <div class="flex items-center gap-2 text-rose-400 font-bold text-sm"><i data-lucide="alert-octagon" class="w-4 h-4"></i> ผลกระทบเมื่อไม่มีแท็กนี้ (Without)</div>
+                <ul class="text-xs text-slate-300 space-y-2 font-sarabun">
+                  <li class="flex items-start gap-2"><i data-lucide="x" class="w-3.5 h-3.5 text-rose-400 shrink-0 mt-0.5"></i><span>เบราว์เซอร์อาจสร้าง &lt;body&gt; ชดเชยให้อัตโนมัติ แต่โครงสร้างต้นฉบับไม่สมบูรณ์</span></li>
+                  <li class="flex items-start gap-2"><i data-lucide="x" class="w-3.5 h-3.5 text-rose-400 shrink-0 mt-0.5"></i><span>การตรวจสอบมาตรฐานและการดูแลโค้ดทำได้ยากขึ้น</span></li>
+                </ul>
+              </div>
+            </div>
+
+            <div class="mt-6 p-4 rounded-2xl bg-slate-950 border border-slate-800">
+              <div class="flex justify-between items-center mb-2">
+                <span class="text-xs text-slate-400 font-mono">ตัวอย่างการใช้งานที่ถูกต้อง:</span>
+                <button class="copy-code-btn text-xs text-indigo-400 hover:text-indigo-300 flex items-center gap-1" data-code-id="code-sample-body"><i data-lucide="copy" class="w-3 h-3"></i> คัดลอก</button>
+              </div>
+              <pre style="background:#1e1e1e;padding:12px 16px;border-radius:10px;font-size:12px;font-family:'Fira Code',monospace;color:#e2e8f0;line-height:1.8;overflow-x:auto"><code id="code-sample-body"><span class="code-token-punct">&lt;</span><span class="code-token-tag">body</span><span class="code-token-punct">&gt;</span>
+  <span class="code-token-punct">&lt;</span><span class="code-token-tag">h1</span><span class="code-token-punct">&gt;</span>ยินดีต้อนรับสู่เว็บไซต์ของเรา<span class="code-token-punct">&lt;/</span><span class="code-token-tag">h1</span><span class="code-token-punct">&gt;</span>
+  <span class="code-token-punct">&lt;</span><span class="code-token-tag">p</span><span class="code-token-punct">&gt;</span>นี่คือเนื้อหาที่แสดงบนหน้าเว็บ<span class="code-token-punct">&lt;/</span><span class="code-token-tag">p</span><span class="code-token-punct">&gt;</span>
+<span class="code-token-punct">&lt;/</span><span class="code-token-tag">body</span><span class="code-token-punct">&gt;</span></code></pre>
             </div>
           </div>
         </div>
