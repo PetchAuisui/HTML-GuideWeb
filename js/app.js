@@ -1,294 +1,158 @@
-/**
- * Main application UI controller for HTML System Tags Web Guide
- */
-
-document.addEventListener('DOMContentLoaded', () => {
-  // Initialize Lucide icons
-  if (window.lucide) {
-    lucide.createIcons();
-  }
-
-  // 1. Tag Details Tab Switching
-  const tagTabBtns = document.querySelectorAll('.tag-tab-btn');
-  const tagDetailPanels = document.querySelectorAll('.tag-detail-panel');
-
-  function switchDeepDiveTab(targetTag) {
-    // Update button active state
-    tagTabBtns.forEach(b => {
-      if (b.dataset.tagTarget === targetTag) {
-        b.classList.add('bg-indigo-600', 'text-white', 'shadow-lg', 'shadow-indigo-500/25');
-        b.classList.remove('bg-slate-800/80', 'text-slate-400', 'hover:bg-slate-700/80', 'hover:text-slate-200');
-      } else {
-        b.classList.remove('bg-indigo-600', 'text-white', 'shadow-lg', 'shadow-indigo-500/25');
-        b.classList.add('bg-slate-800/80', 'text-slate-400', 'hover:bg-slate-700/80', 'hover:text-slate-200');
-      }
-    });
-
-    // Show matching panel
-    tagDetailPanels.forEach(panel => {
-      if (panel.id === `tag-panel-${targetTag}`) {
-        panel.classList.remove('hidden');
-        panel.classList.add('animate-fade-in');
-      } else {
-        panel.classList.add('hidden');
-        panel.classList.remove('animate-fade-in');
-      }
-    });
-
-    if (window.lucide) lucide.createIcons();
-  }
-
-  tagTabBtns.forEach(btn => {
-    btn.addEventListener('click', () => {
-      switchDeepDiveTab(btn.dataset.tagTarget);
-    });
+const exampleTabs=[...document.querySelectorAll('[data-example-tab]')];
+const examplePanes=[...document.querySelectorAll('[data-example-pane]')];
+function selectExampleTab(key){
+  exampleTabs.forEach(tab=>{
+    const selected=tab.dataset.exampleTab===key;
+    tab.classList.toggle('active',selected);
+    tab.setAttribute('aria-selected',String(selected));
   });
+  examplePanes.forEach(pane=>{pane.hidden=pane.dataset.examplePane!==key;});
+}
+exampleTabs.forEach(tab=>tab.addEventListener('click',()=>selectExampleTab(tab.dataset.exampleTab)));
 
-  // Also support hero cards with data-tag-target
-  document.querySelectorAll('a[data-tag-target]').forEach(link => {
-    link.addEventListener('click', () => {
-      const targetTag = link.dataset.tagTarget;
-      switchDeepDiveTab(targetTag);
-    });
-  });
-
-  // 2. Live Sandbox Code Runner (100% Pure HTML Standards)
-  const sandboxEditor = document.getElementById('sandbox-editor');
-  const sandboxIframe = document.getElementById('sandbox-preview-iframe');
-  const sandboxRunBtn = document.getElementById('sandbox-run-btn');
-  const sandboxResetBtn = document.getElementById('sandbox-reset-btn');
-
-  const defaultSandboxCode = `<!DOCTYPE html>
-<html>
-  <head>
-    <meta charset="UTF-8">
-    <title>Document</title>
-  </head>
-  <body>
-    <h1>ยินดีต้อนรับสู่เว็บไซต์ของเรา</h1>
-  </body>
+const starter=`<!DOCTYPE html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <title>บทเรียน HTML</title>
+</head>
+<body>
+  <h1>การเขียนเว็บเบื้องต้น</h1>
+  <p>HTML คือภาษาที่ใช้สร้างโครงสร้างของเว็บไซต์</p>
+  <hr>
+  <h2>ข้อมูลติดต่อ</h2>
+  <p>ศิวาภัทร อุยสุย<br>67030351</p>
+</body>
 </html>`;
+const editor=document.querySelector('#code-editor');
+const preview=document.querySelector('#code-preview');
+function renderPreview(){preview.srcdoc=editor.value;}
+editor.value=starter;
+renderPreview();
+editor.addEventListener('input',renderPreview);
+document.querySelector('#reset-code').addEventListener('click',()=>{editor.value=starter;renderPreview();});
 
-  function runSandbox() {
-    if (!sandboxEditor || !sandboxIframe) return;
-    const code = sandboxEditor.value;
-    const doc = sandboxIframe.contentDocument || sandboxIframe.contentWindow.document;
-    doc.open();
-    doc.write(code);
-    doc.close();
-  }
-
-  if (sandboxEditor && sandboxIframe) {
-    sandboxEditor.value = defaultSandboxCode;
-    runSandbox();
-
-    if (sandboxRunBtn) {
-      sandboxRunBtn.addEventListener('click', runSandbox);
+const selects=[...document.querySelectorAll('.tag-select')];
+const exerciseProgress=document.querySelector('#exercise-progress');
+const exerciseProgressBar=document.querySelector('#exercise-progress-bar');
+const exerciseSolution=document.querySelector('#exercise-solution');
+function updateExerciseProgress(){
+  const answered=selects.filter(select=>select.value).length;
+  exerciseProgress.textContent=answered?`ตอบแล้ว ${answered} จาก ${selects.length} ข้อ`:'ยังไม่ได้ตอบ';
+  exerciseProgressBar.style.width=`${answered/selects.length*100}%`;
+}
+selects.forEach(select=>select.addEventListener('change',()=>{
+  select.classList.remove('correct','wrong');
+  updateExerciseProgress();
+}));
+document.querySelector('#check-exercise').addEventListener('click',()=>{
+  let score=0;
+  const feedback=[];
+  selects.forEach((select,index)=>{
+    const correct=select.value===select.dataset.answer;
+    select.classList.toggle('correct',correct);
+    select.classList.toggle('wrong',!correct);
+    if(correct){
+      score+=1;
+      feedback.push(`<div class="feedback-row ok"><strong>ข้อ ${index+1} ถูกต้อง</strong><span>${select.dataset.reason}</span></div>`);
+    }else{
+      const chosen=select.value?`&lt;${select.value}&gt;`:'ยังไม่ได้เลือก';
+      feedback.push(`<div class="feedback-row fix"><strong>ข้อ ${index+1} · ${select.dataset.label}</strong><span>คำตอบ ${chosen} ยังไม่เหมาะ — ${select.dataset.reason}</span></div>`);
     }
-
-    if (sandboxResetBtn) {
-      sandboxResetBtn.addEventListener('click', () => {
-        sandboxEditor.value = defaultSandboxCode;
-        runSandbox();
-      });
-    }
-  }
-
-  // 4. Copy Code Snippet Buttons
-  document.querySelectorAll('.copy-code-btn').forEach(btn => {
-    btn.addEventListener('click', () => {
-      const codeId = btn.dataset.codeId;
-      const targetElement = document.getElementById(codeId);
-      if (!targetElement) return;
-
-      const textToCopy = targetElement.innerText || targetElement.textContent;
-      navigator.clipboard.writeText(textToCopy).then(() => {
-        const origHtml = btn.innerHTML;
-        btn.innerHTML = '<i data-lucide="check" class="w-3.5 h-3.5 text-emerald-400"></i> คัดลอกแล้ว!';
-        if (window.lucide) lucide.createIcons();
-        setTimeout(() => {
-          btn.innerHTML = origHtml;
-          if (window.lucide) lucide.createIcons();
-        }, 2000);
-      });
-    });
   });
-
-  // 5. Smooth Scroll for Anchor Links
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
-      const href = this.getAttribute('href');
-      if (href === '#') return;
-      e.preventDefault();
-      const targetEl = document.querySelector(href);
-      if (targetEl) {
-        targetEl.scrollIntoView({
-          behavior: 'smooth',
-          block: 'start'
-        });
-      }
-    });
-  });
-
-  // 6. Sidebar Controller (Desktop Collapse & Mobile Off-Canvas)
-  const sidebarToggleBtn = document.getElementById('sidebar-toggle-btn');
-  const sidebarCloseBtn = document.getElementById('sidebar-close-btn');
-  const sidebarDesktopCollapseBtn = document.getElementById('sidebar-desktop-collapse-btn');
-  const sidebarDrawer = document.getElementById('sidebar-drawer');
-  const sidebarBackdrop = document.getElementById('sidebar-backdrop');
-
-  function toggleSidebar() {
-    if (window.innerWidth >= 1024) {
-      // Desktop: Collapse / Expand sidebar
-      document.body.classList.toggle('sidebar-collapsed');
-    } else {
-      // Mobile: Open off-canvas drawer
-      openMobileSidebar();
-    }
-  }
-
-  function openMobileSidebar() {
-    if (!sidebarDrawer || !sidebarBackdrop) return;
-    sidebarDrawer.classList.remove('-translate-x-full');
-    sidebarBackdrop.classList.remove('hidden');
-    setTimeout(() => {
-      sidebarBackdrop.classList.remove('opacity-0');
-      sidebarBackdrop.classList.add('opacity-100');
-    }, 10);
-    document.body.style.overflow = 'hidden';
-  }
-
-  function closeMobileSidebar() {
-    if (!sidebarDrawer || !sidebarBackdrop) return;
-    sidebarDrawer.classList.add('-translate-x-full');
-    sidebarBackdrop.classList.remove('opacity-100');
-    sidebarBackdrop.classList.add('opacity-0');
-    setTimeout(() => {
-      sidebarBackdrop.classList.add('hidden');
-    }, 300);
-    document.body.style.overflow = '';
-  }
-
-  if (sidebarToggleBtn) sidebarToggleBtn.addEventListener('click', toggleSidebar);
-  if (sidebarCloseBtn) sidebarCloseBtn.addEventListener('click', closeMobileSidebar);
-  if (sidebarBackdrop) sidebarBackdrop.addEventListener('click', closeMobileSidebar);
-  if (sidebarDesktopCollapseBtn) {
-    sidebarDesktopCollapseBtn.addEventListener('click', () => {
-      document.body.classList.add('sidebar-collapsed');
-    });
-  }
-
-  // Close mobile sidebar on link click
-  document.querySelectorAll('#sidebar-drawer .sidebar-link').forEach(link => {
-    link.addEventListener('click', () => {
-      if (window.innerWidth < 1024) {
-        closeMobileSidebar();
-      }
-    });
-  });
-
-  // 7. Sidebar Tag Direct Switcher
-  document.querySelectorAll('[data-sidebar-tag]').forEach(link => {
-    link.addEventListener('click', (e) => {
-      const targetTag = link.dataset.sidebarTag;
-      if (targetTag) {
-        switchDeepDiveTab(targetTag);
-      }
-    });
-  });
-
-  // 8. ScrollSpy & Dynamic Reading Progress Tracker
-  const sections = document.querySelectorAll('section[id]');
-  const sidebarLinks = document.querySelectorAll('.sidebar-link[data-section]');
-  const topbarProgressFill = document.getElementById('topbar-progress-fill');
-  const topbarProgressText = document.getElementById('topbar-progress-text');
-  const sidebarProgressBar = document.getElementById('sidebar-progress-bar');
-  const sidebarProgressPercent = document.getElementById('sidebar-progress-percent');
-
-  function updateScrollProgress() {
-    const scrollTop = window.scrollY || document.documentElement.scrollTop;
-    const docHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-    const scrollPercent = docHeight > 0 ? Math.min(100, Math.round((scrollTop / docHeight) * 100)) : 0;
-
-    if (topbarProgressFill) topbarProgressFill.style.width = `${scrollPercent}%`;
-    if (topbarProgressText) topbarProgressText.textContent = `${scrollPercent}%`;
-    if (sidebarProgressBar) sidebarProgressBar.style.width = `${scrollPercent}%`;
-    if (sidebarProgressPercent) sidebarProgressPercent.textContent = `${scrollPercent}%`;
-
-    // Active Section Highlighting
-    let currentSectionId = "";
-    sections.forEach(sec => {
-      const top = sec.offsetTop - 120;
-      const height = sec.offsetHeight;
-      if (scrollTop >= top && scrollTop < top + height) {
-        currentSectionId = sec.getAttribute('id');
-      }
-    });
-
-    if (currentSectionId) {
-      sidebarLinks.forEach(link => {
-        if (link.dataset.section === currentSectionId) {
-          link.classList.add('active');
-        } else {
-          link.classList.remove('active');
-        }
-      });
-    }
-  }
-
-  // 9. Light / Dark Theme Switcher (Projector High-Contrast Mode)
-  const themeToggleBtn = document.getElementById('theme-toggle-btn');
-  const themeToggleIcon = document.getElementById('theme-toggle-icon');
-  const sidebarThemeToggle = document.getElementById('sidebar-theme-toggle');
-  const sidebarThemeIcon = document.getElementById('sidebar-theme-icon');
-  const sidebarThemeLabel = document.getElementById('sidebar-theme-label');
-
-  function applyTheme(theme) {
-    const isDark = theme === 'dark';
-    if (isDark) {
-      document.documentElement.classList.add('dark');
-      document.body.classList.remove('bg-[#f8fafc]', 'text-slate-800');
-      document.body.classList.add('bg-[#0b0f19]', 'text-slate-200');
-    } else {
-      document.documentElement.classList.remove('dark');
-      document.body.classList.remove('bg-[#0b0f19]', 'text-slate-200');
-      document.body.classList.add('bg-[#f8fafc]', 'text-slate-800');
-    }
-
-    // Update icons and labels
-    if (themeToggleIcon) {
-      themeToggleIcon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
-      themeToggleIcon.className = `w-4 h-4 ${isDark ? 'text-amber-400' : 'text-indigo-600'} transition`;
-    }
-
-    if (sidebarThemeIcon) {
-      sidebarThemeIcon.setAttribute('data-lucide', isDark ? 'sun' : 'moon');
-      sidebarThemeIcon.className = `w-3.5 h-3.5 ${isDark ? 'text-amber-400' : 'text-indigo-600'}`;
-    }
-
-    if (sidebarThemeLabel) {
-      sidebarThemeLabel.textContent = isDark ? 'ธีมสว่าง (Projector)' : 'ธีมมืด (Dark Mode)';
-    }
-
-    localStorage.setItem('html_guide_theme', theme);
-    if (window.lucide) lucide.createIcons();
-  }
-
-  function toggleTheme() {
-    const isCurrentlyDark = document.documentElement.classList.contains('dark');
-    applyTheme(isCurrentlyDark ? 'light' : 'dark');
-  }
-
-  if (themeToggleBtn) themeToggleBtn.addEventListener('click', toggleTheme);
-  if (sidebarThemeToggle) sidebarThemeToggle.addEventListener('click', toggleTheme);
-
-  // Initialize theme from localStorage
-  const savedTheme = localStorage.getItem('html_guide_theme') || 'dark';
-  applyTheme(savedTheme);
-
-  window.addEventListener('scroll', updateScrollProgress, { passive: true });
-  updateScrollProgress();
+  document.querySelector('#exercise-score').textContent=`${score} / ${selects.length} คะแนน`;
+  document.querySelector('#exercise-feedback').innerHTML=feedback.join('');
+  exerciseSolution.hidden=score!==selects.length;
+  if(score===selects.length) exerciseSolution.scrollIntoView({behavior:'smooth',block:'nearest'});
 });
 
+document.querySelector('#reset-exercise').addEventListener('click',()=>{
+  selects.forEach(select=>{select.value='';select.classList.remove('correct','wrong');});
+  document.querySelector('#exercise-score').textContent='';
+  document.querySelector('#exercise-feedback').innerHTML='';
+  exerciseSolution.hidden=true;
+  updateExerciseProgress();
+});
+const hintButton=document.querySelector('#show-exercise-hint');
+hintButton.addEventListener('click',()=>{
+  document.querySelector('#exercise-hint-text').innerHTML='<code>&lt;h1&gt;</code> คือชื่อเรื่อง · <code>&lt;p&gt;</code> คือใจความ · <code>&lt;hr&gt;</code> คือการเปลี่ยนช่วง · <code>&lt;br&gt;</code> คือเปลี่ยนบรรทัดในชุดเดิม';
+  hintButton.hidden=true;
+});
+updateExerciseProgress();
 
+const structureToggles=[...document.querySelectorAll('[data-structure]')];
+function updateStructureLab(){
+  const state=Object.fromEntries(structureToggles.map(toggle=>[toggle.dataset.structure,toggle.checked]));
+  const lines=[];
+  if(state.doctype) lines.push('<!DOCTYPE html>');
+  lines.push('<html lang="th">','  <head>');
+  if(state.charset) lines.push('    <meta charset="UTF-8">');
+  if(state.title) lines.push('    <title>ห้องสมุดสีเขียว</title>');
+  lines.push('  </head>');
+  if(state.body) lines.push('  <body>','    <h1>ยินดีต้อนรับ</h1>','  </body>');
+  else lines.push('  <!-- ยังไม่มีพื้นที่เนื้อหา body -->');
+  lines.push('</html>');
+  document.querySelector('#unit1-code').textContent=lines.join('\n');
+  document.querySelector('#unit1-tab').textContent=state.title?'ห้องสมุดสีเขียว':'index.html';
+  const missing=[];
+  if(!state.doctype) missing.push('โหมดมาตรฐาน');
+  if(!state.charset) missing.push('UTF-8');
+  if(!state.title) missing.push('ชื่อแท็บ');
+  if(!state.body) missing.push('พื้นที่เนื้อหา');
+  const status=document.querySelector('#unit1-status');
+  status.classList.toggle('warning',missing.length>0);
+  status.textContent=missing.length?`ควรเพิ่ม: ${missing.join(' · ')}`:'โครงสร้างพื้นฐานครบ พร้อมใส่เนื้อหา';
+}
+if(structureToggles.length){
+  structureToggles.forEach(toggle=>toggle.addEventListener('change',updateStructureLab));
+  updateStructureLab();
+}
 
+const sidebar=document.querySelector('#sidebar-drawer');
+const sidebarBackdrop=document.querySelector('#sidebar-backdrop');
+const sidebarToggle=document.querySelector('#sidebar-toggle-btn');
+const sidebarClose=document.querySelector('#sidebar-close-btn');
+function isDesktop(){return window.matchMedia('(min-width:1024px)').matches;}
+function openSidebar(){
+  if(isDesktop()) document.body.classList.toggle('sidebar-collapsed');
+  else document.body.classList.add('sidebar-mobile-open');
+}
+function closeSidebar(){document.body.classList.remove('sidebar-mobile-open');}
+if(sidebar&&sidebarToggle){
+  sidebarToggle.addEventListener('click',openSidebar);
+  sidebarClose.addEventListener('click',closeSidebar);
+  sidebarBackdrop.addEventListener('click',closeSidebar);
+  document.querySelectorAll('.lesson-sidebar .sidebar-link').forEach(link=>link.addEventListener('click',closeSidebar));
+}
+
+const readingSections=[...document.querySelectorAll('main section[id]')];
+const sidebarLinks=[...document.querySelectorAll('.lesson-sidebar .sidebar-link')];
+function updateReadingState(){
+  const scrollable=document.documentElement.scrollHeight-window.innerHeight;
+  const percent=scrollable>0?Math.min(100,Math.max(0,Math.round(window.scrollY/scrollable*100))):0;
+  ['#topbar-progress-text','#sidebar-progress-percent'].forEach(selector=>{const element=document.querySelector(selector);if(element)element.textContent=`${percent}%`;});
+  ['#topbar-progress-fill','#sidebar-progress-bar'].forEach(selector=>{const element=document.querySelector(selector);if(element)element.style.width=`${percent}%`;});
+  let current=readingSections[0]?.id;
+  readingSections.forEach(section=>{if(section.getBoundingClientRect().top<=180)current=section.id;});
+  sidebarLinks.forEach(link=>link.classList.toggle('active',link.dataset.section===current));
+}
+window.addEventListener('scroll',updateReadingState,{passive:true});
+window.addEventListener('resize',()=>{if(isDesktop())closeSidebar();});
+updateReadingState();
+
+function applyTheme(isLight){
+  document.body.classList.toggle('light',isLight);
+  document.documentElement.classList.toggle('light',isLight);
+  document.documentElement.classList.toggle('dark',!isLight);
+  document.body.classList.toggle('dark',!isLight);
+  localStorage.setItem('html_guide_theme',isLight?'light':'dark');
+}
+function toggleTheme(){
+  const isLight=!document.body.classList.contains('light');
+  applyTheme(isLight);
+}
+document.querySelector('#theme-toggle')?.addEventListener('click',toggleTheme);
+document.querySelector('#sidebar-theme-toggle')?.addEventListener('click',toggleTheme);
+const savedTheme=localStorage.getItem('html_guide_theme');
+if(savedTheme) applyTheme(savedTheme==='light');
+lucide.createIcons();
