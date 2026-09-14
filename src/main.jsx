@@ -1,6 +1,7 @@
 import React from 'react'
 import { createRoot } from 'react-dom/client'
 import App from './App'
+import './styles/tailwind.css'
 import '../css/styles.css'
 import '../css/exercise.css'
 import '../css/course.css'
@@ -10,6 +11,9 @@ import '../css/shared-header.css'
 import '../css/lesson-sidebar.css'
 import '../css/lesson2-detail.css'
 import '../css/lesson2-visible.css'
+import './styles/home.css'
+import './styles/lesson-layout.css'
 import './styles/layout.css'
+import './styles/react-learning.css'
 
 createRoot(document.getElementById('root')).render(<App />)

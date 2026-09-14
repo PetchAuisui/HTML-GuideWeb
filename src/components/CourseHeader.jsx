@@ -6,11 +6,11 @@ const lessons = [
   { href: 'lesson2.html', label: 'หน่วยที่ 2', short: 'บท 2', page: 'lesson2' },
 ]
 
-export default function CourseHeader({ page, hasSidebar, progress, theme, onMenu, onTheme }) {
+export default function CourseHeader({ page, hasSidebar, progress, theme, onMenu, onTheme, sidebarExpanded }) {
   return (
     <header className="course-header">
       {hasSidebar && (
-        <button className="header-menu" aria-label="เปิดหรือปิดสารบัญ" aria-expanded="true" onClick={onMenu}>
+        <button className="header-menu" aria-label="เปิดหรือปิดสารบัญ" aria-expanded={sidebarExpanded} aria-controls="lesson-sidebar" onClick={onMenu}>
           <Menu aria-hidden="true" />
         </button>
       )}

@@ -1,0 +1,17 @@
+import { useState } from 'react'
+import CopyButton from './CopyButton'
+
+const all = { doctype: true, html: true, head: true, title: true, charset: true }
+const tags = [['doctype', '<!DOCTYPE html>'], ['html', '<html>'], ['head', '<head>'], ['title', '<title>'], ['charset', '<meta charset="UTF-8">']]
+const presets = [['all_correct', 'โครงสร้างครบ', all], ['no_charset', 'ไม่มี UTF-8', { ...all, charset: false }], ['no_doctype', 'ไม่มี DOCTYPE', { ...all, doctype: false }], ['no_title', 'ไม่มี title', { ...all, title: false }], ['bare_minimum_broken', 'ปิดทั้งหมด', Object.fromEntries(tags.map(([key]) => [key, false]))]]
+
+export default function StructureSimulator() {
+  const [enabled, setEnabled] = useState(all)
+  const code = [enabled.doctype && '<!DOCTYPE html>', enabled.html && '<html lang="th">', enabled.head && '  <head>', enabled.charset && '    <meta charset="UTF-8">', enabled.title && '    <title>Document</title>', enabled.head && '  </head>', '  <body>', '    <h1>ยินดีต้อนรับสู่เว็บไซต์ของเรา</h1>', '  </body>', enabled.html && '</html>'].filter(Boolean).join('\n')
+  const warnings = [!enabled.doctype && 'ไม่มี DOCTYPE: เบราว์เซอร์เข้าสู่ Quirks Mode ซึ่งอาจจัดวางหน้าเว็บแตกต่างจากมาตรฐาน', !enabled.html && 'ไม่มีแท็ก html ในโค้ด: เบราว์เซอร์จะสร้าง Root Element ให้โดยอัตโนมัติ', !enabled.head && 'ไม่มีแท็ก head: เบราว์เซอร์อาจเติมส่วนหัวให้เอง แต่ควรเขียนให้ชัดเจนเพื่อเรียนรู้โครงสร้าง', !enabled.title && 'ไม่มี title: ไม่ได้กำหนดชื่อแท็บของหน้าเว็บ', !enabled.charset && 'ไม่มี meta charset: การอ่านภาษาไทยขึ้นอยู่กับ encoding จากแหล่งอื่น และอาจแสดงผลผิดเพี้ยน'].filter(Boolean)
+  return <section id="lab" className="react-learning-section"><div className="section-heading"><span>Simulator · สลับ 5 แท็ก</span><h2>ลองปิดแท็ก แล้วสังเกตผลกระทบ</h2><p>เปรียบเทียบโครงสร้างที่เขียนกับสิ่งที่เบราว์เซอร์แสดงผล</p></div>
+    <div className="react-actions react-presets">{presets.map(([key, label, value]) => <button key={key} data-preset={key} className="secondary-btn" onClick={() => setEnabled({ ...value })}>{label}</button>)}</div>
+    <div className="react-code-grid"><div className="react-panel"><div className="react-toggles">{tags.map(([key, label]) => <label key={key}><code>{label}</code><span>{enabled[key] ? 'เปิดใช้งาน' : 'ปิดใช้งาน'}</span><input className="tag-toggle-input" type="checkbox" data-tag={key} aria-label={label} checked={enabled[key]} onChange={event => setEnabled(current => ({ ...current, [key]: event.target.checked }))} /></label>)}</div><div id="simulator-impact-summary" aria-live="polite">{warnings.length ? warnings.map(warning => <p className="react-notice" key={warning}>{warning}</p>) : <p className="react-success">โครงสร้างครบทุกแท็ก พร้อมแสดงผลตามมาตรฐาน HTML5</p>}</div></div>
+      <div className="react-panel"><div className="pane-title"><span id="mockup-tab-title">{enabled.title ? 'Document' : 'index.html'}</span><span>{enabled.doctype ? 'Standards Mode' : 'Quirks Mode'}</span></div><iframe className="react-preview" title="ผลลัพธ์จำลองโครงสร้าง HTML" sandbox="" srcDoc={code} /><p className="react-notice">ตัวอย่างนี้ส่งโค้ดด้วย srcDoc จึงยังอ่านภาษาไทยได้แม้ปิด meta charset การเปิดไฟล์ที่บันทึกด้วย encoding อื่นอาจให้ผลต่างกัน</p><div className="pane-title"><span>โค้ดที่สร้าง</span><CopyButton key={code} text={code} /></div><pre className="react-code"><code id="simulator-generated-code">{code}</code></pre></div></div>
+  </section>
+}

@@ -3,9 +3,19 @@ import { useEffect, useState } from 'react'
 export default function useLessonLayout(hasSidebar) {
   const [collapsed, setCollapsed] = useState(false)
   const [mobileOpen, setMobileOpen] = useState(false)
+  const [desktop, setDesktop] = useState(() => window.matchMedia('(min-width: 1024px)').matches)
   const [progress, setProgress] = useState(0)
   const [activeSection, setActiveSection] = useState('hero')
   const [theme, setTheme] = useState(() => localStorage.getItem('html_guide_theme') || 'dark')
+
+  useEffect(() => {
+    const media = window.matchMedia('(min-width: 1024px)')
+    const resize = () => { setDesktop(media.matches); setMobileOpen(false) }
+    const escape = event => { if (event.key === 'Escape') setMobileOpen(false) }
+    media.addEventListener('change', resize)
+    window.addEventListener('keydown', escape)
+    return () => { media.removeEventListener('change', resize); window.removeEventListener('keydown', escape) }
+  }, [])
 
   useEffect(() => {
     document.documentElement.classList.toggle('dark', theme === 'dark')
@@ -21,7 +31,7 @@ export default function useLessonLayout(hasSidebar) {
       const total = document.documentElement.scrollHeight - window.innerHeight
       setProgress(total > 0 ? Math.min(100, Math.max(0, Math.round(window.scrollY / total * 100))) : 0)
       let current = 'hero'
-      document.querySelectorAll('.lesson-layout-content section[id]').forEach(section => {
+      document.querySelectorAll('.lesson-layout-content section[id], #browser-observation').forEach(section => {
         if (section.getBoundingClientRect().top <= 180) current = section.id
       })
       setActiveSection(current)
@@ -45,7 +55,7 @@ export default function useLessonLayout(hasSidebar) {
     : setMobileOpen(value => !value)
 
   return {
-    collapsed, mobileOpen, progress, activeSection, theme,
+    collapsed, mobileOpen, progress, activeSection, theme, sidebarExpanded: desktop ? !collapsed : mobileOpen,
     toggleSidebar,
     closeMobile: () => setMobileOpen(false),
     collapse: () => setCollapsed(true),

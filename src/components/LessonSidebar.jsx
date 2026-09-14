@@ -23,7 +23,7 @@ export default function LessonSidebar({ page, progress, activeSection, theme, on
   return (
     <>
       <button className="lesson-sidebar-backdrop" aria-label="ปิดสารบัญ" onClick={onClose} />
-      <aside className="lesson-sidebar" aria-label={`สารบัญหน่วยที่ ${unit}`}>
+      <aside id="lesson-sidebar" className="lesson-sidebar" aria-label={`สารบัญหน่วยที่ ${unit}`}>
         <div>
           <div className="sidebar-heading">
             <span className="header-mark">T</span>

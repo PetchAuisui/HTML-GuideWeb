@@ -1,0 +1,46 @@
+html { scroll-behavior: smooth; }
+[hidden] { display: none !important; }
+.react-learning-section { max-width: 1240px; margin: 0 auto; padding: 64px 28px; scroll-margin-top: 90px; }
+.react-learning-section .section-heading { margin-bottom: 28px; }
+.react-code-grid { display: grid; grid-template-columns: minmax(0, 1fr) minmax(0, 1fr); gap: 22px; align-items: stretch; }
+.react-panel { min-width: 0; border: 1px solid #39334e; background: #171424; border-radius: 18px; padding: 24px; color: #e9e5f2; }
+.react-panel h3 { font-size: 22px; line-height: 1.5; margin: 14px 0; }
+.react-panel p { line-height: 1.8; margin: 16px 0; font-family: Sarabun, sans-serif; }
+.react-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 16px 0; }
+.react-actions button, .copy-code-btn { display: inline-flex; align-items: center; justify-content: center; gap: 7px; }
+.react-actions button:disabled { opacity: .45; cursor: not-allowed; }
+.react-step-nav { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; margin: 24px 0; }
+.react-step-nav button { min-width: 0; padding: 14px 10px; display: flex; align-items: center; gap: 8px; border: 1px solid #443957; border-radius: 12px; background: #211a30; color: #ccc4dd; text-align: left; }
+.react-step-nav code { overflow-wrap: anywhere; font-size: 12px; }
+.react-step-nav button.active { background: #6d28d9; color: white; border-color: #a78bfa; }
+.react-notice { border: 1px solid #a78bfa55; border-radius: 12px; background: #8b5cf611; color: #d6c7f4; padding: 14px; font: 15px/1.7 Sarabun, sans-serif; }
+.react-success { padding: 14px; border-radius: 12px; background: #10b98118; color: #6ee7b7; border: 1px solid #10b98155; }
+.react-code { padding: 18px; overflow: auto; max-height: 440px; background: #111018; color: #e8e5f0; border-radius: 12px; font: 13px/1.9 'Fira Code', monospace; margin: 14px 0; }
+.react-code code > span { display: block; min-height: 1.9em; white-space: pre; }
+.react-code code > span > small { display: inline-block; width: 28px; color: #80768e; user-select: none; }
+.react-code .highlight-line { background: #7c3aed33; border-left: 2px solid #a78bfa; }
+.react-preview { width: 100%; min-height: 300px; background: white; border: 0; border-radius: 10px; }
+.react-badge, .react-badges span { display: inline-block; font-size: 12px; padding: 6px 10px; border: 1px solid #7c3aed55; border-radius: 8px; }
+.react-badges { display: flex; gap: 8px; flex-wrap: wrap; margin: 18px 0; }
+.react-toggles { display: grid; gap: 12px; }
+.react-toggles label { display: flex; align-items: center; gap: 10px; padding: 15px 0; border-bottom: 1px solid #39334e; }
+.react-toggles label code { flex: 1; font-size: 13px; }
+.react-toggles label span { font-size: 12px; }
+.react-toggles input { width: 21px; height: 21px; accent-color: #8b5cf6; }
+.react-quiz-fields { display: grid; gap: 18px; margin: 22px 0; }
+.react-quiz-fields label { display: grid; gap: 8px; }
+.react-quiz-fields select { width: 100%; min-width: 0; padding: 12px; background: #211a30; color: #e9e5f2; border: 1px solid #615270; border-radius: 10px; }
+.react-learning-section textarea { width: 100%; min-height: 380px; padding: 18px; background: #111018; color: #e8e5f0; font: 13px/1.8 'Fira Code', monospace; resize: vertical; }
+.react-learning-section .preview-pane iframe { width: 100%; min-height: 380px; background: white; border: 0; }
+.react-learning-section .pane-title > span { display: inline-flex; align-items: center; gap: 8px; }
+.react-learning-section .pane-title .react-actions { margin: 0; }
+button:focus-visible, a:focus-visible, select:focus-visible, input:focus-visible, textarea:focus-visible { outline: 3px solid #a78bfa; outline-offset: 3px; }
+body.light .react-panel { background: white; color: #292334; border-color: #ddd5e9; }
+body.light .react-notice { color: #5b3588; background: #f5efff; }
+body.light .react-success { color: #047857; }
+body.light .advanced-exercise .exercise-lines small { color: #65517f; }
+body.light .advanced-exercise .exercise-lines b { color: #6d28d9; }
+body.light .react-step-nav button:not(.active), body.light .react-quiz-fields select { background: #f7f3fb; color: #443256; border-color: #d4c7e0; }
+@media (max-width: 900px) { .react-code-grid { grid-template-columns: 1fr; } .react-step-nav { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
+@media (max-width: 560px) { .react-learning-section { padding: 40px 18px; } .react-panel { padding: 18px; } .react-step-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); } .react-toggles label { flex-wrap: wrap; } }
+@media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
