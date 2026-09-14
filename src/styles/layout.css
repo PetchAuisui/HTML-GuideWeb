@@ -1,0 +1,362 @@
+:root {
+  --header-height: 72px;
+  --sidebar-width: 288px;
+  --layout-duration: 280ms;
+  --layout-ease: cubic-bezier(.4, 0, .2, 1);
+}
+
+html {
+  scroll-padding-top: calc(var(--header-height) + 18px);
+  scrollbar-color: rgba(113, 102, 139, .7) rgba(15, 23, 42, .8);
+  scrollbar-width: thin;
+}
+
+body {
+  overflow-x: hidden;
+}
+
+html.light {
+  scrollbar-color: #a78bfa #f1effb;
+}
+
+html.light ::-webkit-scrollbar-track {
+  background: #f1effb;
+}
+
+html.light ::-webkit-scrollbar-thumb {
+  border: 2px solid #f1effb;
+  border-radius: 999px;
+  background: #a78bfa;
+}
+
+html.light ::-webkit-scrollbar-thumb:hover {
+  background: #7c3aed;
+}
+
+html.light .lesson-sidebar {
+  scrollbar-color: #a78bfa #f8f7fc;
+}
+
+html.light .lesson-sidebar::-webkit-scrollbar-track {
+  background: #f8f7fc;
+}
+
+html.light .lesson-sidebar::-webkit-scrollbar-thumb {
+  border: 2px solid #f8f7fc;
+  background: #b29af5;
+}
+
+.react-app-shell {
+  min-height: 100vh;
+}
+
+/* Lesson 2 sections should flow as one continuous reading rhythm. */
+.page-lesson2 .outcomes {
+  width: min(1180px, calc(100% - 48px));
+  margin: 32px auto 0 !important;
+}
+
+.page-lesson2 #objectives {
+  padding-top: 56px;
+}
+
+.advanced-exercise .exercise-card {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.advanced-exercise .exercise-lines {
+  max-height: none;
+}
+
+.advanced-exercise .tag-bank {
+  flex-wrap: wrap;
+}
+
+.advanced-exercise #exercise-feedback {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 10px;
+  margin-top: 22px;
+}
+
+.advanced-exercise .feedback-row {
+  margin: 0;
+}
+
+@media (max-width: 760px) {
+  .advanced-exercise #exercise-feedback {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 900px) {
+  .page-lesson2 .outcomes {
+    width: calc(100% - 48px);
+    margin: 24px auto 0 !important;
+  }
+
+  .page-lesson2 #objectives {
+    padding-top: 48px;
+  }
+}
+
+@media (max-width: 600px) {
+  .page-lesson2 .outcomes {
+    width: calc(100% - 36px);
+    margin: 20px auto 0 !important;
+  }
+
+  .page-lesson2 #objectives {
+    padding-top: 40px;
+  }
+}
+
+/* Give the home page a visible purple atmosphere without crushing it to black. */
+body.dark:has(.home-page-content) {
+  background:
+    radial-gradient(circle at 18% 8%, rgba(124, 58, 237, .24), transparent 34%),
+    radial-gradient(circle at 82% 18%, rgba(168, 85, 247, .15), transparent 32%),
+    linear-gradient(180deg, #11101f 0%, #0d0c18 55%, #0a0a13 100%);
+}
+
+body.dark .home-page-content .lesson-card {
+  border-color: #40365f;
+  background: linear-gradient(145deg, #211d35 0%, #171525 62%, #12111e 100%);
+  box-shadow: 0 18px 46px rgba(4, 3, 12, .34), inset 0 1px rgba(255, 255, 255, .035);
+}
+
+body.dark .home-page-content .lesson-card::before {
+  opacity: .32;
+  filter: blur(82px);
+}
+
+body.dark .home-page-content .lesson-card:hover {
+  border-color: color-mix(in srgb, var(--accent) 72%, #ffffff 28%);
+  background: linear-gradient(145deg, #28213f 0%, #1b172c 62%, #151321 100%);
+  box-shadow: 0 22px 55px rgba(25, 13, 55, .46);
+}
+
+body.dark .home-page-content .lesson-card > p {
+  color: #bbb7cb;
+}
+
+body.dark .home-page-content .lesson-card ul {
+  color: #e1deeb;
+}
+
+body.dark .home-page-content .intro,
+body.dark .home-page-content .sequence {
+  color: #b7b2c7;
+}
+
+body.dark .home-page-content .eyebrow {
+  color: #d8c8ff;
+}
+
+/* Home page follows the same saved theme as both lessons. */
+body.light .home-page-content {
+  --bg: #f7f7fc;
+  --panel: #ffffff;
+  --line: #ddd9eb;
+  --text: #171526;
+  --muted: #656176;
+}
+
+body.light .home-page-content .lesson-card {
+  border-color: #ddd9eb;
+  background: linear-gradient(145deg, #ffffff, #f4f2fa);
+  color: #171526;
+  box-shadow: 0 14px 34px rgba(55, 43, 90, .08);
+}
+
+body.light .home-page-content .lesson-card:hover {
+  border-color: var(--accent);
+  box-shadow: 0 18px 42px rgba(55, 43, 90, .13);
+}
+
+body.light .home-page-content .lesson-card > p,
+body.light .home-page-content .sequence {
+  color: #656176;
+}
+
+body.light .home-page-content .lesson-card ul {
+  color: #3f3b50;
+}
+
+body.light .home-page-content .eyebrow {
+  color: #6d28d9;
+}
+
+body.light .home-page-content .lesson-one { --accent: #0891b2; }
+body.light .home-page-content .lesson-two { --accent: #9333ea; }
+
+/* Increase contrast in the lesson 2 example area when light theme is active. */
+body.light .example-details-heading > span,
+body.light .open-example header > span,
+body.light .open-example h3 code,
+body.light .open-example header p code {
+  color: #6d28d9;
+}
+
+body.light .example-tabs {
+  border-color: #d8d2e8;
+  background: #ffffff;
+}
+
+body.light .example-tab {
+  color: #575268;
+}
+
+body.light .example-tab:hover {
+  color: #211b31;
+  background: #f2effa;
+}
+
+body.light .example-tab.active {
+  border-color: #8b5cf6;
+  background: #ede9fe;
+  color: #5b21b6;
+  box-shadow: inset 0 0 0 1px rgba(109, 40, 217, .14);
+}
+
+body.light .open-example {
+  border-color: #d8d2e8;
+  background: #f7f5fc;
+}
+
+body.light .open-example h3 {
+  color: #181528;
+}
+
+body.light .open-example header p {
+  color: #4f4a61;
+}
+
+body.light .example-work pre {
+  border: 1px solid #343044;
+  background: #17151f;
+  color: #f1eefc;
+}
+
+.course-header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+.lesson-sidebar {
+  top: var(--header-height) !important;
+  width: var(--sidebar-width) !important;
+  height: calc(100dvh - var(--header-height));
+  transform: translateX(0);
+  transition: transform var(--layout-duration) var(--layout-ease) !important;
+  will-change: transform;
+}
+
+.lesson-layout-content {
+  min-width: 0;
+  margin-left: var(--sidebar-width);
+  transition: margin-left var(--layout-duration) var(--layout-ease);
+  will-change: margin-left;
+}
+
+.react-app-shell.sidebar-collapsed .lesson-sidebar {
+  transform: translateX(-100%) !important;
+}
+
+.react-app-shell.sidebar-collapsed .lesson-layout-content {
+  margin-left: 0;
+}
+
+.lesson-sidebar-backdrop {
+  display: none;
+}
+
+.sidebar-heading-actions {
+  display: flex;
+  gap: 6px;
+  margin-left: auto;
+}
+
+.sidebar-heading-actions button {
+  width: 34px;
+  height: 34px;
+  display: grid;
+  place-items: center;
+  padding: 0 !important;
+  border-radius: 9px;
+}
+
+.sidebar-heading-actions svg,
+.sidebar-progress-card span svg {
+  width: 16px;
+  height: 16px;
+}
+
+.sidebar-progress-card span {
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.sidebar-menu-group + .sidebar-menu-group {
+  margin-top: 12px;
+}
+
+.sidebar-mobile-close { display: none !important; }
+
+@media (max-width: 1023px) {
+  .sidebar-mobile-close { display: grid !important; }
+  .sidebar-desktop-collapse { display: none !important; }
+  .lesson-layout-content,
+  .react-app-shell.sidebar-collapsed .lesson-layout-content {
+    margin-left: 0;
+  }
+
+  .lesson-sidebar {
+    transform: translateX(-100%) !important;
+    box-shadow: 20px 0 45px #0008;
+  }
+
+  .react-app-shell.sidebar-mobile-open .lesson-sidebar {
+    transform: translateX(0) !important;
+  }
+
+  .lesson-sidebar-backdrop {
+    position: fixed;
+    inset: var(--header-height) 0 0;
+    z-index: 50;
+    display: block;
+    border: 0;
+    padding: 0;
+    background: #000a;
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+    backdrop-filter: blur(3px);
+    transition: opacity var(--layout-duration) ease, visibility var(--layout-duration) ease;
+  }
+
+  .react-app-shell.sidebar-mobile-open .lesson-sidebar-backdrop {
+    opacity: 1;
+    visibility: visible;
+    pointer-events: auto;
+  }
+}
+
+@media (max-width: 560px) {
+  :root { --header-height: 64px; }
+  .course-header { height: var(--header-height); }
+  .lesson-sidebar { max-width: min(88vw, var(--sidebar-width)); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .lesson-sidebar,
+  .lesson-layout-content,
+  .lesson-sidebar-backdrop {
+    transition-duration: 0.01ms !important;
+  }
+}

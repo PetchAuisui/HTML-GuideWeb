@@ -65,7 +65,7 @@ body {
 /* Subtle background grid pattern */
 .bg-grid-pattern {
   background-size: 32px 32px;
-  background-image: 
+  background-image:
     linear-gradient(to right, rgba(255, 255, 255, 0.03) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.03) 1px, transparent 1px);
 }
@@ -219,9 +219,7 @@ body {
   transition: opacity 0.3s ease;
 }
 
-#main-content-wrapper {
-  transition: padding-left 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-}
+#main-content-wrapper { transition: none; }
 
 /* Tag Toggle Switch States - Vivid Emerald Green when checked */
 .tag-toggle-input:checked + .tag-toggle-track {
@@ -244,13 +242,7 @@ body {
 
 /* Sidebar Collapsed State on Desktop */
 @media (min-width: 1024px) {
-  body.sidebar-collapsed #sidebar-drawer {
-    transform: translateX(-100%) !important;
-  }
-
-  body.sidebar-collapsed #main-content-wrapper {
-    padding-left: 0 !important;
-  }
+  #main-content-wrapper { padding-left: 0 !important; }
 }
 
 /* ================= LIGHT THEME (HIGH CONTRAST FOR CLASSROOM / PROJECTOR) ================= */
@@ -264,7 +256,7 @@ html:not(.dark) body {
 }
 
 html:not(.dark) .bg-grid-pattern {
-  background-image: 
+  background-image:
     linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
 }
@@ -291,16 +283,16 @@ html:not(.dark) .glass-card:hover {
 /* Sidebar styled uniformly by lesson-sidebar.css */
 
 /* Headings & Text in Light Mode */
-html:not(.dark) h1, 
-html:not(.dark) h2, 
-html:not(.dark) h3, 
+html:not(.dark) h1,
+html:not(.dark) h2,
+html:not(.dark) h3,
 html:not(.dark) h4,
 html:not(.dark) .text-white {
   color: #0f172a !important;
 }
 
 html:not(.dark) p,
-html:not(.dark) .text-slate-300, 
+html:not(.dark) .text-slate-300,
 html:not(.dark) .text-slate-200 {
   color: #334155 !important;
 }
@@ -309,10 +301,10 @@ html:not(.dark) .text-slate-400 {
   color: #64748b !important;
 }
 
-html:not(.dark) .bg-slate-900, 
-html:not(.dark) .bg-slate-950, 
-html:not(.dark) .bg-slate-900\/70, 
-html:not(.dark) .bg-slate-900\/80, 
+html:not(.dark) .bg-slate-900,
+html:not(.dark) .bg-slate-950,
+html:not(.dark) .bg-slate-900\/70,
+html:not(.dark) .bg-slate-900\/80,
 html:not(.dark) .bg-slate-900\/90,
 html:not(.dark) .bg-slate-950\/40,
 html:not(.dark) .bg-slate-950\/60,
@@ -343,7 +335,7 @@ html:not(.dark) .bg-slate-800:hover {
   background-color: #e2e8f0 !important;
 }
 
-html:not(.dark) .border-slate-800, 
+html:not(.dark) .border-slate-800,
 html:not(.dark) .border-slate-800\/80,
 html:not(.dark) .border-slate-700,
 html:not(.dark) .border-slate-700\/80 {
@@ -732,14 +724,3 @@ html:not(.dark) .step-indicator-pending:hover {
   background: #f8fafc !important;
   border-color: #94a3b8 !important;
 }
-
-
-
-
-
-
-
-
-
-
-

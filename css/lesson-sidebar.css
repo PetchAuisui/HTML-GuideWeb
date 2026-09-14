@@ -35,7 +35,7 @@ body.light,html.light,html:not(.dark){
   overflow-y:auto;
   transition:transform .28s ease;
 }
-.has-sidebar main,.has-sidebar>footer{margin-left:288px;transition:margin-left .28s ease}.has-sidebar.sidebar-collapsed main,.has-sidebar.sidebar-collapsed>footer{margin-left:0}.has-sidebar.sidebar-collapsed .lesson-sidebar{transform:translateX(-100%)}
+/* Layout spacing is controlled in src/styles/layout.css by the React shell. */
 
 .sidebar-heading,
 #sidebar-drawer .sidebar-heading{
@@ -246,10 +246,8 @@ html:not(.dark) #sidebar-drawer .sidebar-footer a,html:not(.dark) #sidebar-drawe
   color:var(--text) !important;
 }
 @media(max-width:1023px){
-  .has-sidebar main,.has-sidebar>footer{margin-left:0}
   .lesson-sidebar{transform:translateX(-100%);box-shadow:20px 0 45px #0008}
   .has-sidebar.sidebar-mobile-open .lesson-sidebar{transform:translateX(0)}
   .lesson-sidebar-backdrop{position:fixed;inset:72px 0 0;z-index:50;background:#000a;backdrop-filter:blur(3px)}
   .has-sidebar.sidebar-mobile-open .lesson-sidebar-backdrop{display:block}
 }
-
