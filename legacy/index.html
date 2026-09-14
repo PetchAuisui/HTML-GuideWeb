@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="th">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width,initial-scale=1">
+  <meta name="description" content="บทเรียนพื้นฐาน HTML5 หน่วยที่ 1 โครงสร้างเอกสาร และหน่วยที่ 2 การจัดข้อความ">
+  <title>HTML Learning Lab · เลือกบทเรียน</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Fira+Code:wght@500;600&family=Prompt:wght@400;500;600;700&family=Sarabun:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="css/shared-header.css">
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='14' fill='%237c3aed'/%3E%3Cpath d='M18 18h28v7H35v21h-7V25H18z' fill='white'/%3E%3C/svg%3E">
+  <style>
+    :root{--bg:#090912;--panel:#141421;--line:#2b2b40;--text:#fafafa;--muted:#a1a1b5;--purple:#8b5cf6}*{box-sizing:border-box}body{margin:0;min-height:100vh;background:radial-gradient(circle at 50% -10%,#312e8155,transparent 48%),var(--bg);color:var(--text);font-family:'Prompt',sans-serif}.home-nav{max-width:1100px;margin:auto;padding:22px 24px;display:flex;align-items:center;justify-content:space-between}.home-brand{display:flex;gap:11px;align-items:center;font-weight:700}.home-brand b{width:38px;height:38px;display:grid;place-items:center;border-radius:11px;background:linear-gradient(135deg,#8b5cf6,#ec4899)}.home-nav span:last-child{color:var(--muted);font:13px 'Sarabun'}.home{max-width:1100px;margin:auto;padding:70px 24px 100px}.eyebrow{font:600 12px 'Fira Code';letter-spacing:.15em;color:#c4b5fd}.home h1{max-width:800px;margin:16px 0;font-size:clamp(42px,7vw,76px);line-height:1.08;letter-spacing:-.04em}.intro{max-width:660px;color:var(--muted);font:18px/1.75 'Sarabun';margin-bottom:46px}.lesson-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.lesson-card{position:relative;min-height:390px;padding:30px;border:1px solid var(--line);border-radius:22px;background:linear-gradient(145deg,#181829,#11111c);color:var(--text);text-decoration:none;overflow:hidden;transition:.25s}.lesson-card:hover{transform:translateY(-5px);border-color:#8b5cf6}.lesson-card:before{content:"";position:absolute;width:180px;height:180px;border-radius:50%;background:var(--accent);filter:blur(100px);opacity:.2;right:-40px;top:-30px}.lesson-card small{font:600 12px 'Fira Code';color:var(--accent)}.lesson-card h2{font-size:31px;line-height:1.25;margin:18px 0 12px}.lesson-card>p{color:var(--muted);font:16px/1.65 'Sarabun'}.lesson-card ul{padding:0;list-style:none;color:#d4d4df;font:14px/1.9 'Sarabun'}.lesson-card li:before{content:'✓';color:var(--accent);margin-right:8px}.lesson-card strong{position:absolute;bottom:28px;left:30px;color:var(--accent);font-size:14px}.lesson-one{--accent:#22d3ee}.lesson-two{--accent:#c084fc}.sequence{display:flex;align-items:center;gap:12px;margin-top:28px;color:var(--muted);font:14px 'Sarabun'}.sequence i{height:1px;flex:1;background:var(--line)}@media(max-width:720px){.lesson-grid{grid-template-columns:1fr}.lesson-card{min-height:370px}.home{padding-top:45px}.home-nav span:last-child{display:none}}
+  </style>
+</head>
+<body>
+  <header class="course-header">
+    <a class="header-brand" href="index.html"><span class="header-mark">T</span><span><strong>HTML Learning Lab</strong><small>บทเรียนพื้นฐาน HTML5</small></span></a>
+    <nav class="lesson-nav" aria-label="เลือกบทเรียน"><a class="active" href="index.html" data-short="หน้าหลัก"><span>ภาพรวม</span></a><a href="lesson1.html" data-short="บท 1"><span>หน่วยที่ 1</span></a><a href="lesson2.html" data-short="บท 2"><span>หน่วยที่ 2</span></a></nav>
+  </header>
+  <main class="home"><span class="eyebrow">BASIC WEBSITE DESIGN</span><h1>เลือกบทเรียน<br>แล้วเริ่มลงมือเขียน</h1><p class="intro">เนื้อหาทั้งสองหน่วยแยกเป็นหน้าบทเรียนเต็ม พร้อมคำอธิบาย ตัวอย่าง ห้องทดลอง และแบบฝึกหัด เริ่มจากโครงสร้างก่อนต่อยอดสู่การจัดข้อความ</p>
+    <div class="lesson-grid">
+      <a class="lesson-card lesson-one" href="lesson1.html"><small>หน่วยการเรียนรู้ที่ 01</small><h2>โครงสร้างพื้นฐาน HTML5</h2><p>ทำความเข้าใจส่วนประกอบที่ควบคุมและกำหนดข้อมูลของเว็บเพจ</p><ul><li>เป้าหมายและข้อสังเกตบนเบราว์เซอร์</li><li>Step-by-Step ครบ 6 ขั้น</li><li>Simulator สลับแท็กและดูผลกระทบ</li><li>เจาะลึก 6 แท็ก พร้อม Sandbox และ Quiz</li></ul><strong>เปิดบทเรียนที่ 1 →</strong></a>
+      <a class="lesson-card lesson-two" href="lesson2.html"><small>หน่วยการเรียนรู้ที่ 02</small><h2>การใส่เนื้อหาด้วยข้อความ</h2><p>เลือกแท็กให้ตรงกับหัวข้อ ย่อหน้า การขึ้นบรรทัดใหม่ และการแบ่งช่วงเนื้อหา</p><ul><li>รายละเอียด h1–h6, p, br และ hr</li><li>ตัวอย่างโค้ดพร้อมผลลัพธ์</li><li>เปรียบเทียบ p กับ br</li><li>Live Code และแบบฝึกหัดตามโจทย์ในชั้นเรียน</li></ul><strong>เปิดบทเรียนที่ 2 →</strong></a>
+    </div><div class="sequence"><span>ลำดับแนะนำ</span><i></i><span>หน่วยที่ 1</span><span>→</span><span>หน่วยที่ 2</span></div>
+  </main>
+</body>
+</html>

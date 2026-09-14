@@ -1,0 +1,15 @@
+import React from 'react'
+import { createRoot } from 'react-dom/client'
+import App from './App'
+import '../css/styles.css'
+import '../css/exercise.css'
+import '../css/course.css'
+import '../css/lesson1.css'
+import '../css/unified-theme.css'
+import '../css/shared-header.css'
+import '../css/lesson-sidebar.css'
+import '../css/lesson2-detail.css'
+import '../css/lesson2-visible.css'
+import './styles/layout.css'
+
+createRoot(document.getElementById('root')).render(<App />)
