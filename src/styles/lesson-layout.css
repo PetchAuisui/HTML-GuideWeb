@@ -37,8 +37,8 @@
 .page-lesson2 .outcomes { display:flex; gap:28px; align-items:center; padding:24px; border:1px solid var(--line); border-radius:16px; background:var(--panel); }
 .page-lesson2 .outcomes strong,.page-lesson2 .outcomes span { display:block; white-space:nowrap; }
 .page-lesson2 .outcomes strong { font-size:28px; color:#a78bfa; }
-.page-lesson2 .outcomes span,.page-lesson2 .outcomes p { color:var(--muted); font:15px/1.7 'Sarabun'; }
-.page-lesson2 .tag-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:14px; }
+.page-lesson2 .tag-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:14px; }
+.page-lesson2 .example-tabs { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:10px; margin-bottom:14px; padding:7px; border:1px solid var(--line); border-radius:16px; background:var(--panel); }
 .page-lesson2 .tag-card { border:1px solid var(--line); border-radius:16px; background:var(--panel); }
 .page-lesson2 .tag-icon { font-size:28px; font-weight:700; color:#a78bfa; }
 .page-lesson2 .tag-code { display:block; font:12px 'Fira Code'; color:#c4b5fd; }
