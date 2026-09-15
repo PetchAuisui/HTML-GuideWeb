@@ -3,7 +3,16 @@
 .primary-btn:hover { background:#6d28d9; }
 .secondary-btn { background:var(--panel2); color:var(--text); border:1px solid var(--line); }
 .section-heading { margin-bottom:28px; }
-.section-heading>span { color:#a78bfa; font:600 12px 'Fira Code',monospace; }
+.section-heading>span { color:#a78bfa; font:600 13px/1.5 'Sarabun','Prompt',sans-serif; letter-spacing:0; }
+
+/* Thai labels need a Thai font and natural tracking so combining marks stay attached. */
+.page-lesson2 .example-details-heading>span,
+.page-lesson2 .open-example header>span,
+.page-lesson2 .before-after article>span,
+.page-lesson2 .exercise-kicker {
+  font-family:'Sarabun','Prompt',sans-serif;
+  letter-spacing:0;
+}
 .section-heading h2 { margin:12px 0; font:700 clamp(25px,3vw,36px)/1.4 'Prompt',sans-serif; color:var(--text); }
 .section-heading>p { max-width:800px; font:17px/1.8 'Sarabun',sans-serif; color:var(--muted); }
 .page-lesson2 .hero,.page-lesson2 .section-shell,.page-lesson2 .compare-section,.page-lesson2 .quiz-section { width:min(1180px,calc(100% - 56px)); margin:0 auto; padding:64px 0; }
