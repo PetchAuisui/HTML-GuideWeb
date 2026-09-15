@@ -57,7 +57,7 @@ export default function AdvancedExercise() {
     <div className="section-heading"><span>05 · แบบฝึกหัดเติมแท็กในบทความ</span><h2>อ่านบทความ แล้วเติม HTML ให้ครบ 11 จุด</h2><p>อ่านเนื้อหาทั้งเรื่อง แล้วเลือกแท็กที่สื่อความหมายและลำดับของแต่ละส่วน</p></div>
     <div className="exercise-card">
       <div className="article-exercise-top"><div><span className="exercise-kicker">ภารกิจ · จัดโครงสร้างบทความ</span><h3>หนึ่งบทความ หลายหน้าที่ของข้อความ</h3></div><span className="article-progress" aria-live="polite">เติมแล้ว {answered} / {article.length} ช่อง</span></div>
-      <p id="article-instructions" className="article-instructions">พิมพ์แท็กลงในช่องหมายเลข เช่น h1 หรือ &lt;h1&gt; ใช้แท็กซ้ำได้ ระบบเติมแท็กปิดของข้อความแต่ละช่วงตามที่พิมพ์ให้อัตโนมัติ ส่วน br เป็นแท็กเดี่ยว อ่านบริบทก่อนตัดสินใจ แล้วกดตรวจเมื่อพร้อม</p>
+      <div id="article-instructions" className="article-instructions"><strong>วิธีทำ:</strong> อ่านบทความจากบนลงล่าง แล้วพิมพ์แท็กลงในช่อง <code>&lt;…&gt;</code> ที่อยู่หน้าข้อความแต่ละช่วง เช่น พิมพ์ <code>h1</code> หรือ <code>&lt;h1&gt;</code> หากข้อความนั้นเป็นชื่อเรื่องหลัก ระบบจะแสดงแท็กปิดให้เอง ส่วน <code>br</code> เป็นแท็กเดี่ยว เมื่อเติมครบแล้วกด “ตรวจคำตอบ”</div>
       <div className="tag-bank" aria-label="แท็กที่ใช้ในบทความ">{tags.map(tag => <span key={tag}>&lt;{tag}&gt;</span>)}</div>
       <article className="article-manuscript" aria-label="บทความคู่มือห้องสมุดพร้อมช่องเติมแท็ก">
         <div className="article-paper-heading"><span>ต้นฉบับบทความ</span><span>เติมแท็กที่หายไป</span></div>
