@@ -8,13 +8,13 @@
 .article-passage { font:18px/2.2 'Sarabun',sans-serif; margin:0 0 22px; overflow-wrap:anywhere; }
 .article-passage:last-child { margin-bottom:0; }
 .article-given-paragraph { margin-top:18px; }
-.article-tag-slot { display:inline-flex; align-items:center; gap:5px; padding:3px 7px; margin:3px 5px 3px 0; vertical-align:baseline; border:1px dashed #a78bfa; border-radius:8px; background:#8b5cf613; line-height:1.5; white-space:nowrap; }
+.article-tag-slot { display:inline-flex; align-items:center; gap:5px; padding:3px 7px; margin:3px 5px 3px 0; vertical-align:middle; border:1px dashed #a78bfa; border-radius:8px; background:#8b5cf613; line-height:1.5; white-space:nowrap; }
 .article-tag-slot label { color:#bda4fa; font:600 11px 'Fira Code',monospace; cursor:text; }
-.article-tag-slot input { width:78px; min-width:0; padding:5px 3px; border:0; background:transparent; color:var(--text); font:500 15px/1.5 'Fira Code',monospace; }
+.article-tag-slot input { width:78px; min-width:0; padding:5px 3px; border:0; background:transparent; color:#569cd6; font:500 15px/1.5 Consolas,'Courier New','Fira Code',monospace; }
 .article-tag-slot input::placeholder { color:var(--muted); opacity:1; }
 .article-tag-slot:focus-within { border-style:solid; box-shadow:0 0 0 3px #8b5cf625; }
-.article-tag-slot input:focus { outline:2px solid #a78bfa; outline-offset:1px; border-radius:3px; }
-.article-closing { color:var(--muted); font:13px 'Fira Code',monospace; margin:0 5px; }
+.article-tag-slot input:focus { outline:0; }
+.article-closing { color:var(--muted); font:13px Consolas,'Courier New','Fira Code',monospace; margin:0 5px; }
 .article-divider-gap { padding:4px 0; }
 .article-tag-slot.is-correct { border-color:#34d399; border-style:solid; }
 .article-tag-slot.is-correct>span { color:#34d399; }
@@ -27,7 +27,7 @@
 .article-full-solution summary { cursor:pointer; font-weight:600; color:var(--text); }
 .article-full-solution pre { white-space:pre-wrap; overflow-wrap:anywhere; margin-top:18px; padding:18px; background:#14111e; color:#e9e4f2; font:13px/1.9 'Fira Code',monospace; border-radius:10px; }
 body.light .article-tag-slot label { color:#6d28d9; }
-body.light .article-exercise .tag-bank span { color:#6d28d9; }
+body.light .article-exercise .tag-bank>span { color:#6d28d9; }
 body.light .article-tag-slot.is-correct>span,body.light .article-exercise .feedback-row.ok { color:#047857; }
 body.light .article-tag-slot.is-wrong>span,body.light .article-exercise .feedback-row.fix { color:#b91c1c; }
 @media(max-width:600px) { .article-exercise-top { align-items:flex-start; flex-direction:column; gap:12px; } .article-manuscript { padding:22px 16px; } .article-passage { font-size:17px; line-height:2.15; } .article-tag-slot input { font-size:16px; } }

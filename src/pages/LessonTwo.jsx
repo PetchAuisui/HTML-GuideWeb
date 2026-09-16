@@ -1,10 +1,16 @@
-import { useState } from 'react'
+import { useLayoutEffect, useState } from 'react'
 import { ArrowRight as IconArrowRight, Lightbulb as IconLightbulb } from 'lucide-react'
 import CodeSandbox from '../components/CodeSandbox'
 import AdvancedExercise from '../components/AdvancedExercise'
+import { htmlToHighlightedMarkup } from '../components/HtmlCode'
 
 export default function LessonTwo() {
 const [activeExample, setActiveExample] = useState('heading')
+useLayoutEffect(() => {
+  document.querySelectorAll('.page-lesson2 .example-work pre code').forEach(code => {
+    code.innerHTML = htmlToHighlightedMarkup(code.textContent)
+  })
+}, [activeExample])
 return <>
 <main id={"top"}>
 <section id={"hero"} className={"hero"}><div className={"hero-copy"}><span className={"eyebrow"}>{"BASIC WEBSITE DESIGN · LESSON 02"}</span><h1>{"เว็บอ่านง่ายขึ้น"}<br /><span>{"ด้วยแท็ก HTML5"}</span></h1><p>{"เรียนรู้วิธีเปลี่ยนข้อความธรรมดาให้มีลำดับและอ่านสบาย ผ่าน 3 กลุ่มแท็กพื้นฐาน"}</p><div className={"hero-actions"}><a className={"primary-btn"} href={"#playground"}>{"เริ่มทดลองเขียน"}</a><a className={"text-link"} href={"#lesson"}>{"ดูแท็กทั้งหมด ↓"}</a></div></div><div className={"hero-demo"}><div className={"window-bar"}><span></span><span></span><span></span><small>{"preview.html"}</small></div><div className={"demo-code"}><code><b>{"<h1>"}</b>{"คู่มือ HTML"}<b>{"</h1>"}</b><br /><b>{"<p>"}</b>{"เริ่มต้นจัดข้อความให้เป็นระเบียบ"}<b>{"</p>"}</b><br /><b>{"<h2>"}</b>{"บทที่ 1"}<b>{"</h2>"}</b></code></div><div className={"demo-result"}><h2>{"คู่มือ HTML"}</h2><p>{"เริ่มต้นจัดข้อความให้เป็นระเบียบ"}</p><h3>{"บทที่ 1"}</h3></div></div></section>

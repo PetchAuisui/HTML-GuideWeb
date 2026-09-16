@@ -15,6 +15,10 @@ body {
   overflow-x: hidden;
 }
 
+.page-lesson2 .demo-code b {
+  color: #569cd6;
+}
+
 html.light {
   scrollbar-color: #a78bfa #f1effb;
 }

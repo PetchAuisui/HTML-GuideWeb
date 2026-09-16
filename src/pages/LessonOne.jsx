@@ -5,6 +5,7 @@ import StructureSimulator from '../components/StructureSimulator'
 import StructureQuiz from '../components/StructureQuiz'
 import CopyButton from '../components/CopyButton'
 import CodeSandbox from '../components/CodeSandbox'
+import HtmlCode from '../components/HtmlCode'
 
 export default function LessonOne() {
 const [activeTag, setActiveTag] = useState('doctype')
@@ -24,27 +25,27 @@ return <>
 
 <div className={"mt-8 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-3 max-w-6xl mx-auto"}>
 <a onClick={() => setActiveTag("doctype")} href={"#deep-dive"} data-tag-target={"doctype"} className={"p-3.5 rounded-2xl glass-card text-center group border border-orange-500/30 hover:border-orange-500"}>
-<span className={"text-xs font-mono text-orange-400 group-hover:text-orange-300 font-bold block transition"}>{"<!DOCTYPE html>"}</span>
+<span className={"html-tag-label text-xs font-mono font-bold block transition"}><HtmlCode>{"<!DOCTYPE html>"}</HtmlCode></span>
 <span className={"text-[11px] text-slate-400 font-sarabun mt-1 block"}>{"โหมดมาตรฐาน HTML5"}</span>
 </a>
 <a onClick={() => setActiveTag("html")} href={"#deep-dive"} data-tag-target={"html"} className={"p-3.5 rounded-2xl glass-card text-center group border border-orange-500/30 hover:border-orange-500"}>
-<span className={"text-xs font-mono text-orange-400 group-hover:text-orange-300 font-bold block transition"}>{"<html>"}</span>
+<span className={"html-tag-label text-xs font-mono font-bold block transition"}><HtmlCode>{"<html>"}</HtmlCode></span>
 <span className={"text-[11px] text-slate-400 font-sarabun mt-1 block"}>{"Root Element & ภาษา"}</span>
 </a>
 <a onClick={() => setActiveTag("head")} href={"#deep-dive"} data-tag-target={"head"} className={"p-3.5 rounded-2xl glass-card text-center group border border-orange-500/30 hover:border-orange-500"}>
-<span className={"text-xs font-mono text-orange-400 group-hover:text-orange-300 font-bold block transition"}>{"<head>"}</span>
+<span className={"html-tag-label text-xs font-mono font-bold block transition"}><HtmlCode>{"<head>"}</HtmlCode></span>
 <span className={"text-[11px] text-slate-400 font-sarabun mt-1 block"}>{"คอนเทนเนอร์ Metadata"}</span>
 </a>
 <a onClick={() => setActiveTag("title")} href={"#deep-dive"} data-tag-target={"title"} className={"p-3.5 rounded-2xl glass-card text-center group border border-orange-500/30 hover:border-orange-500"}>
-<span className={"text-xs font-mono text-orange-400 group-hover:text-orange-300 font-bold block transition"}>{"<title>"}</span>
+<span className={"html-tag-label text-xs font-mono font-bold block transition"}><HtmlCode>{"<title>"}</HtmlCode></span>
 <span className={"text-[11px] text-slate-400 font-sarabun mt-1 block"}>{"ชื่อแท็บและผลค้นหา"}</span>
 </a>
 <a onClick={() => setActiveTag("charset")} href={"#deep-dive"} data-tag-target={"charset"} className={"p-3.5 rounded-2xl glass-card text-center group border border-orange-500/30 hover:border-orange-500"}>
-<span className={"text-[11px] font-mono text-orange-400 group-hover:text-orange-300 font-bold block transition whitespace-nowrap"}>{"<meta charset=\"UTF-8\">"}</span>
+<span className={"html-tag-label html-tag-label-long text-[11px] font-mono font-bold block transition"}><HtmlCode>{"<meta charset=\"UTF-8\">"}</HtmlCode></span>
 <span className={"text-[11px] text-slate-400 font-sarabun mt-1 block"}>{"การเข้ารหัสภาษาไทย"}</span>
 </a>
 <a onClick={() => setActiveTag("body")} href={"#deep-dive"} data-tag-target={"body"} className={"p-3.5 rounded-2xl glass-card text-center group border border-rose-500/30 hover:border-rose-500"}>
-<span className={"text-xs font-mono text-rose-400 group-hover:text-rose-300 font-bold block transition"}>{"<body>"}</span>
+<span className={"html-tag-label text-xs font-mono font-bold block transition"}><HtmlCode>{"<body>"}</HtmlCode></span>
 <span className={"text-[11px] text-slate-400 font-sarabun mt-1 block"}>{"พื้นที่แสดงเนื้อหา"}</span>
 </a>
 </div>
@@ -178,27 +179,27 @@ return <>
 <div className={"mt-6 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-2 p-1.5 rounded-2xl glass-panel max-w-5xl mx-auto"}>
 <button onClick={() => setActiveTag("doctype")} className={"tag-tab-btn px-4 py-2 rounded-xl text-sm " + (activeTag === "doctype" ? "bg-indigo-600 text-white" : "bg-slate-800/80 text-slate-400")} aria-pressed={activeTag === "doctype"} data-tag-target={"doctype"}>
 <IconFileCode2 aria-hidden="true" className={"w-3.5 h-3.5"} />
-<span>{"<!DOCTYPE html>"}</span>
+<span><HtmlCode>{"<!DOCTYPE html>"}</HtmlCode></span>
 </button>
 <button onClick={() => setActiveTag("html")} className={"tag-tab-btn px-4 py-2 rounded-xl text-sm " + (activeTag === "html" ? "bg-indigo-600 text-white" : "bg-slate-800/80 text-slate-400")} aria-pressed={activeTag === "html"} data-tag-target={"html"}>
 <IconBox aria-hidden="true" className={"w-3.5 h-3.5"} />
-<span>{"<html>"}</span>
+<span><HtmlCode>{"<html>"}</HtmlCode></span>
 </button>
 <button onClick={() => setActiveTag("head")} className={"tag-tab-btn px-4 py-2 rounded-xl text-sm " + (activeTag === "head" ? "bg-indigo-600 text-white" : "bg-slate-800/80 text-slate-400")} aria-pressed={activeTag === "head"} data-tag-target={"head"}>
 <IconSettings2 aria-hidden="true" className={"w-3.5 h-3.5"} />
-<span>{"<head>"}</span>
+<span><HtmlCode>{"<head>"}</HtmlCode></span>
 </button>
 <button onClick={() => setActiveTag("title")} className={"tag-tab-btn px-4 py-2 rounded-xl text-sm " + (activeTag === "title" ? "bg-indigo-600 text-white" : "bg-slate-800/80 text-slate-400")} aria-pressed={activeTag === "title"} data-tag-target={"title"}>
 <IconAppWindow aria-hidden="true" className={"w-3.5 h-3.5"} />
-<span>{"<title>"}</span>
+<span><HtmlCode>{"<title>"}</HtmlCode></span>
 </button>
 <button onClick={() => setActiveTag("charset")} className={"tag-tab-btn px-4 py-2 rounded-xl text-sm " + (activeTag === "charset" ? "bg-indigo-600 text-white" : "bg-slate-800/80 text-slate-400")} aria-pressed={activeTag === "charset"} data-tag-target={"charset"}>
 <IconLanguages aria-hidden="true" className={"w-3.5 h-3.5"} />
-<span className={"whitespace-nowrap"}>{"<meta charset=\"UTF-8\">"}</span>
+<span className={"tag-tab-long"}><HtmlCode>{"<meta charset=\"UTF-8\">"}</HtmlCode></span>
 </button>
 <button onClick={() => setActiveTag("body")} className={"tag-tab-btn px-4 py-2 rounded-xl text-sm " + (activeTag === "body" ? "bg-indigo-600 text-white" : "bg-slate-800/80 text-slate-400")} aria-pressed={activeTag === "body"} data-tag-target={"body"}>
 <IconLayoutTemplate aria-hidden="true" className={"w-3.5 h-3.5"} />
-<span>{"<body>"}</span>
+<span><HtmlCode>{"<body>"}</HtmlCode></span>
 </button>
 </div>
 </div>

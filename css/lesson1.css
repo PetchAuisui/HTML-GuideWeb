@@ -540,6 +540,30 @@ pre code span,
 .code-token-punct   { color: #808080 !important; } /* Gray */
 .code-token-comment { color: #6a9955 !important; font-style: italic !important; } /* Green */
 .code-token-text    { color: #d4d4d4 !important; } /* Off-white */
+.code-token-operator { color: #d4d4d4 !important; } /* Equals signs */
+
+/* Keep code-like labels consistent with VS Code, including interactive UI. */
+.tag-tab-btn { min-width: 0; overflow: hidden; }
+.tag-tab-btn > span { min-width: 0; overflow-wrap: anywhere; }
+.tag-tab-btn .tag-tab-long { white-space: normal !important; font-size: 12px; line-height: 1.35; }
+.tag-tab-btn .code-token-tag,
+.tag-tab-btn .code-token-attr,
+.tag-tab-btn .code-token-val,
+.tag-tab-btn .code-token-punct,
+.tag-tab-btn .code-token-operator,
+.react-step-nav .code-token-tag,
+.react-step-nav .code-token-attr,
+.react-step-nav .code-token-val,
+.react-step-nav .code-token-punct,
+.react-step-nav .code-token-operator { color: inherit !important; }
+.tag-tab-btn:not(.bg-indigo-600) .code-token-tag,
+.react-step-nav button:not(.active) .code-token-tag { color: #569cd6 !important; }
+.tag-tab-btn:not(.bg-indigo-600) .code-token-attr,
+.react-step-nav button:not(.active) .code-token-attr { color: #9cdcfe !important; }
+.tag-tab-btn:not(.bg-indigo-600) .code-token-val,
+.react-step-nav button:not(.active) .code-token-val { color: #ce9178 !important; }
+.tag-tab-btn:not(.bg-indigo-600) .code-token-punct,
+.react-step-nav button:not(.active) .code-token-punct { color: #808080 !important; }
 
 /* ========================================================
    INLINE <code> IN PROSE (Paragraphs, List Items, Badges)
@@ -555,6 +579,33 @@ html:not(.dark) span > code {
   border-radius: 4px !important;
   padding: 1px 5px !important;
   font-size: 0.84em !important;
+}
+
+/* Syntax components already style their own tokens; never wrap them as prose pills. */
+html:not(.dark) .html-tag-label > code,
+html:not(.dark) .tag-tab-btn code,
+html:not(.dark) .tag-bank > span > code,
+html:not(.dark) .article-closing > code,
+.html-tag-label > code,
+.tag-tab-btn code,
+.tag-bank > span > code,
+.article-closing > code {
+  display: inline !important;
+  padding: 0 !important;
+  border: 0 !important;
+  border-radius: 0 !important;
+  background: transparent !important;
+  font: inherit !important;
+}
+
+.html-tag-label {
+  min-width: 0;
+  line-height: 1.45;
+  overflow-wrap: anywhere;
+}
+
+.html-tag-label-long {
+  font-size: 10px !important;
 }
 
 /* ========================================================

@@ -1,6 +1,7 @@
 import { useState } from 'react'
 import { Lightbulb } from 'lucide-react'
 import '../styles/article-exercise.css'
+import HtmlCode from './HtmlCode'
 
 const tags = ['h1', 'h2', 'h3', 'h4', 'p', 'br']
 const article = [
@@ -48,7 +49,7 @@ export default function AdvancedExercise() {
 
   function closing(index) {
     const tag = normalize(answers[index])
-    return <code className="article-closing">{tags.includes(tag) && tag !== 'br' ? `</${tag}>` : '</…>'}</code>
+    return <code className="article-closing">{tags.includes(tag) && tag !== 'br' ? <HtmlCode>{`</${tag}>`}</HtmlCode> : '</…>'}</code>
   }
 
   function reset() { setAnswers(article.map(() => '')); setChecked(false); setHint(false) }
@@ -57,19 +58,19 @@ export default function AdvancedExercise() {
     <div className="section-heading"><span>05 · แบบฝึกหัดเติมแท็กในบทความ</span><h2>อ่านบทความ แล้วเติม HTML ให้ครบ 11 จุด</h2><p>อ่านเนื้อหาทั้งเรื่อง แล้วเลือกแท็กที่สื่อความหมายและลำดับของแต่ละส่วน</p></div>
     <div className="exercise-card">
       <div className="article-exercise-top"><div><span className="exercise-kicker">ภารกิจ · จัดโครงสร้างบทความ</span><h3>หนึ่งบทความ หลายหน้าที่ของข้อความ</h3></div><span className="article-progress" aria-live="polite">เติมแล้ว {answered} / {article.length} ช่อง</span></div>
-      <div id="article-instructions" className="article-instructions"><strong>วิธีทำ:</strong> อ่านบทความจากบนลงล่าง แล้วพิมพ์แท็กลงในช่อง <code>&lt;…&gt;</code> ที่อยู่หน้าข้อความแต่ละช่วง เช่น พิมพ์ <code>h1</code> หรือ <code>&lt;h1&gt;</code> หากข้อความนั้นเป็นชื่อเรื่องหลัก ระบบจะแสดงแท็กปิดให้เอง ส่วน <code>br</code> เป็นแท็กเดี่ยว เมื่อเติมครบแล้วกด “ตรวจคำตอบ”</div>
-      <div className="tag-bank" aria-label="แท็กที่ใช้ในบทความ">{tags.map(tag => <span key={tag}>&lt;{tag}&gt;</span>)}</div>
+      <div id="article-instructions" className="article-instructions"><strong>วิธีทำ:</strong> อ่านบทความจากบนลงล่าง แล้วพิมพ์แท็กลงในช่อง <code>&lt;…&gt;</code> ที่อยู่หน้าข้อความแต่ละช่วง เช่น พิมพ์ <code className="code-token-tag">h1</code> หรือ <HtmlCode>{'<h1>'}</HtmlCode> หากข้อความนั้นเป็นชื่อเรื่องหลัก ระบบจะแสดงแท็กปิดให้เอง ส่วน <code className="code-token-tag">br</code> เป็นแท็กเดี่ยว เมื่อเติมครบแล้วกด “ตรวจคำตอบ”</div>
+      <div className="tag-bank" aria-label="แท็กที่ใช้ในบทความ">{tags.map(tag => <span key={tag}><HtmlCode>{`<${tag}>`}</HtmlCode></span>)}</div>
       <article className="article-manuscript" aria-label="บทความคู่มือห้องสมุดพร้อมช่องเติมแท็ก">
         <div className="article-paper-heading"><span>ต้นฉบับบทความ</span><span>เติมแท็กที่หายไป</span></div>
         {article.map((item, index) => <div className="article-passage" key={index}>
-          {item.tag === 'br' ? <><code className="article-closing">&lt;p&gt;</code>{item.before} {blank(index)}<br />{item.text} <code className="article-closing">&lt;br&gt;</code><br />{item.after}<code className="article-closing">&lt;/p&gt;</code></> : <>{blank(index)}{' '}{item.text}{' '}{closing(index)}</>}
-          {item.follow && <div className="article-given-paragraph"><code className="article-closing">&lt;p&gt;</code>{item.follow}<code className="article-closing">&lt;/p&gt;</code></div>}
+          {item.tag === 'br' ? <><code className="article-closing"><HtmlCode>{'<p>'}</HtmlCode></code>{item.before} {blank(index)}<br />{item.text} <code className="article-closing"><HtmlCode>{'<br>'}</HtmlCode></code><br />{item.after}<code className="article-closing"><HtmlCode>{'</p>'}</HtmlCode></code></> : <>{blank(index)}{' '}{item.text}{' '}{closing(index)}</>}
+          {item.follow && <div className="article-given-paragraph"><code className="article-closing"><HtmlCode>{'<p>'}</HtmlCode></code>{item.follow}<code className="article-closing"><HtmlCode>{'</p>'}</HtmlCode></code></div>}
         </div>)}
       </article>
       <div className="article-hint"><Lightbulb size={20} aria-hidden="true" /><div><button className="secondary-btn" aria-expanded={hint} onClick={() => setHint(value => !value)}>{hint ? 'ซ่อนคำใบ้' : 'ขอคำใบ้'}</button>{hint && <p>เริ่มจากชื่อเรื่องหลัก แล้วหา 2 หมวดใหญ่ที่มีระดับเท่ากัน หัวข้อย่อยซ้อนลงมาตามลำดับ ส่วนข้อความอธิบายใช้ย่อหน้า ข้อมูลติดต่อขึ้นบรรทัดภายในย่อหน้า</p>}</div></div>
       <div className="exercise-actions"><button className="primary-btn" onClick={() => setChecked(true)}>ตรวจคำตอบทั้ง 11 จุด</button><button className="secondary-btn" onClick={reset}>เริ่มทำใหม่</button><strong role="status">{checked ? `${score} / ${article.length} คะแนน` : ''}</strong></div>
       {checked && <div id="exercise-feedback">{article.map((item, index) => <div id={`article-feedback-${index}`} className={`feedback-row ${normalize(answers[index]) === item.tag ? 'ok' : 'fix'}`} key={index}><strong>ช่องที่ {index + 1} {normalize(answers[index]) === item.tag ? 'ถูกต้อง' : `ควรใช้ <${item.tag}>`}</strong><span>{item.reason}</span></div>)}</div>}
-      {complete && <details className="article-full-solution"><summary>ครบทุกจุดแล้ว! ดูโค้ดบทความฉบับสมบูรณ์</summary><pre><code>{article.map(solutionLine).join('\n\n')}</code></pre></details>}
+      {complete && <details className="article-full-solution"><summary>ครบทุกจุดแล้ว! ดูโค้ดบทความฉบับสมบูรณ์</summary><pre><HtmlCode>{article.map(solutionLine).join('\n\n')}</HtmlCode></pre></details>}
     </div>
   </section>
 }

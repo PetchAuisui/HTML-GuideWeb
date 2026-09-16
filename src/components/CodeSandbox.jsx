@@ -1,5 +1,6 @@
 import { useState } from 'react'
 import { Code2, Monitor, Play, RotateCcw } from 'lucide-react'
+import CodeEditor from './CodeEditor'
 
 export const defaultCode = `<!DOCTYPE html>
 <html lang="th">
@@ -32,7 +33,7 @@ export default function CodeSandbox({ lesson2 = false }) {
     <div className="section-heading"><span>ลงมือทำ · Live Code Sandbox</span><h2>{lesson2 ? 'แก้โค้ด แล้วดูผลลัพธ์ทันที' : 'ทดลองเขียนโครงสร้าง HTML5'}</h2><p>{lesson2 ? 'ลองเปลี่ยนระดับหัวข้อ เพิ่มย่อหน้า หรือจัดข้อมูลหลายบรรทัด' : 'แก้ไขโค้ด แล้วกดรันเพื่อดูผลลัพธ์ในเบราว์เซอร์จำลอง'}</p></div>
     <div className="playground react-code-grid">
       <div className="editor-pane"><div className="pane-title"><span><Code2 size={16} /> HTML</span><div className="react-actions"><button onClick={reset}><RotateCcw size={14} /> เริ่มใหม่</button>{!lesson2 && <button id="sandbox-run-btn" onClick={() => setPreview(code)}><Play size={14} /> รันโค้ด</button>}</div></div>
-        <textarea id={lesson2 ? 'code-editor' : 'sandbox-editor'} spellCheck={false} aria-label="พื้นที่แก้ไขโค้ด HTML" value={code} onChange={event => { setCode(event.target.value); if (lesson2) setPreview(event.target.value) }} />
+        <CodeEditor id={lesson2 ? 'code-editor' : 'sandbox-editor'} ariaLabel="พื้นที่แก้ไขโค้ด HTML" value={code} onChange={event => { setCode(event.target.value); if (lesson2) setPreview(event.target.value) }} />
       </div>
       <div className="preview-pane"><div className="pane-title"><span><Monitor size={16} /> PREVIEW</span>{lesson2 && <span className="live-dot">LIVE</span>}</div><iframe id={lesson2 ? 'code-preview' : 'sandbox-preview-iframe'} title="ผลลัพธ์โค้ด HTML" sandbox="" srcDoc={preview} /></div>
     </div>

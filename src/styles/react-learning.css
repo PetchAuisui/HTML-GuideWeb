@@ -31,6 +31,13 @@ html { scroll-behavior: smooth; }
 .react-quiz-fields label { display: grid; gap: 8px; }
 .react-quiz-fields select { width: 100%; min-width: 0; padding: 12px; background: #211a30; color: #e9e5f2; border: 1px solid #615270; border-radius: 10px; }
 .react-learning-section textarea { width: 100%; min-height: 380px; padding: 18px; background: #111018; color: #e8e5f0; font: 13px/1.8 'Fira Code', monospace; resize: vertical; }
+.vscode-editor { position: relative; flex: 1; min-height: 420px; overflow: hidden; background: #1e1e1e; }
+.vscode-editor-highlight,
+.react-learning-section .vscode-editor textarea { position: absolute; inset: 0; width: 100%; height: 100%; min-height: 0; margin: 0 !important; padding: 22px !important; border: 0 !important; border-radius: 0 !important; font: 14px/1.8 Consolas, 'Courier New', 'Fira Code', monospace !important; tab-size: 2; white-space: pre; overflow: auto; }
+.vscode-editor-highlight { z-index: 0; max-height: none; pointer-events: none; background: #1e1e1e !important; }
+.react-learning-section .vscode-editor textarea { z-index: 1; resize: none; background: transparent !important; color: transparent !important; caret-color: #d4d4d4; -webkit-text-fill-color: transparent; }
+.react-learning-section .vscode-editor textarea::selection { background: rgba(38, 79, 120, .72); -webkit-text-fill-color: transparent; }
+.quiz-code-title code { font: inherit; }
 .react-learning-section .preview-pane iframe { width: 100%; min-height: 380px; background: white; border: 0; }
 .react-learning-section .pane-title > span { display: inline-flex; align-items: center; gap: 8px; }
 .react-learning-section .pane-title .react-actions { margin: 0; }
@@ -42,5 +49,5 @@ body.light .advanced-exercise .exercise-lines small { color: #65517f; }
 body.light .advanced-exercise .exercise-lines b { color: #6d28d9; }
 body.light .react-step-nav button:not(.active), body.light .react-quiz-fields select { background: #f7f3fb; color: #443256; border-color: #d4c7e0; }
 @media (max-width: 900px) { .react-code-grid { grid-template-columns: 1fr; } .react-step-nav { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
-@media (max-width: 560px) { .react-learning-section { padding: 40px 18px; } .react-panel { padding: 18px; } .react-step-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); } .react-toggles label { flex-wrap: wrap; } }
+@media (max-width: 560px) { .react-learning-section { padding: 40px 18px; } .react-panel { padding: 18px; } .react-step-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); } .react-toggles label { flex-wrap: wrap; } .vscode-editor { min-height: 360px; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
