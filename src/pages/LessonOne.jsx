@@ -23,30 +23,30 @@ return <>
 </h1>
 <p className={"mt-4 text-base sm:text-lg text-slate-300 font-sarabun leading-relaxed"}>{"\n            หากเว็บไซต์ของคุณไม่มีแท็กเหล่านี้ จะเกิดอะไรขึ้น? ทำไมข้อความถึงกลายเป็น "}<span className={"text-amber-400 font-mono font-semibold"}>{"ภาษาต่างดาว"}</span>{", ทำไมโครงสร้างเอกสารถึง "}<span className={"text-rose-400 font-semibold"}>{"แสดงผลผิดเพี้ยน"}</span>{", หรือทำไม Google ถึงหาชื่อเว็บของคุณไม่เจอ? มาดูการทดลองจริงกันเลย!\n          "}</p>
 
-<div className={"mt-8 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-3 max-w-6xl mx-auto"}>
-<a onClick={() => setActiveTag("doctype")} href={"#deep-dive"} data-tag-target={"doctype"} className={"p-3.5 rounded-2xl glass-card text-center group border border-orange-500/30 hover:border-orange-500"}>
-<span className={"html-tag-label text-xs font-mono font-bold block transition"}><HtmlCode>{"<!DOCTYPE html>"}</HtmlCode></span>
-<span className={"text-[11px] text-slate-400 font-sarabun mt-1 block"}>{"โหมดมาตรฐาน HTML5"}</span>
+<div className={"mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 max-w-7xl mx-auto"}>
+<a onClick={() => setActiveTag("doctype")} href={"#deep-dive"} data-tag-target={"doctype"} className={"p-4 sm:p-5 rounded-2xl glass-card text-center group border border-purple-500/30 hover:border-purple-500 flex flex-col items-center justify-center transition " + (activeTag === "doctype" ? "ring-2 ring-purple-500/50 border-purple-500" : "")}>
+<span className={"html-tag-label text-xs sm:text-sm font-mono font-bold block transition"}><HtmlCode>{"<!DOCTYPE html>"}</HtmlCode></span>
+<span className={"text-[11px] sm:text-xs text-slate-400 font-sarabun mt-1.5 block"}>{"โหมดมาตรฐาน HTML5"}</span>
 </a>
-<a onClick={() => setActiveTag("html")} href={"#deep-dive"} data-tag-target={"html"} className={"p-3.5 rounded-2xl glass-card text-center group border border-orange-500/30 hover:border-orange-500"}>
-<span className={"html-tag-label text-xs font-mono font-bold block transition"}><HtmlCode>{"<html>"}</HtmlCode></span>
-<span className={"text-[11px] text-slate-400 font-sarabun mt-1 block"}>{"Root Element & ภาษา"}</span>
+<a onClick={() => setActiveTag("html")} href={"#deep-dive"} data-tag-target={"html"} className={"p-4 sm:p-5 rounded-2xl glass-card text-center group border border-purple-500/30 hover:border-purple-500 flex flex-col items-center justify-center transition " + (activeTag === "html" ? "ring-2 ring-purple-500/50 border-purple-500" : "")}>
+<span className={"html-tag-label text-xs sm:text-sm font-mono font-bold block transition"}><HtmlCode>{"<html>"}</HtmlCode></span>
+<span className={"text-[11px] sm:text-xs text-slate-400 font-sarabun mt-1.5 block"}>{"Root Element & ภาษา"}</span>
 </a>
-<a onClick={() => setActiveTag("head")} href={"#deep-dive"} data-tag-target={"head"} className={"p-3.5 rounded-2xl glass-card text-center group border border-orange-500/30 hover:border-orange-500"}>
-<span className={"html-tag-label text-xs font-mono font-bold block transition"}><HtmlCode>{"<head>"}</HtmlCode></span>
-<span className={"text-[11px] text-slate-400 font-sarabun mt-1 block"}>{"คอนเทนเนอร์ Metadata"}</span>
+<a onClick={() => setActiveTag("head")} href={"#deep-dive"} data-tag-target={"head"} className={"p-4 sm:p-5 rounded-2xl glass-card text-center group border border-purple-500/30 hover:border-purple-500 flex flex-col items-center justify-center transition " + (activeTag === "head" ? "ring-2 ring-purple-500/50 border-purple-500" : "")}>
+<span className={"html-tag-label text-xs sm:text-sm font-mono font-bold block transition"}><HtmlCode>{"<head>"}</HtmlCode></span>
+<span className={"text-[11px] sm:text-xs text-slate-400 font-sarabun mt-1.5 block"}>{"คอนเทนเนอร์ Metadata"}</span>
 </a>
-<a onClick={() => setActiveTag("title")} href={"#deep-dive"} data-tag-target={"title"} className={"p-3.5 rounded-2xl glass-card text-center group border border-orange-500/30 hover:border-orange-500"}>
-<span className={"html-tag-label text-xs font-mono font-bold block transition"}><HtmlCode>{"<title>"}</HtmlCode></span>
-<span className={"text-[11px] text-slate-400 font-sarabun mt-1 block"}>{"ชื่อแท็บและผลค้นหา"}</span>
+<a onClick={() => setActiveTag("title")} href={"#deep-dive"} data-tag-target={"title"} className={"p-4 sm:p-5 rounded-2xl glass-card text-center group border border-purple-500/30 hover:border-purple-500 flex flex-col items-center justify-center transition " + (activeTag === "title" ? "ring-2 ring-purple-500/50 border-purple-500" : "")}>
+<span className={"html-tag-label text-xs sm:text-sm font-mono font-bold block transition"}><HtmlCode>{"<title>"}</HtmlCode></span>
+<span className={"text-[11px] sm:text-xs text-slate-400 font-sarabun mt-1.5 block"}>{"ชื่อแท็บและผลค้นหา"}</span>
 </a>
-<a onClick={() => setActiveTag("charset")} href={"#deep-dive"} data-tag-target={"charset"} className={"p-3.5 rounded-2xl glass-card text-center group border border-orange-500/30 hover:border-orange-500"}>
-<span className={"html-tag-label html-tag-label-long text-[11px] font-mono font-bold block transition"}><HtmlCode>{"<meta charset=\"UTF-8\">"}</HtmlCode></span>
-<span className={"text-[11px] text-slate-400 font-sarabun mt-1 block"}>{"การเข้ารหัสภาษาไทย"}</span>
+<a onClick={() => setActiveTag("charset")} href={"#deep-dive"} data-tag-target={"charset"} className={"p-4 sm:p-5 rounded-2xl glass-card text-center group border border-purple-500/30 hover:border-purple-500 flex flex-col items-center justify-center transition " + (activeTag === "charset" ? "ring-2 ring-purple-500/50 border-purple-500" : "")}>
+<span className={"html-tag-label html-tag-label-long text-xs sm:text-sm font-mono font-bold block transition"}><HtmlCode>{"<meta charset=\"UTF-8\">"}</HtmlCode></span>
+<span className={"text-[11px] sm:text-xs text-slate-400 font-sarabun mt-1.5 block"}>{"การเข้ารหัสภาษาไทย"}</span>
 </a>
-<a onClick={() => setActiveTag("body")} href={"#deep-dive"} data-tag-target={"body"} className={"p-3.5 rounded-2xl glass-card text-center group border border-rose-500/30 hover:border-rose-500"}>
-<span className={"html-tag-label text-xs font-mono font-bold block transition"}><HtmlCode>{"<body>"}</HtmlCode></span>
-<span className={"text-[11px] text-slate-400 font-sarabun mt-1 block"}>{"พื้นที่แสดงเนื้อหา"}</span>
+<a onClick={() => setActiveTag("body")} href={"#deep-dive"} data-tag-target={"body"} className={"p-4 sm:p-5 rounded-2xl glass-card text-center group border border-rose-500/30 hover:border-rose-500 flex flex-col items-center justify-center transition " + (activeTag === "body" ? "ring-2 ring-rose-500/50 border-rose-500" : "")}>
+<span className={"html-tag-label text-xs sm:text-sm font-mono font-bold block transition"}><HtmlCode>{"<body>"}</HtmlCode></span>
+<span className={"text-[11px] sm:text-xs text-slate-400 font-sarabun mt-1.5 block"}>{"พื้นที่แสดงเนื้อหา"}</span>
 </a>
 </div>
 </div>
@@ -176,30 +176,30 @@ return <>
 <h2 className={"text-2xl sm:text-4xl font-bold text-white tracking-tight"}>{"\n          เจาะลึก 6 แท็กพื้นฐานของ HTML\n        "}</h2>
 <p className={"mt-2 text-sm text-slate-400 font-sarabun"}>{"\n          ทำความเข้าใจหน้าที่ ไวยากรณ์ และตารางเปรียบเทียบผลกระทบ \"เมื่อมี\" vs \"เมื่อไม่มี\" แบบละเอียด\n        "}</p>
 
-<div className={"mt-6 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-2 p-1.5 rounded-2xl glass-panel max-w-5xl mx-auto"}>
-<button onClick={() => setActiveTag("doctype")} className={"tag-tab-btn px-4 py-2 rounded-xl text-sm " + (activeTag === "doctype" ? "bg-purple-600 text-white" : "bg-slate-800/80 text-slate-400")} aria-pressed={activeTag === "doctype"} data-tag-target={"doctype"}>
-<IconFileCode2 aria-hidden="true" className={"w-3.5 h-3.5"} />
-<span><HtmlCode>{"<!DOCTYPE html>"}</HtmlCode></span>
+<div className={"mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3 p-3 rounded-2xl glass-panel max-w-7xl mx-auto items-center"}>
+<button onClick={() => setActiveTag("doctype")} className={"tag-tab-btn px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-mono font-semibold flex items-center justify-center gap-1.5 transition " + (activeTag === "doctype" ? "tag-tab-active bg-purple-600 text-white shadow-lg" : "tag-tab-inactive bg-slate-800/80 text-slate-400")} aria-pressed={activeTag === "doctype"} data-tag-target={"doctype"}>
+<IconFileCode2 aria-hidden="true" className={"w-4 h-4 shrink-0"} />
+<span className={"whitespace-nowrap"}>{"<!DOCTYPE html>"}</span>
 </button>
-<button onClick={() => setActiveTag("html")} className={"tag-tab-btn px-4 py-2 rounded-xl text-sm " + (activeTag === "html" ? "bg-purple-600 text-white" : "bg-slate-800/80 text-slate-400")} aria-pressed={activeTag === "html"} data-tag-target={"html"}>
-<IconBox aria-hidden="true" className={"w-3.5 h-3.5"} />
-<span><HtmlCode>{"<html>"}</HtmlCode></span>
+<button onClick={() => setActiveTag("html")} className={"tag-tab-btn px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-mono font-semibold flex items-center justify-center gap-1.5 transition " + (activeTag === "html" ? "tag-tab-active bg-purple-600 text-white shadow-lg" : "tag-tab-inactive bg-slate-800/80 text-slate-400")} aria-pressed={activeTag === "html"} data-tag-target={"html"}>
+<IconBox aria-hidden="true" className={"w-4 h-4 shrink-0"} />
+<span className={"whitespace-nowrap"}>{"<html>"}</span>
 </button>
-<button onClick={() => setActiveTag("head")} className={"tag-tab-btn px-4 py-2 rounded-xl text-sm " + (activeTag === "head" ? "bg-purple-600 text-white" : "bg-slate-800/80 text-slate-400")} aria-pressed={activeTag === "head"} data-tag-target={"head"}>
-<IconSettings2 aria-hidden="true" className={"w-3.5 h-3.5"} />
-<span><HtmlCode>{"<head>"}</HtmlCode></span>
+<button onClick={() => setActiveTag("head")} className={"tag-tab-btn px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-mono font-semibold flex items-center justify-center gap-1.5 transition " + (activeTag === "head" ? "tag-tab-active bg-purple-600 text-white shadow-lg" : "tag-tab-inactive bg-slate-800/80 text-slate-400")} aria-pressed={activeTag === "head"} data-tag-target={"head"}>
+<IconSettings2 aria-hidden="true" className={"w-4 h-4 shrink-0"} />
+<span className={"whitespace-nowrap"}>{"<head>"}</span>
 </button>
-<button onClick={() => setActiveTag("title")} className={"tag-tab-btn px-4 py-2 rounded-xl text-sm " + (activeTag === "title" ? "bg-purple-600 text-white" : "bg-slate-800/80 text-slate-400")} aria-pressed={activeTag === "title"} data-tag-target={"title"}>
-<IconAppWindow aria-hidden="true" className={"w-3.5 h-3.5"} />
-<span><HtmlCode>{"<title>"}</HtmlCode></span>
+<button onClick={() => setActiveTag("title")} className={"tag-tab-btn px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-mono font-semibold flex items-center justify-center gap-1.5 transition " + (activeTag === "title" ? "tag-tab-active bg-purple-600 text-white shadow-lg" : "tag-tab-inactive bg-slate-800/80 text-slate-400")} aria-pressed={activeTag === "title"} data-tag-target={"title"}>
+<IconAppWindow aria-hidden="true" className={"w-4 h-4 shrink-0"} />
+<span className={"whitespace-nowrap"}>{"<title>"}</span>
 </button>
-<button onClick={() => setActiveTag("charset")} className={"tag-tab-btn px-4 py-2 rounded-xl text-sm " + (activeTag === "charset" ? "bg-purple-600 text-white" : "bg-slate-800/80 text-slate-400")} aria-pressed={activeTag === "charset"} data-tag-target={"charset"}>
-<IconLanguages aria-hidden="true" className={"w-3.5 h-3.5"} />
-<span className={"tag-tab-long"}><HtmlCode>{"<meta charset=\"UTF-8\">"}</HtmlCode></span>
+<button onClick={() => setActiveTag("charset")} className={"tag-tab-btn px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-mono font-semibold flex items-center justify-center gap-1.5 transition " + (activeTag === "charset" ? "tag-tab-active bg-purple-600 text-white shadow-lg" : "tag-tab-inactive bg-slate-800/80 text-slate-400")} aria-pressed={activeTag === "charset"} data-tag-target={"charset"}>
+<IconLanguages aria-hidden="true" className={"w-4 h-4 shrink-0"} />
+<span className={"whitespace-nowrap"}>{"<meta charset=\"UTF-8\">"}</span>
 </button>
-<button onClick={() => setActiveTag("body")} className={"tag-tab-btn px-4 py-2 rounded-xl text-sm " + (activeTag === "body" ? "bg-purple-600 text-white" : "bg-slate-800/80 text-slate-400")} aria-pressed={activeTag === "body"} data-tag-target={"body"}>
-<IconLayoutTemplate aria-hidden="true" className={"w-3.5 h-3.5"} />
-<span><HtmlCode>{"<body>"}</HtmlCode></span>
+<button onClick={() => setActiveTag("body")} className={"tag-tab-btn px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-mono font-semibold flex items-center justify-center gap-1.5 transition " + (activeTag === "body" ? "tag-tab-active bg-purple-600 text-white shadow-lg" : "tag-tab-inactive bg-slate-800/80 text-slate-400")} aria-pressed={activeTag === "body"} data-tag-target={"body"}>
+<IconLayoutTemplate aria-hidden="true" className={"w-4 h-4 shrink-0"} />
+<span className={"whitespace-nowrap"}>{"<body>"}</span>
 </button>
 </div>
 </div>

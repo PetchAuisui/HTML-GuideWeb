@@ -9,15 +9,17 @@ html { scroll-behavior: smooth; }
 .react-actions { display: flex; flex-wrap: wrap; align-items: center; gap: 12px; margin: 16px 0; }
 .react-actions button, .copy-code-btn { display: inline-flex; align-items: center; justify-content: center; gap: 7px; }
 .react-actions button:disabled { opacity: .45; cursor: not-allowed; }
-.react-step-nav { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 10px; margin: 24px 0; }
-.react-step-nav button { min-width: 0; padding: 14px 10px; display: flex; align-items: center; gap: 8px; border: 1px solid #443957; border-radius: 12px; background: #211a30; color: #ccc4dd; text-align: left; }
-.react-step-nav code { overflow-wrap: anywhere; font-size: 12px; }
+.react-step-nav { display: grid; grid-template-columns: repeat(6, minmax(0, 1fr)); gap: 8px; margin: 24px 0; }
+.react-step-nav button { min-width: 0; padding: 10px 8px; display: flex; align-items: center; justify-content: center; gap: 6px; border: 1px solid #443957; border-radius: 12px; background: #211a30; color: #ccc4dd; text-align: left; }
+.react-step-nav code { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; font-size: 11px; }
 .react-step-nav button.active { background: #6d28d9; color: white; border-color: #a78bfa; }
 .react-notice { border: 1px solid #a78bfa55; border-radius: 12px; background: #8b5cf611; color: #d6c7f4; padding: 14px; font: 15px/1.7 Sarabun, sans-serif; }
 .react-success { padding: 14px; border-radius: 12px; background: #10b98118; color: #6ee7b7; border: 1px solid #10b98155; }
-.react-code { padding: 18px; overflow: auto; max-height: 440px; background: #111018; color: #e8e5f0; border-radius: 12px; font: 13px/1.9 'Fira Code', monospace; margin: 14px 0; }
-.react-code code > span { display: block; min-height: 1.9em; white-space: pre; }
-.react-code code > span > small { display: inline-block; width: 28px; color: #80768e; user-select: none; }
+.react-code { padding: 14px; overflow: auto; max-height: 440px; background: #111018; color: #e8e5f0; border-radius: 12px; font: 13.5px/1.8 Consolas, 'Courier New', 'Fira Code', monospace; margin: 14px 0; white-space: pre !important; word-break: normal !important; }
+.react-code code { display: block; white-space: pre !important; }
+.react-code code > span { display: flex !important; flex-direction: row !important; flex-wrap: nowrap !important; align-items: center !important; white-space: pre !important; min-height: 1.8em; }
+.react-code code > span > small { display: inline-block !important; width: 28px !important; min-width: 28px !important; flex-shrink: 0 !important; color: #80768e !important; user-select: none !important; margin-right: 8px !important; }
+.react-code code span { display: inline !important; white-space: pre !important; }
 .react-code .highlight-line { background: #7c3aed33; border-left: 2px solid #a78bfa; }
 .react-preview { width: 100%; min-height: 300px; background: white; border: 0; border-radius: 10px; }
 .react-badge, .react-badges span { display: inline-block; font-size: 12px; padding: 6px 10px; border: 1px solid #7c3aed55; border-radius: 8px; }
