@@ -10,6 +10,7 @@ export default defineConfig({
         home: 'index.html',
         lesson1: 'lesson1.html',
         lesson2: 'lesson2.html',
+        lesson3: 'lesson3.html',
       },
     },
   },

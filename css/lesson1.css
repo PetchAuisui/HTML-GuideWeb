@@ -251,7 +251,7 @@ html:not(.dark) {
 }
 
 html:not(.dark) body {
-  background-color: #f8fafc !important;
+  background-color: var(--bg, #f5f3ff) !important;
   color: #1e293b !important;
 }
 

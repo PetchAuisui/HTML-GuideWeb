@@ -1,6 +1,6 @@
 # HTML Learning Lab
 
-เว็บบทเรียน HTML5 ที่เขียนด้วย React และ Vite ทั้งหน้าแรกและบทเรียนทั้งสองหน่วย
+เว็บบทเรียน HTML5 ที่เขียนด้วย React และ Vite ทั้งหน้าแรกและบทเรียนทั้งสามหน่วย
 
 ## เริ่มใช้งาน
 
@@ -16,7 +16,7 @@ npm run build
 npm run preview
 ```
 
-ไฟล์พร้อมเผยแพร่อยู่ใน `dist/` และเปิดหน้า `index.html`, `lesson1.html`, `lesson2.html` ได้โดยตรง
+ไฟล์พร้อมเผยแพร่อยู่ใน `dist/` และเปิดหน้า `index.html`, `lesson1.html`, `lesson2.html`, `lesson3.html` ได้โดยตรง
 
 ## โครงสร้าง
 

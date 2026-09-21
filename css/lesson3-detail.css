@@ -1,0 +1,517 @@
+/* Lesson 3: Images and Links (Tag <img> & <a>) */
+.page-lesson3 {
+  --lesson3-accent: #f43f5e;
+  --lesson3-accent-glow: rgba(244, 63, 94, 0.18);
+  --lesson3-sky: #38bdf8;
+  --lesson3-emerald: #10b981;
+}
+
+.page-lesson3 .hero,
+.page-lesson3 .section-shell,
+.page-lesson3 .compare-section,
+.page-lesson3 .quiz-section {
+  width: min(1180px, calc(100% - 56px));
+  margin: 0 auto;
+  padding: 64px 0;
+}
+
+.page-lesson3 .hero {
+  display: grid;
+  grid-template-columns: 1.05fr 1fr;
+  align-items: center;
+  gap: 40px;
+  padding: 76px 0 46px;
+}
+
+.page-lesson3 .eyebrow {
+  color: var(--lesson3-accent);
+  font: 600 11px 'Fira Code', monospace;
+  letter-spacing: .14em;
+}
+
+.page-lesson3 .hero h1 {
+  font: 700 clamp(34px, 4.2vw, 56px)/1.25 'Prompt', sans-serif;
+  margin: 20px 0;
+  letter-spacing: -.04em;
+}
+
+.page-lesson3 .hero h1 span {
+  background: linear-gradient(135deg, #f43f5e, #fb923c, #f472b6);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+.page-lesson3 .hero-copy > p {
+  color: var(--muted);
+  font: 18px/1.8 'Sarabun', sans-serif;
+}
+
+.page-lesson3 .hero-actions {
+  display: flex;
+  align-items: center;
+  gap: 20px;
+  margin-top: 28px;
+}
+
+.page-lesson3 .hero-demo {
+  overflow: hidden;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--panel);
+  box-shadow: 0 24px 70px rgba(0, 0, 0, 0.35);
+}
+
+.page-lesson3 .window-bar {
+  display: flex;
+  gap: 6px;
+  align-items: center;
+  padding: 14px 18px;
+  background: var(--panel2);
+  border-bottom: 1px solid var(--line);
+}
+
+.page-lesson3 .window-bar > span {
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+}
+
+.page-lesson3 .window-bar > span:nth-child(1) { background: #ef4444; }
+.page-lesson3 .window-bar > span:nth-child(2) { background: #f59e0b; }
+.page-lesson3 .window-bar > span:nth-child(3) { background: #22c55e; }
+
+.page-lesson3 .window-bar small {
+  margin-left: auto;
+  color: var(--muted);
+  font: 12px 'Fira Code', monospace;
+}
+
+.page-lesson3 .demo-code {
+  padding: 22px;
+  color: #fce7f3;
+  background: #130f1a;
+  font: 13px/1.9 'Fira Code', monospace;
+  overflow: auto;
+  border-bottom: 1px solid var(--line);
+}
+
+.page-lesson3 .demo-code b {
+  color: #fb7185;
+}
+
+.page-lesson3 .demo-result {
+  padding: 24px;
+  color: var(--text);
+  background: var(--panel);
+}
+
+.page-lesson3 .outcomes {
+  display: flex;
+  gap: 28px;
+  align-items: center;
+  padding: 24px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--panel);
+  margin-top: 32px;
+}
+
+.page-lesson3 .outcomes strong,
+.page-lesson3 .outcomes span {
+  display: block;
+  white-space: nowrap;
+}
+
+.page-lesson3 .outcomes strong {
+  font: 700 30px 'Fira Code', monospace;
+  color: var(--lesson3-accent);
+}
+
+.page-lesson3 .outcomes span {
+  font: 13px 'Sarabun', sans-serif;
+  color: var(--muted);
+}
+
+.page-lesson3 .outcomes p {
+  margin: 0;
+  border-left: 1px solid var(--line);
+  padding-left: 24px;
+  color: var(--muted);
+  font: 15px/1.7 'Sarabun', sans-serif;
+}
+
+/* Tag cards & Interactive tabs */
+.page-lesson3 .tag-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 16px;
+}
+
+.page-lesson3 .tag-card {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--panel);
+  padding: 24px;
+  display: flex;
+  flex-direction: column;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.page-lesson3 .tag-card:hover {
+  transform: translateY(-4px);
+  border-color: var(--lesson3-accent);
+}
+
+.page-lesson3 .tag-card .tag-icon {
+  width: 48px;
+  height: 48px;
+  border-radius: 12px;
+  display: grid;
+  place-items: center;
+  background: var(--lesson3-accent-glow);
+  color: var(--lesson3-accent);
+  font: 700 18px 'Fira Code', monospace;
+}
+
+.page-lesson3 .tag-card .tag-code {
+  margin-top: 18px;
+  color: var(--lesson3-accent);
+  font: 600 13px 'Fira Code', monospace;
+}
+
+.page-lesson3 .tag-card h3 {
+  font-size: 20px;
+  font-weight: 600;
+  margin: 8px 0;
+}
+
+.page-lesson3 .tag-card p {
+  color: var(--muted);
+  font: 15px/1.7 'Sarabun', sans-serif;
+  margin: 0;
+}
+
+/* Attribute breakdown & comparison */
+.attributes-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 20px;
+  margin-top: 24px;
+}
+
+.attribute-card {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--panel);
+  padding: 24px;
+}
+
+.attribute-card-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 14px;
+}
+
+.attribute-badge {
+  font: 700 12px 'Fira Code', monospace;
+  padding: 4px 10px;
+  border-radius: 6px;
+  background: rgba(244, 63, 94, 0.15);
+  color: #fb7185;
+}
+
+.attribute-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: 12px;
+  font: 14px 'Sarabun', sans-serif;
+}
+
+.attribute-table th,
+.attribute-table td {
+  padding: 10px 12px;
+  text-align: left;
+  border-bottom: 1px solid var(--line);
+}
+
+.attribute-table th {
+  color: var(--muted);
+  font-family: 'Prompt', sans-serif;
+  font-weight: 600;
+  font-size: 13px;
+}
+
+.attribute-table code {
+  font-family: 'Fira Code', monospace;
+  color: #f472b6;
+  font-size: 13px;
+}
+
+/* Path Visualizer Guide */
+.path-guide-grid {
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.path-box {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--panel);
+  padding: 24px;
+}
+
+.path-visual-card {
+  border: 1px solid var(--line);
+  border-radius: 12px;
+  background: var(--panel2);
+  padding: 18px;
+  margin: 12px 0;
+}
+
+.path-visual-card code {
+  font: 600 13px 'Fira Code', monospace;
+  color: #38bdf8;
+  display: block;
+  margin-bottom: 6px;
+}
+
+.path-visual-card p {
+  margin: 0;
+  font: 14px/1.6 'Sarabun', sans-serif;
+  color: var(--muted);
+}
+
+/* Tab panels for Lesson 3 */
+.page-lesson3 .example-tabs {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 10px;
+  margin-bottom: 14px;
+  padding: 7px;
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--panel);
+}
+
+.page-lesson3 .example-tab {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  min-height: 54px;
+  border: 1px solid transparent;
+  border-radius: 11px;
+  background: transparent;
+  color: var(--muted);
+  font: 600 14px 'Sarabun', sans-serif;
+  cursor: pointer;
+  transition: .2s;
+}
+
+.page-lesson3 .example-tab:hover {
+  background: var(--panel2);
+  color: var(--text);
+}
+
+.page-lesson3 .example-tab.active {
+  border-color: rgba(244, 63, 94, 0.4);
+  background: rgba(244, 63, 94, 0.12);
+  color: #fecdd3;
+  box-shadow: inset 0 0 0 1px rgba(244, 63, 94, 0.2);
+}
+
+.page-lesson3 .open-example {
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: var(--panel2);
+  padding: 28px;
+  border-left: 3px solid var(--lesson3-accent);
+}
+
+.page-lesson3 .example-work {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+  margin-top: 18px;
+}
+
+.page-lesson3 .example-work pre {
+  margin: 0;
+  padding: 20px;
+  border-radius: 12px;
+  background: #0e0c16;
+  color: #ddd6fe;
+  overflow: auto;
+  font: 13px/1.85 'Fira Code', monospace;
+}
+
+.page-lesson3 .example-preview {
+  min-height: 140px;
+  background: #ffffff;
+  color: #1e1b4b;
+  border-radius: 12px;
+  padding: 20px;
+  overflow: auto;
+}
+
+.page-lesson3 .example-preview a {
+  color: #2563eb;
+  font-weight: 600;
+  text-decoration: underline;
+}
+
+.page-lesson3 .example-preview a:hover {
+  color: #1d4ed8;
+}
+
+.page-lesson3 .example-preview img {
+  border-radius: 8px;
+  max-width: 100%;
+  height: auto;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.12);
+}
+
+/* Best practices check list */
+.checklist-card {
+  border: 1px solid var(--line);
+  border-radius: 16px;
+  background: var(--panel);
+  padding: 24px;
+  margin-top: 24px;
+}
+
+.checklist-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 16px;
+  margin-top: 16px;
+}
+
+.check-item {
+  display: flex;
+  gap: 12px;
+  align-items: flex-start;
+  padding: 14px;
+  border-radius: 12px;
+  background: var(--panel2);
+  border: 1px solid var(--line);
+}
+
+.check-item svg {
+  color: #34d399;
+  flex-shrink: 0;
+  margin-top: 2px;
+}
+
+.check-item strong {
+  display: block;
+  font-size: 15px;
+  margin-bottom: 4px;
+  color: var(--text);
+}
+
+.check-item p {
+  margin: 0;
+  font: 13px/1.6 'Sarabun', sans-serif;
+  color: var(--muted);
+}
+
+/* Light Mode Overrides */
+body.light .page-lesson3 {
+  --lesson3-accent: #e11d48;
+  --lesson3-accent-glow: rgba(225, 29, 72, 0.1);
+}
+
+body.light .page-lesson3 .eyebrow {
+  color: #e11d48;
+}
+
+body.light .page-lesson3 .hero h1 span {
+  background: linear-gradient(135deg, #e11d48, #d97706);
+  -webkit-background-clip: text;
+  color: transparent;
+}
+
+body.light .page-lesson3 .demo-code {
+  background: #1f192b;
+  color: #fdf2f8;
+}
+
+body.light .page-lesson3 .tag-card:hover {
+  border-color: #e11d48;
+}
+
+body.light .page-lesson3 .example-tab.active {
+  border-color: rgba(225, 29, 72, 0.4);
+  background: rgba(225, 29, 72, 0.08);
+  color: #be123c;
+}
+
+body.light .page-lesson3 .example-work pre {
+  background: #1f1d2b;
+  color: #f1effb;
+}
+
+.page-lesson3 .quiz-box {
+  max-width: 100% !important;
+  width: 100% !important;
+}
+
+/* Responsive Styles */
+@media (max-width: 1024px) {
+  .page-lesson3 .hero {
+    grid-template-columns: 1fr;
+    padding-top: 50px;
+  }
+  .page-lesson3 .example-tabs {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .path-guide-grid {
+    grid-template-columns: 1fr;
+  }
+  .attributes-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 768px) {
+  .page-lesson3 .tag-grid {
+    grid-template-columns: 1fr;
+  }
+  .page-lesson3 .outcomes {
+    flex-wrap: wrap;
+    gap: 18px;
+  }
+  .page-lesson3 .outcomes p {
+    flex-basis: 100%;
+    border-left: 0;
+    border-top: 1px solid var(--line);
+    padding-left: 0;
+    padding-top: 14px;
+  }
+  .page-lesson3 .example-work {
+    grid-template-columns: 1fr;
+  }
+  .checklist-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 560px) {
+  .page-lesson3 .hero,
+  .page-lesson3 .section-shell,
+  .page-lesson3 .compare-section,
+  .page-lesson3 .quiz-section {
+    width: calc(100% - 32px);
+    padding: 36px 0;
+  }
+  .page-lesson3 .hero h1 {
+    font-size: 32px;
+  }
+  .page-lesson3 .example-tabs {
+    grid-template-columns: 1fr;
+  }
+}

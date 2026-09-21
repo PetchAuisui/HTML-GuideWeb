@@ -1,4 +1,26 @@
 html { scroll-behavior: smooth; }
+.playground-section .sandbox-missions { margin: 0 0 24px; background: #fff; color: #1e293b; border-color: #cbd5e1; }
+.playground-section .sandbox-missions p,
+.playground-section .sandbox-missions .mission-heading > span { color: #475569; }
+.playground-section .sandbox-missions summary { color: #334155; }
+.playground-section .sandbox-missions pre { background: #f1f5f9; color: #1e293b; }
+.playground-section .sandbox-missions li { border-color: #cbd5e1; }
+.playground-section .sandbox-missions .mission-complete .mission-heading > span { color: #15803d; }
+.mission-write-btn { margin-top: 14px; padding: 8px 14px; border-radius: 8px; border: 1px solid #6d28d9; background: #6d28d9; color: #fff; font: 600 15px/1.5 'Sarabun', sans-serif; cursor: pointer; }
+.playground-section .editor-instruction { margin: 0; padding: 12px 18px; background: #fff; color: #475569; border-bottom: 1px solid #e2e8f0; font: 15px/1.7 'Sarabun', sans-serif; }
+.playground-section .pane-title { height: auto; min-height: 48px; flex-wrap: wrap; gap: 10px; }
+.sandbox-missions { margin-top: 24px; padding: 22px; border: 1px solid var(--line); border-radius: 16px; background: var(--panel); color: var(--text); font: 16px/1.7 'Sarabun', sans-serif; }
+.mission-heading { display: flex; flex-wrap: wrap; justify-content: space-between; align-items: center; gap: 8px; }
+.mission-heading > span { font-size: 14px; color: var(--muted); }
+.sandbox-missions p { margin: 8px 0 16px; color: var(--muted); }
+.sandbox-missions ol { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr)); gap: 12px; list-style: none; padding: 0; margin: 0; }
+.sandbox-missions li { min-width: 0; padding: 18px; border: 1px solid var(--line); border-radius: 12px; }
+.sandbox-missions li.mission-complete { border-color: #16a34a; background: #16a34a12; }
+.sandbox-missions .mission-complete .mission-heading > span { color: #15803d; font-weight: 700; }
+body:not(.light) .sandbox-missions .mission-complete .mission-heading > span { color: #86efac; }
+.sandbox-missions summary { cursor: pointer; color: var(--text); }
+.sandbox-missions pre { overflow: auto; margin: 12px 0 0; padding: 12px; background: var(--panel2); border-radius: 8px; font: 14px/1.7 Consolas, monospace; }
+
 /* Simulator panels size to their content; generated code has its own row. */
 #lab .simulator-grid { align-items: start; }
 #lab .simulator-source { grid-column: 1 / -1; }
@@ -64,12 +86,19 @@ body.light #lab #simulator-impact-summary .react-notice {
 .react-quiz-fields label { display: grid; gap: 8px; }
 .react-quiz-fields select { width: 100%; min-width: 0; padding: 12px; background: #211a30; color: #e9e5f2; border: 1px solid #615270; border-radius: 10px; }
 .react-learning-section textarea { width: 100%; min-height: 380px; padding: 18px; background: #111018; color: #e8e5f0; font: 13px/1.8 'Fira Code', monospace; resize: vertical; }
-.vscode-editor { position: relative; flex: 1; min-height: 420px; overflow: hidden; background: #1e1e1e; }
+.vscode-editor { position: relative; flex: 1; min-height: 420px; overflow: hidden; background: #fff; }
 .vscode-editor-highlight,
 .react-learning-section .vscode-editor textarea { position: absolute; inset: 0; width: 100%; height: 100%; min-height: 0; margin: 0 !important; padding: 22px !important; border: 0 !important; border-radius: 0 !important; font: 14px/1.8 Consolas, 'Courier New', 'Fira Code', monospace !important; tab-size: 2; white-space: pre; overflow: auto; }
-.vscode-editor-highlight { z-index: 0; max-height: none; pointer-events: none; background: #1e1e1e !important; }
-.react-learning-section .vscode-editor textarea { z-index: 1; resize: none; background: transparent !important; color: transparent !important; caret-color: #d4d4d4; -webkit-text-fill-color: transparent; }
-.react-learning-section .vscode-editor textarea::selection { background: rgba(38, 79, 120, .72); -webkit-text-fill-color: transparent; }
+.vscode-editor-highlight { z-index: 0; max-height: none; pointer-events: none; background: #fff !important; color: #1e293b; }
+.react-learning-section .vscode-editor textarea { z-index: 1; resize: none; background: transparent !important; color: transparent !important; caret-color: #1e293b; -webkit-text-fill-color: transparent; }
+.react-learning-section .vscode-editor textarea::selection { background: rgba(59, 130, 246, .22); -webkit-text-fill-color: transparent; }
+.vscode-editor .code-token-tag { color: #1d4ed8 !important; }
+.vscode-editor .code-token-attr { color: #0369a1 !important; }
+.vscode-editor .code-token-val { color: #9a3412 !important; }
+.vscode-editor .code-token-punct { color: #475569 !important; }
+.vscode-editor .code-token-comment { color: #166534 !important; }
+.vscode-editor .code-token-text,
+.vscode-editor .code-token-operator { color: #1e293b !important; }
 .quiz-code-title code { font: inherit; }
 .react-learning-section .preview-pane iframe { width: 100%; min-height: 380px; background: white; border: 0; }
 .react-learning-section .pane-title > span { display: inline-flex; align-items: center; gap: 8px; }
@@ -84,3 +113,14 @@ body.light .react-step-nav button:not(.active), body.light .react-quiz-fields se
 @media (max-width: 900px) { .react-code-grid { grid-template-columns: 1fr; } .react-step-nav { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .react-learning-section { padding: 40px 18px; } .react-panel { padding: 18px; } .react-step-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); } .react-toggles label { flex-wrap: wrap; } .vscode-editor { min-height: 360px; } }
 @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } }
+.practice-task { margin: 0 0 24px; padding: 24px; background: #fff; color: #1e293b; border: 1px solid #cbd5e1; border-radius: 16px; font: 16px/1.8 'Sarabun', sans-serif; }
+.practice-task h3 { margin: 0 0 12px; font: 600 21px/1.6 'Prompt', sans-serif; }
+.practice-task p { margin: 12px 0; }
+.practice-source { margin: 18px 0; padding: 16px; background: #f8fafc; border: 1px solid #e2e8f0; border-radius: 10px; }
+.practice-source pre { margin: 8px 0 0; white-space: pre-wrap; overflow-wrap: anywhere; font: 15px/1.7 Consolas, monospace; }
+.practice-task label { display: block; margin-bottom: 8px; }
+.react-learning-section .practice-task textarea { position: static; min-height: 140px; padding: 16px; background: #fff !important; color: #1e293b !important; caret-color: #1e293b; -webkit-text-fill-color: #1e293b; border: 2px solid #94a3b8; border-radius: 10px; font: 16px/1.8 Consolas, 'Sarabun', monospace; }
+.practice-task .practice-pass { color: #166534; background: #f0fdf4; padding: 12px; border-radius: 8px; }
+.practice-task .practice-retry { color: #92400e; background: #fffbeb; padding: 12px; border-radius: 8px; }
+.practice-result { padding: 16px; border: 1px solid #cbd5e1; border-radius: 10px; }
+.practice-result iframe { display: block; width: 100%; min-height: 180px; margin-top: 12px; background: #fff; }

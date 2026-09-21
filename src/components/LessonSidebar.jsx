@@ -13,12 +13,27 @@ const lessonMenus = {
     ['เนื้อหา', [['objectives', 'เป้าหมายและภาพรวม'], ['lesson', 'แท็กข้อความ 3 กลุ่ม'], ['headings', 'ลำดับหัวข้อ h1–h6'], ['compare', 'ย่อหน้า p กับ br']]],
     ['ฝึกปฏิบัติ', [['playground', 'Live Code Sandbox'], ['quiz', 'แบบฝึกหัดในชั้นเรียน']]],
   ],
+  lesson3: [
+    ['บทนำ', [['hero', 'ภาพรวมบทเรียน']]],
+    ['เนื้อหา', [
+      ['objectives', 'เป้าหมายและภาพรวม'],
+      ['lesson-tags', 'แท็ก <img>, <a> และ Image Link'],
+      ['tag-attributes', 'เจาะลึก Attributes สำคัญ'],
+      ['compare-paths', 'เส้นทาง Relative vs Absolute'],
+    ]],
+    ['ฝึกปฏิบัติ', [
+      ['playground', 'Live Code Sandbox'],
+      ['quiz', 'แบบฝึกหัดทบทวนในชั้นเรียน'],
+    ]],
+  ],
 }
 
 export default function LessonSidebar({ page, progress, activeSection, theme, onClose, onCollapse, onTheme }) {
-  const unit = page === 'lesson1' ? '1' : '2'
-  const nextHref = page === 'lesson1' ? 'lesson2.html' : 'lesson1.html'
-  const nextLabel = page === 'lesson1' ? 'ไปยังหน่วยที่ 2' : 'กลับไปหน่วยที่ 1'
+  const unit = page === 'lesson1' ? '1' : page === 'lesson2' ? '2' : '3'
+  const nextHref = page === 'lesson1' ? 'lesson2.html' : page === 'lesson2' ? 'lesson3.html' : 'index.html'
+  const nextLabel = page === 'lesson1' ? 'ไปยังหน่วยที่ 2' : page === 'lesson2' ? 'ไปยังหน่วยที่ 3' : 'กลับสู่หน้าหลัก'
+  const prevHref = page === 'lesson2' ? 'lesson1.html' : page === 'lesson3' ? 'lesson2.html' : null
+  const prevLabel = page === 'lesson2' ? '← บทที่ 1' : page === 'lesson3' ? '← บทที่ 2' : null
 
   return (
     <>
@@ -51,6 +66,7 @@ export default function LessonSidebar({ page, progress, activeSection, theme, on
           </nav>
         </div>
         <div className="sidebar-footer">
+          {prevHref && <a href={prevHref}><span>{prevLabel}</span></a>}
           <a href={nextHref}><span>{nextLabel}</span><span>→</span></a>
           <button onClick={onTheme}>{theme === 'dark' ? <Sun /> : <Moon />}<span>สลับธีม</span></button>
         </div>

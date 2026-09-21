@@ -199,7 +199,7 @@ body.light,html.light,html:not(.dark){
 body.light .lesson-sidebar,body.light #sidebar-drawer,
 html.light .lesson-sidebar,html.light #sidebar-drawer,
 html:not(.dark) .lesson-sidebar,html:not(.dark) #sidebar-drawer{
-  background:rgba(255,255,255,.95) !important;
+  background:color-mix(in srgb,var(--bg, #f5f3ff) 92%,transparent) !important;
   border-right-color:var(--line) !important;
   box-shadow:8px 0 24px rgba(45,35,75,.05);
 }
