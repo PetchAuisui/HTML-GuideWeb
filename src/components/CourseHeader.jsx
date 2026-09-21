@@ -4,6 +4,7 @@ const lessons = [
   { href: 'index.html', label: 'ภาพรวม', short: 'หน้าหลัก', page: 'home' },
   { href: 'lesson1.html', label: 'หน่วยที่ 1', short: 'บท 1', page: 'lesson1' },
   { href: 'lesson2.html', label: 'หน่วยที่ 2', short: 'บท 2', page: 'lesson2' },
+  { href: 'lesson3.html', label: 'หน่วยที่ 3', short: 'บท 3', page: 'lesson3' },
 ]
 
 export default function CourseHeader({ page, hasSidebar, progress, theme, onMenu, onTheme, sidebarExpanded }) {

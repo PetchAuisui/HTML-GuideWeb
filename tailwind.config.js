@@ -1,5 +1,5 @@
 export default {
-  content: ['./index.html', './lesson1.html', './lesson2.html', './src/**/*.{js,jsx}'],
+  content: ['./index.html', './lesson1.html', './lesson2.html', './lesson3.html', './src/**/*.{js,jsx}'],
   darkMode: 'class',
   theme: {
     extend: {
