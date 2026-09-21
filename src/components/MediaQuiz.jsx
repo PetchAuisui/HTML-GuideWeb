@@ -5,6 +5,7 @@ export default function MediaQuiz() {
   const [answers, setAnswers] = useState({
     q1_1: '',
     q1_2: '',
+    q1_3: '',
     q2_1: '',
     q3_1: '',
     q4_1: '',
@@ -30,10 +31,10 @@ export default function MediaQuiz() {
   }
 
   // Question evaluations
-  const q1_ok = checkMatch(answers.q1_1, 'src') && checkMatch(answers.q1_2, 'alt')
+  const q1_ok = checkMatch(answers.q1_1, 'src') && checkMatch(answers.q1_2, 'alt') && (checkMatch(answers.q1_3, 'width') || normalize(answers.q1_3) === '')
   const q2_ok = checkMatch(answers.q2_1, 'href')
   const q3_ok = checkMatch(answers.q3_1, '<img>')
-  const q4_ok = checkMatch(answers.q4_1, 'alt') && (checkMatch(answers.q4_2, 'alt') || normalize(answers.q4_2) === '')
+  const q4_ok = checkMatch(answers.q4_1, 'width') || checkMatch(answers.q4_2, 'width')
   const q5_ok = checkMatch(answers.q5_1, 'href')
 
   const totalScore = [q1_ok, q2_ok, q3_ok, q4_ok, q5_ok].filter(Boolean).length
@@ -42,6 +43,7 @@ export default function MediaQuiz() {
     setAnswers({
       q1_1: '',
       q1_2: '',
+      q1_3: '',
       q2_1: '',
       q3_1: '',
       q4_1: '',
@@ -52,29 +54,69 @@ export default function MediaQuiz() {
     setShowSolution(false)
   }
 
-  const inputStyle = (isCorrect, val) => {
-    let borderColor = 'var(--line)'
-    let bg = 'var(--bg)'
+  // High-contrast input style for dark code box containers
+  const codeBoxInputStyle = (isCorrect) => {
+    let borderColor = '#475569'
+    let bg = '#1e1e2e'
+    let textColor = '#ffffff'
+
     if (isChecked) {
       if (isCorrect) {
         borderColor = '#22c55e'
-        bg = 'rgba(34, 197, 94, 0.1)'
+        bg = 'rgba(34, 197, 94, 0.25)'
+        textColor = '#86efac'
       } else {
         borderColor = '#ef4444'
-        bg = 'rgba(239, 68, 68, 0.1)'
+        bg = 'rgba(239, 68, 68, 0.25)'
+        textColor = '#fca5a5'
       }
     }
+
     return {
       padding: '8px 14px',
       borderRadius: '8px',
       border: `2px solid ${borderColor}`,
       background: bg,
-      color: 'var(--text)',
+      color: textColor,
       fontFamily: 'Fira Code, monospace',
       fontSize: '15px',
-      fontWeight: '600',
+      fontWeight: '700',
       outline: 'none',
-      width: '130px',
+      width: '120px',
+      textAlign: 'center',
+      transition: 'all 0.2s ease',
+    }
+  }
+
+  // Input style for outside code boxes
+  const regularInputStyle = (isCorrect) => {
+    let borderColor = 'var(--line)'
+    let bg = 'var(--bg)'
+    let textColor = 'var(--text)'
+
+    if (isChecked) {
+      if (isCorrect) {
+        borderColor = '#22c55e'
+        bg = 'rgba(34, 197, 94, 0.15)'
+        textColor = '#10b981'
+      } else {
+        borderColor = '#ef4444'
+        bg = 'rgba(239, 68, 68, 0.15)'
+        textColor = '#f43f5e'
+      }
+    }
+
+    return {
+      padding: '8px 14px',
+      borderRadius: '8px',
+      border: `2px solid ${borderColor}`,
+      background: bg,
+      color: textColor,
+      fontFamily: 'Fira Code, monospace',
+      fontSize: '15px',
+      fontWeight: '700',
+      outline: 'none',
+      width: '150px',
       textAlign: 'center',
       transition: 'all 0.2s ease',
     }
@@ -86,7 +128,7 @@ export default function MediaQuiz() {
         <span>4.2 · แบบฝึกหัดในชั้นเรียน</span>
         <h2>4.2 แบบฝึกหัดในชั้นเรียน</h2>
         <p>
-          จงเติม <code>&lt;img&gt;</code>, <code>&lt;a&gt;</code>, <code>src</code>, <code>alt</code> หรือ <code>href</code> ลงในช่องว่างให้ถูกต้อง
+          จงเติม <code>&lt;img&gt;</code>, <code>&lt;a&gt;</code>, <code>src</code>, <code>alt</code>, <code>width</code> หรือ <code>href</code> ลงในช่องว่างให้ถูกต้อง
         </p>
       </div>
 
@@ -112,7 +154,7 @@ export default function MediaQuiz() {
           }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
               <strong style={{ fontSize: '16px', color: 'var(--text)', fontFamily: 'Sarabun' }}>
-                1. เติม Attribute ในแท็กรูปภาพให้ถูกต้อง
+                1. เติม Attribute ในแท็กรูปภาพให้ถูกต้อง (src, alt, width)
               </strong>
               {isChecked && (q1_ok ? <CheckCircle2 size={22} color="#22c55e" /> : <XCircle size={22} color="#ef4444" />)}
             </div>
@@ -135,7 +177,7 @@ export default function MediaQuiz() {
                 placeholder="____"
                 value={answers.q1_1}
                 onChange={e => handleChange('q1_1', e.target.value)}
-                style={inputStyle(checkMatch(answers.q1_1, 'src'), answers.q1_1)}
+                style={codeBoxInputStyle(checkMatch(answers.q1_1, 'src'))}
                 aria-label="ช่องว่างที่ 1 ของข้อ 1"
               />
               <span>="school.jpg"</span>
@@ -144,14 +186,23 @@ export default function MediaQuiz() {
                 placeholder="____"
                 value={answers.q1_2}
                 onChange={e => handleChange('q1_2', e.target.value)}
-                style={inputStyle(checkMatch(answers.q1_2, 'alt'), answers.q1_2)}
+                style={codeBoxInputStyle(checkMatch(answers.q1_2, 'alt'))}
                 aria-label="ช่องว่างที่ 2 ของข้อ 1"
               />
-              <span>="รูปโรงเรียน"&gt;</span>
+              <span>="รูปโรงเรียน"</span>
+              <input
+                type="text"
+                placeholder="____"
+                value={answers.q1_3}
+                onChange={e => handleChange('q1_3', e.target.value)}
+                style={codeBoxInputStyle(checkMatch(answers.q1_3, 'width'))}
+                aria-label="ช่องว่างที่ 3 ของข้อ 1"
+              />
+              <span>="300"&gt;</span>
             </div>
             {isChecked && !q1_ok && (
               <p style={{ margin: '8px 0 0', fontSize: '13px', color: '#fb7185', fontFamily: 'Sarabun' }}>
-                💡 เฉลย: ช่องแรกเติม <code>src</code> และ ช่องที่สองเติม <code>alt</code>
+                💡 เฉลย: เติม <code>src</code>, <code>alt</code> และ <code>width</code>
               </p>
             )}
           </div>
@@ -165,7 +216,7 @@ export default function MediaQuiz() {
           }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
               <strong style={{ fontSize: '16px', color: 'var(--text)', fontFamily: 'Sarabun' }}>
-                2. เติม Attribute ในแท็กลิงก์ให้ถูกต้อง
+                2. เติม Attribute ในแท็กลิงก์ให้ถูกต้อง (href)
               </strong>
               {isChecked && (q2_ok ? <CheckCircle2 size={22} color="#22c55e" /> : <XCircle size={22} color="#ef4444" />)}
             </div>
@@ -188,7 +239,7 @@ export default function MediaQuiz() {
                 placeholder="____"
                 value={answers.q2_1}
                 onChange={e => handleChange('q2_1', e.target.value)}
-                style={inputStyle(checkMatch(answers.q2_1, 'href'), answers.q2_1)}
+                style={codeBoxInputStyle(checkMatch(answers.q2_1, 'href'))}
                 aria-label="ช่องว่างของข้อ 2"
               />
               <span>="https://www.school.com"&gt;เว็บไซต์โรงเรียน&lt;/a&gt;</span>
@@ -220,7 +271,7 @@ export default function MediaQuiz() {
                 placeholder="____"
                 value={answers.q3_1}
                 onChange={e => handleChange('q3_1', e.target.value)}
-                style={{ ...inputStyle(checkMatch(answers.q3_1, '<img>'), answers.q3_1), width: '160px' }}
+                style={regularInputStyle(checkMatch(answers.q3_1, '<img>'))}
                 aria-label="ช่องว่างของข้อ 3"
               />
             </div>
@@ -240,7 +291,7 @@ export default function MediaQuiz() {
           }}>
             <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: '12px' }}>
               <strong style={{ fontSize: '16px', color: 'var(--text)', fontFamily: 'Sarabun' }}>
-                4. Attribute ________ ใช้กำหนดข้อความอธิบายรูปภาพ เช่น
+                4. Attribute ________ ใช้กำหนดข้อความอธิบายรูปภาพ (alt) หรือความกว้างรูปภาพ (width) เช่น
               </strong>
               {isChecked && (q4_ok ? <CheckCircle2 size={22} color="#22c55e" /> : <XCircle size={22} color="#ef4444" />)}
             </div>
@@ -251,7 +302,7 @@ export default function MediaQuiz() {
                 placeholder="____"
                 value={answers.q4_1}
                 onChange={e => handleChange('q4_1', e.target.value)}
-                style={inputStyle(checkMatch(answers.q4_1, 'alt'), answers.q4_1)}
+                style={regularInputStyle(checkMatch(answers.q4_1, 'width') || checkMatch(answers.q4_1, 'alt'))}
                 aria-label="ชื่อ Attribute ของข้อ 4"
               />
             </div>
@@ -268,20 +319,20 @@ export default function MediaQuiz() {
               flexWrap: 'wrap',
               border: '1px solid var(--line)',
             }}>
-              <span>&lt;img src="book.jpg"</span>
+              <span>&lt;img src="book.jpg" alt="รูปหนังสือ"</span>
               <input
                 type="text"
                 placeholder="____"
                 value={answers.q4_2}
                 onChange={e => handleChange('q4_2', e.target.value)}
-                style={inputStyle(checkMatch(answers.q4_2, 'alt'), answers.q4_2)}
+                style={codeBoxInputStyle(checkMatch(answers.q4_2, 'width'))}
                 aria-label="ช่องว่างตัวอย่างโค้ดข้อ 4"
               />
-              <span>="รูปหนังสือ"&gt;</span>
+              <span>="200"&gt;</span>
             </div>
             {isChecked && !q4_ok && (
               <p style={{ margin: '8px 0 0', fontSize: '13px', color: '#fb7185', fontFamily: 'Sarabun' }}>
-                💡 เฉลย: เติม <code>alt</code>
+                💡 เฉลย: เติม <code>width</code> (หรือ <code>alt</code>)
               </p>
             )}
           </div>
@@ -318,7 +369,7 @@ export default function MediaQuiz() {
                 placeholder="____"
                 value={answers.q5_1}
                 onChange={e => handleChange('q5_1', e.target.value)}
-                style={inputStyle(checkMatch(answers.q5_1, 'href'), answers.q5_1)}
+                style={codeBoxInputStyle(checkMatch(answers.q5_1, 'href'))}
                 aria-label="ช่องว่างของข้อ 5"
               />
               <span>="page2.html"&gt;หน้าถัดไป&lt;/a&gt;</span>
@@ -378,10 +429,10 @@ export default function MediaQuiz() {
               <span>เฉลยคำตอบแบบฝึกหัด 4.2</span>
             </h4>
             <ol style={{ margin: 0, paddingLeft: '20px', fontFamily: 'Sarabun', fontSize: '15px', lineHeight: '2.2', color: 'var(--text)' }}>
-              <li><strong>1.</strong> <code>src</code> และ <code>alt</code></li>
+              <li><strong>1.</strong> <code>src</code>, <code>alt</code> และ <code>width</code></li>
               <li><strong>2.</strong> <code>href</code></li>
               <li><strong>3.</strong> <code>&lt;img&gt;</code></li>
-              <li><strong>4.</strong> <code>alt</code></li>
+              <li><strong>4.</strong> <code>width</code> (หรือ <code>alt</code>)</li>
               <li><strong>5.</strong> <code>href</code></li>
             </ol>
           </div>
