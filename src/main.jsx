@@ -16,5 +16,6 @@ import './styles/home.css'
 import './styles/lesson-layout.css'
 import './styles/layout.css'
 import './styles/react-learning.css'
+import './styles/lesson-one-labels.css'
 
 createRoot(document.getElementById('root')).render(<App />)
