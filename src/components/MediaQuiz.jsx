@@ -1,85 +1,81 @@
 import { useState, useRef, useEffect } from 'react'
-import { CheckCircle2, XCircle, Lightbulb, RotateCcw, Volume2, VolumeX, Sparkles } from 'lucide-react'
-import HtmlCode from './HtmlCode'
+import { CheckCircle2, XCircle, Lightbulb, RotateCcw, Volume2, VolumeX, Sparkles, HelpCircle } from 'lucide-react'
 
 const questions = [
   {
     id: 1,
-    title: 'โครงสร้างและชนิดของแท็ก <img>',
-    question: 'ตามมาตรฐาน HTML5 แท็ก <img> มีลักษณะโครงสร้างการเขียนอย่างไร?',
+    title: 'ข้อที่ 1',
+    question: 'จงเติม Attribute ในช่องว่างของแท็กรูปภาพให้ถูกต้อง:',
+    code: '<img ______="school.jpg" ______="รูปโรงเรียน">',
     options: [
-      { id: 'a', text: 'เป็น Void Element (แท็กเดี่ยว) ไม่มีแท็กปิด </img> และระบุข้อมูลผ่าน attributes', correct: true },
-      { id: 'b', text: 'ต้องมีแท็กปิด </img> เสมอเหมือน <p>...</p>', correct: false },
-      { id: 'c', text: 'ต้องใส่ข้อความเนื้อหาแทรกข้างในแท็ก เช่น <img>รูปภาพ</img>', correct: false },
-      { id: 'd', text: 'ต้องเขียนคู่กับแท็ก <image> เสมอ', correct: false },
+      { id: 'a', text: 'src และ alt', correct: true },
+      { id: 'b', text: 'href และ alt', correct: false },
+      { id: 'c', text: 'alt และ src', correct: false },
+      { id: 'd', text: 'src และ href', correct: false },
     ],
-    hint: 'ลองสังเกตแท็ก <br> หรือ <meta> ในบทก่อนหน้า เป็นแท็กที่บรรจุข้อมูลในตัวเองโดยไม่ต้องมีแท็กปิด',
-    explanation: '<img> เป็น Void Element (แท็กเดี่ยว/แท็กว่าง) จึงไม่มีแท็กปิด </img> โดยข้อมูลรูปภาพจะถูกกำหนดผ่าน attributes เช่น src และ alt',
+    answerDisplay: 'src และ alt',
+    explanation: 'แท็ก <img> ใช้ src สำหรับบอกที่อยู่ไฟล์รูปภาพ ("school.jpg") และใช้ alt สำหรับระบุข้อความอธิบายรูปภาพ ("รูปโรงเรียน")',
+    hint: 'ช่องว่างแรกคือที่อยู่ไฟล์รูปภาพ (school.jpg) ช่องว่างที่สองคือข้อความอธิบายรูปภาพ',
   },
   {
     id: 2,
-    title: 'บทบาทของ Attribute alt',
-    question: 'Attribute alt ในแท็ก <img> มีความสำคัญต่อหน้าเว็บอย่างไรมากที่สุด?',
+    title: 'ข้อที่ 2',
+    question: 'จงเติม Attribute ในช่องว่างของแท็กลิงก์ให้ถูกต้อง:',
+    code: '<a ______="https://www.school.com">เว็บไซต์โรงเรียน</a>',
     options: [
-      { id: 'a', text: 'ใช้ปรับความกว้างและความสูงของรูปภาพให้พอดีหน้าจอ', correct: false },
-      { id: 'b', text: 'เป็นข้อความอธิบายภาพสำหรับ Screen Reader (ผู้บกพร่องทางสายตา), ช่วย SEO และแสดงแทนเมื่อโหลดภาพไม่สำเร็จ', correct: true },
-      { id: 'c', text: 'ใช้เปลี่ยนรูปภาพให้กลายเป็นโทนสีขาวดำ', correct: false },
-      { id: 'd', text: 'เป็นคำสั่งเร่งความเร็วในการดาวน์โหลดไฟล์ภาพ', correct: false },
+      { id: 'a', text: 'href', correct: true },
+      { id: 'b', text: 'src', correct: false },
+      { id: 'c', text: 'alt', correct: false },
+      { id: 'd', text: 'link', correct: false },
     ],
-    hint: 'alt ย่อมาจาก Alternative Text (ข้อความทดแทน) เพื่อให้ทุกคนรวมถึงระบบค้นหาเข้าใจว่าภาพนี้คืออะไร',
-    explanation: 'alt มีประโยชน์ 3 ด้านหลัก: 1) ความเท่าเทียมในการเข้าถึง (Accessibility) สำหรับผู้ใช้ Screen Reader 2) ช่วยให้ Search Engine (SEO) เข้าใจภาพ 3) แสดงข้อความแทนเมื่อไฟล์ภาพโหลดไม่สำเร็จ',
+    answerDisplay: 'href',
+    explanation: 'แท็ก <a> (Anchor) ใช้ Attribute ชื่อ href ในการระบุ URL ปลายทางที่ต้องการเชื่อมโยง',
+    hint: 'href (Hypertext Reference) คือ Attribute ที่ใช้กำหนดปลายทางเว็บไซต์',
   },
   {
     id: 3,
-    title: 'การระบุปลายทางของลิงก์ <a>',
-    question: 'หากต้องการให้ผู้ใช้คลิกแท็ก <a> แล้วไปยัง https://example.com ต้องใช้ Attribute ใด?',
+    title: 'ข้อที่ 3',
+    question: 'หากต้องการแสดงรูปภาพ student.jpg บนหน้าเว็บ ควรใช้แท็ก ________',
+    code: '',
     options: [
-      { id: 'a', text: 'href="https://example.com"', correct: true },
-      { id: 'b', text: 'url="https://example.com"', correct: false },
-      { id: 'c', text: 'link="https://example.com"', correct: false },
-      { id: 'd', text: 'src="https://example.com"', correct: false },
+      { id: 'a', text: '<img>', correct: true },
+      { id: 'b', text: '<a>', correct: false },
+      { id: 'c', text: '<picture>', correct: false },
+      { id: 'd', text: '<image>', correct: false },
     ],
-    hint: 'จำคำย่อ Hypertext Reference ไว้ให้ดี',
-    explanation: 'แท็ก <a> (Anchor) ใช้ attribute ชื่อ href (ย่อมาจาก Hypertext Reference) เพื่อระบุ URL หรือปลายทางที่ต้องการเชื่อมโยงเสมอ (ห้ามสับสนกับ src ที่ใช้กับ img)',
+    answerDisplay: '<img>',
+    explanation: 'แท็ก <img> เป็นแท็กเดี่ยว (Void Element) ที่ใช้ในการแทรกรูปภาพลงในหน้าเว็บเพจ',
+    hint: 'แท็กสำหรับแสดงรูปภาพโดยเฉพาะใน HTML5',
   },
   {
     id: 4,
-    title: 'การเปิดลิงก์ในแท็บใหม่ (New Tab)',
-    question: 'ต้องการให้คลิกลิงก์แล้วเปิดหน้าเว็บในแท็บใหม่ ต้องกำหนด Attribute ใด และควรใส่คู่กับอะไร?',
+    title: 'ข้อที่ 4',
+    question: 'Attribute ________ ใช้กำหนดข้อความอธิบายรูปภาพ เช่น',
+    code: '<img src="book.jpg" ______="รูปหนังสือ">',
     options: [
-      { id: 'a', text: 'target="_blank" และใส่ rel="noopener noreferrer" เพื่อความปลอดภัย', correct: true },
-      { id: 'b', text: 'target="_new" และใส่ secure="true"', correct: false },
-      { id: 'c', text: 'open="newtab" และใส่ safe="yes"', correct: false },
-      { id: 'd', text: 'window="blank" และใส่ rel="external"', correct: false },
+      { id: 'a', text: 'alt', correct: true },
+      { id: 'b', text: 'src', correct: false },
+      { id: 'c', text: 'title', correct: false },
+      { id: 'd', text: 'name', correct: false },
     ],
-    hint: 'ค่าเป้าหมายขึ้นต้นด้วยเครื่องหมายขีดล่าง (underscore) ตามด้วยคำว่า blank',
-    explanation: 'target="_blank" เป็นมาตรฐานในการเปิดหน้าต่างหรือแท็บใหม่ และควรเพิ่ม rel="noopener noreferrer" เสมอ เพื่อป้องกันปัญหาความปลอดภัย (Reverse Tabnabbing)',
+    answerDisplay: 'alt',
+    explanation: 'alt (Alternative Text) เป็น Attribute สำหรับใส่ข้อความอธิบายรูปภาพเพื่อช่วยเรื่อง Accessibility และแสดงแทนเมื่อโหลดภาพไม่สำเร็จ',
+    hint: 'alt = Alternative Text ใช้แทนภาพเมื่อไม่สามารถแสดงรูปได้',
   },
   {
     id: 5,
-    title: 'การสร้างรูปภาพที่เป็นลิงก์ (Image Link)',
-    question: 'หากต้องการให้ภาพโลโก้สามารถคลิกเพื่อกลับไปหน้าหลัก (index.html) ได้ ต้องเขียนโครงสร้างแบบใด?',
+    title: 'ข้อที่ 5',
+    question: 'หากต้องการให้ข้อความ "หน้าถัดไป" สามารถคลิกเพื่อไปยัง page2.html ได้ ควรเติม Attribute ใดลงในช่องว่าง',
+    code: '<a ______="page2.html">หน้าถัดไป</a>',
     options: [
-      { id: 'a', text: '<a href="index.html"><img src="logo.png" alt="หน้าหลัก"></a>', correct: true },
-      { id: 'b', text: '<img src="logo.png" link="index.html" alt="หน้าหลัก">', correct: false },
-      { id: 'c', text: '<img src="logo.png"><a href="index.html">หน้าหลัก</a></img>', correct: false },
-      { id: 'd', text: '<a src="logo.png" href="index.html"></a>', correct: false },
+      { id: 'a', text: 'href', correct: true },
+      { id: 'b', text: 'src', correct: false },
+      { id: 'c', text: 'target', correct: false },
+      { id: 'd', text: 'to', correct: false },
     ],
-    hint: 'นำแท็กที่ทำหน้าที่เป็นลิงก์ (ครอบคลุม) มาครอบแท็กวัตถุที่ต้องการให้คลิกได้',
-    explanation: 'การทำรูปภาพเป็นลิงก์ ให้ใช้แท็ก <a> ครอบแท็ก <img> โดยระบุปลายทางใน href ของแท็ก <a> และระบุที่อยู่ของรูปภาพใน src ของแท็ก <img>',
-  },
-  {
-    id: 6,
-    title: 'เส้นทางไฟล์รูปภาพ (Relative Path)',
-    question: 'หากไฟล์ภาพ avatar.png เก็บอยู่ในโฟลเดอร์ชื่อ images ซึ่งอยู่ในระดับเดียวกับไฟล์เว็บ HTML ควรเขียน src อย่างไร?',
-    options: [
-      { id: 'a', text: 'src="images/avatar.png"', correct: true },
-      { id: 'b', text: 'src="../avatar.png"', correct: false },
-      { id: 'c', text: 'src="C:/Users/Desktop/images/avatar.png"', correct: false },
-      { id: 'd', text: 'src="/images/avatar.png/index.html"', correct: false },
-    ],
-    hint: 'การเข้าโฟลเดอร์ย่อยในระดับเดียวกัน ให้เขียนชื่อโฟลเดอร์ ตามด้วยเครื่องหมายสแลช / แล้วตามด้วยชื่อไฟล์',
-    explanation: 'การระบุ Relative Path สำหรับโฟลเดอร์ย่อย ให้เขียนชื่อโฟลเดอร์/ชื่อไฟล์ เช่น images/avatar.png ห้ามระบุ Hardcode Path ของเครื่องตนเอง (เช่น C:/...) เพราะเมื่อนำขึ้นเซิร์ฟเวอร์จะโหลดภาพไม่ขึ้น',
+    answerDisplay: 'href',
+    explanation: 'Attribute href ใช้ระบุไฟล์ปลายทาง HTML ภายในเว็บไซต์ (page2.html)',
+    hint: 'href ใช้คู่กับ <a> เพื่อระบุไฟล์ปลายทาง',
   },
 ]
 
@@ -137,7 +133,6 @@ export default function MediaQuiz() {
   }
 
   const totalScore = Object.values(answers).filter(a => a.isCorrect).length
-  const isComplete = Object.keys(answers).length === questions.length
 
   const handleReset = () => {
     setAnswers({})
@@ -149,15 +144,17 @@ export default function MediaQuiz() {
   return (
     <section id="quiz" className="quiz-section react-learning-section">
       <div className="section-heading">
-        <span>05 · แบบฝึกหัดทบทวนและประเมินผล</span>
-        <h2>ทดสอบความเข้าใจ Tag &lt;img&gt; และ &lt;a&gt;</h2>
-        <p>ฝึกฝนการใช้ Attributes, การเลือกแท็ก, และความปลอดภัยของลิงก์ให้ถูกต้องตามมาตรฐาน HTML5</p>
+        <span>4.2 · แบบฝึกหัดในชั้นเรียน</span>
+        <h2>4.2 แบบฝึกหัดในชั้นเรียน</h2>
+        <p>
+          จงเติม <code>&lt;img&gt;</code>, <code>&lt;a&gt;</code>, <code>src</code>, <code>alt</code> หรือ <code>href</code> ลงในช่องว่างให้ถูกต้อง
+        </p>
       </div>
 
       <div className="quiz-box react-panel">
         <div className="quiz-top-bar" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '18px' }}>
           <div className="quiz-badge" style={{ display: 'inline-flex', alignItems: 'center', gap: '6px', fontSize: '13px', color: '#c4b5fd', fontFamily: 'Fira Code' }}>
-            <Sparkles size={16} /> แบบทดสอบ 6 ข้อ
+            <Sparkles size={16} /> แบบฝึกหัด 5 ข้อ
           </div>
           <button
             className="secondary-btn"
@@ -171,7 +168,7 @@ export default function MediaQuiz() {
         </div>
 
         {/* Question Step Nav */}
-        <div className="react-step-nav" style={{ gridTemplateColumns: 'repeat(6, 1fr)', marginBottom: '24px' }}>
+        <div className="react-step-nav" style={{ gridTemplateColumns: 'repeat(5, 1fr)', marginBottom: '24px' }}>
           {questions.map((q, i) => {
             const ans = answers[q.id]
             let mark = ''
@@ -202,9 +199,25 @@ export default function MediaQuiz() {
               )}
             </div>
 
-            <h3 style={{ fontSize: '19px', lineHeight: '1.5', margin: '12px 0 20px', color: 'var(--text)' }}>
+            <h3 style={{ fontSize: '18px', lineHeight: '1.6', margin: '12px 0 14px', color: 'var(--text)', fontFamily: 'Sarabun' }}>
               {currentQ.question}
             </h3>
+
+            {currentQ.code && (
+              <div style={{
+                background: '#0d0d17',
+                color: '#ddd6fe',
+                padding: '14px 18px',
+                borderRadius: '10px',
+                fontFamily: 'Fira Code, monospace',
+                fontSize: '14px',
+                marginBottom: '20px',
+                border: '1px solid var(--line)',
+                overflowX: 'auto'
+              }}>
+                <code>{currentQ.code}</code>
+              </div>
+            )}
 
             <div className="quiz-choices" style={{ display: 'grid', gap: '10px', marginBottom: '20px' }}>
               {currentQ.options.map(opt => {
@@ -250,7 +263,7 @@ export default function MediaQuiz() {
                     }}>
                       {opt.id.toUpperCase()}
                     </span>
-                    <span style={{ flex: 1 }}>{opt.text}</span>
+                    <span style={{ flex: 1, fontFamily: 'Fira Code, Sarabun, sans-serif' }}>{opt.text}</span>
                     {currentAnswer && opt.correct && <CheckCircle2 size={18} color="#22c55e" />}
                     {currentAnswer && currentAnswer.selectedId === opt.id && !opt.correct && <XCircle size={18} color="#ef4444" />}
                   </button>
@@ -275,7 +288,7 @@ export default function MediaQuiz() {
             {currentAnswer && (
               <div className={currentAnswer.isCorrect ? 'react-success' : 'react-notice'} style={{ marginBottom: '20px' }}>
                 <strong style={{ display: 'block', marginBottom: '4px' }}>
-                  {currentAnswer.isCorrect ? 'คำตอบถูกต้อง!' : 'สรุปข้อสำคัญ:'}
+                  {currentAnswer.isCorrect ? 'คำตอบถูกต้อง!' : 'สรุปเฉลย:'}
                 </strong>
                 <p style={{ margin: 0, fontFamily: 'Sarabun' }}>{currentQ.explanation}</p>
               </div>
@@ -302,7 +315,7 @@ export default function MediaQuiz() {
                   }
                 }}
               >
-                <span>{index === questions.length - 1 ? 'ดูสรุปผลคะแนน' : 'ข้อถัดไป →'}</span>
+                <span>{index === questions.length - 1 ? 'ดูสรุปและเฉลยคำตอบ' : 'ข้อถัดไป →'}</span>
               </button>
             </div>
           </div>
@@ -325,42 +338,37 @@ export default function MediaQuiz() {
             </h3>
             <p style={{ color: 'var(--muted)', fontFamily: 'Sarabun', fontSize: '16px', maxWidth: '540px', margin: '0 auto 24px' }}>
               {totalScore === questions.length
-                ? 'ยอดเยี่ยมมาก! คุณมีความเข้าใจเรื่องแท็ก <img> และ <a> ครบถ้วนทุกจุด พร้อมนำไปประยุกต์สร้างเว็บจริงแล้ว'
-                : 'ทำได้ดีมาก! ลองทบทวนข้อที่ตอบผิดแล้วกดเริ่มใหม่เพื่อฝึกฝนให้คล่องแคล่วขึ้น'}
+                ? 'ยอดเยี่ยมมาก! คุณตอบถูกต้องครบทุกข้อในแบบฝึกหัด 4.2'
+                : 'ทำได้ดีมาก! ลองทบทวนคำตอบและเฉลยเพื่อความแม่นยำ'}
             </p>
 
-            <div style={{ display: 'grid', gap: '10px', maxWidth: '600px', margin: '0 auto 24px', textAlign: 'left' }}>
-              {questions.map((q, i) => {
-                const ans = answers[q.id]
-                const ok = ans?.isCorrect
-                return (
-                  <div
-                    key={q.id}
-                    style={{
-                      padding: '12px 16px',
-                      borderRadius: '10px',
-                      border: '1px solid var(--line)',
-                      background: 'var(--bg)',
-                      display: 'flex',
-                      alignItems: 'center',
-                      justifyContent: 'space-between',
-                      fontFamily: 'Sarabun',
-                      fontSize: '14px',
-                    }}
-                  >
-                    <span>ข้อ {i + 1}: {q.title}</span>
-                    <strong style={{ color: ok ? '#34d399' : '#fb7185' }}>
-                      {ok ? '✓ ถูกต้อง' : '✕ ยังไม่ถูก'}
-                    </strong>
-                  </div>
-                )
-              })}
+            {/* Exact Answer Key Box */}
+            <div style={{
+              maxWidth: '600px',
+              margin: '0 auto 24px',
+              padding: '20px 24px',
+              background: 'var(--panel2)',
+              borderRadius: '14px',
+              border: '1px solid var(--line)',
+              textAlign: 'left'
+            }}>
+              <h4 style={{ margin: '0 0 14px', fontSize: '18px', display: 'flex', alignItems: 'center', gap: '8px', color: 'var(--text)' }}>
+                <HelpCircle size={18} color="#8b5cf6" />
+                <span>สรุปเฉลยคำตอบแบบฝึกหัด 4.2</span>
+              </h4>
+              <ol style={{ margin: 0, paddingLeft: '20px', fontFamily: 'Sarabun', fontSize: '15px', lineHeight: '2.0', color: 'var(--text)' }}>
+                <li><strong>1.</strong> <code>src</code> และ <code>alt</code></li>
+                <li><strong>2.</strong> <code>href</code></li>
+                <li><strong>3.</strong> <code>&lt;img&gt;</code></li>
+                <li><strong>4.</strong> <code>alt</code></li>
+                <li><strong>5.</strong> <code>href</code></li>
+              </ol>
             </div>
 
             <div style={{ display: 'flex', justifyContent: 'center', gap: '14px' }}>
               <button className="primary-btn" onClick={handleReset}>
                 <RotateCcw size={16} />
-                <span>ทำแบบทดสอบใหม่อีกครั้ง</span>
+                <span>ทำแบบฝึกหัดใหม่อีกครั้ง</span>
               </button>
             </div>
           </div>
