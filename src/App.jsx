@@ -28,7 +28,7 @@ export default function App() {
       lesson3: 'หน่วยที่ 3 · การใส่รูปภาพและลิงก์เชื่อมโยง'
     }
     document.title = titles[page] || titles.home
-    const pageClasses = page === 'lesson1' ? 'font-prompt antialiased bg-grid-pattern' : (page === 'lesson2' || page === 'lesson3') ? 'font-prompt' : ''
+    const pageClasses = (page === 'lesson1' || page === 'lesson2' || page === 'lesson3') ? 'font-prompt antialiased bg-grid-pattern' : ''
     document.body.className = `${pageClasses} ${layout.theme}`.trim()
   }, [page, layout.theme])
 
