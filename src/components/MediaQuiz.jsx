@@ -73,16 +73,18 @@ export default function MediaQuiz() {
     }
 
     return {
-      padding: '8px 14px',
+      padding: '7px 10px',
       borderRadius: '8px',
       border: `2px solid ${borderColor}`,
       background: bg,
       color: textColor,
       fontFamily: 'Fira Code, monospace',
-      fontSize: '15px',
+      fontSize: '14px',
       fontWeight: '700',
       outline: 'none',
-      width: '120px',
+      width: '95px',
+      minWidth: '70px',
+      maxWidth: '115px',
       textAlign: 'center',
       transition: 'all 0.2s ease',
     }
