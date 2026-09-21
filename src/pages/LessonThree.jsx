@@ -488,11 +488,7 @@ export default function LessonThree() {
                   <td>กำหนดความสูง (เป็นพิกเซล เช่น height="200")</td>
                   <td>แนะนำ</td>
                 </tr>
-                <tr>
-                  <td><code>loading</code></td>
-                  <td>ใส่ <code>loading="lazy"</code> ชะลอโหลดรูปเมื่อเลื่อนมาถึง</td>
-                  <td>เสริมประสิทธิภาพ</td>
-                </tr>
+
               </tbody>
             </table>
           </div>
