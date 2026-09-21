@@ -13,40 +13,40 @@ return <>
 
 
 <section id={"hero"} className={"relative pt-12 pb-16 overflow-hidden"}>
-<div className={"absolute inset-0 bg-gradient-to-b from-indigo-950/30 via-transparent to-transparent pointer-events-none"}></div>
+<div className={"absolute inset-0 bg-gradient-to-b from-purple-950/30 via-transparent to-transparent pointer-events-none"}></div>
 <div className={"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 relative"}>
 <div className={"text-center max-w-3xl mx-auto"}>
-<div className={"inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-indigo-950/80 border border-indigo-500/30 text-indigo-300 text-xs font-mono mb-4"}>
-<IconTerminal aria-hidden="true" className={"w-3.5 h-3.5 text-indigo-400"} />{" HTML5 Foundational System Architecture\n          "}</div>
+<div className={"inline-flex items-center gap-2 px-3 py-1.5 rounded-full bg-purple-950/80 border border-purple-500/30 text-purple-300 text-xs font-mono mb-4"}>
+<IconTerminal aria-hidden="true" className={"w-3.5 h-3.5 text-purple-400"} />{" HTML5 Foundational System Architecture\n          "}</div>
 <h1 className={"text-3xl sm:text-5xl font-extrabold text-white tracking-tight leading-tight sm:leading-tight"}>{"\n            กลุ่มแท็กควบคุมและจัดการ"}<br />
-<span className={"bg-clip-text text-transparent bg-gradient-to-r from-indigo-400 via-purple-300 to-pink-400"}>{"\n              ระบบพื้นฐานของ HTML\n            "}</span>
+<span className={"bg-clip-text text-transparent bg-gradient-to-r from-purple-400 via-fuchsia-300 to-pink-400"}>{"\n              ระบบพื้นฐานของ HTML\n            "}</span>
 </h1>
 <p className={"mt-4 text-base sm:text-lg text-slate-300 font-sarabun leading-relaxed"}>{"\n            หากเว็บไซต์ของคุณไม่มีแท็กเหล่านี้ จะเกิดอะไรขึ้น? ทำไมข้อความถึงกลายเป็น "}<span className={"text-amber-400 font-mono font-semibold"}>{"ภาษาต่างดาว"}</span>{", ทำไมโครงสร้างเอกสารถึง "}<span className={"text-rose-400 font-semibold"}>{"แสดงผลผิดเพี้ยน"}</span>{", หรือทำไม Google ถึงหาชื่อเว็บของคุณไม่เจอ? มาดูการทดลองจริงกันเลย!\n          "}</p>
 
-<div className={"mt-8 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-3 max-w-6xl mx-auto"}>
-<a onClick={() => setActiveTag("doctype")} href={"#deep-dive"} data-tag-target={"doctype"} className={"p-3.5 rounded-2xl glass-card text-center group border border-orange-500/30 hover:border-orange-500"}>
-<span className={"html-tag-label text-xs font-mono font-bold block transition"}><HtmlCode>{"<!DOCTYPE html>"}</HtmlCode></span>
-<span className={"text-[11px] text-slate-400 font-sarabun mt-1 block"}>{"โหมดมาตรฐาน HTML5"}</span>
+<div className={"mt-8 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-3 sm:gap-4 max-w-7xl mx-auto"}>
+<a onClick={() => setActiveTag("doctype")} href={"#deep-dive"} data-tag-target={"doctype"} className={"p-4 sm:p-5 rounded-2xl glass-card text-center group border border-purple-500/30 hover:border-purple-500 flex flex-col items-center justify-center transition " + (activeTag === "doctype" ? "ring-2 ring-purple-500/50 border-purple-500" : "")}>
+<span className={"html-tag-label text-xs sm:text-sm font-mono font-bold block transition"}><HtmlCode>{"<!DOCTYPE html>"}</HtmlCode></span>
+<span className={"text-[11px] sm:text-xs text-slate-400 font-sarabun mt-1.5 block"}>{"โหมดมาตรฐาน HTML5"}</span>
 </a>
-<a onClick={() => setActiveTag("html")} href={"#deep-dive"} data-tag-target={"html"} className={"p-3.5 rounded-2xl glass-card text-center group border border-orange-500/30 hover:border-orange-500"}>
-<span className={"html-tag-label text-xs font-mono font-bold block transition"}><HtmlCode>{"<html>"}</HtmlCode></span>
-<span className={"text-[11px] text-slate-400 font-sarabun mt-1 block"}>{"Root Element & ภาษา"}</span>
+<a onClick={() => setActiveTag("html")} href={"#deep-dive"} data-tag-target={"html"} className={"p-4 sm:p-5 rounded-2xl glass-card text-center group border border-purple-500/30 hover:border-purple-500 flex flex-col items-center justify-center transition " + (activeTag === "html" ? "ring-2 ring-purple-500/50 border-purple-500" : "")}>
+<span className={"html-tag-label text-xs sm:text-sm font-mono font-bold block transition"}><HtmlCode>{"<html>"}</HtmlCode></span>
+<span className={"text-[11px] sm:text-xs text-slate-400 font-sarabun mt-1.5 block"}>{"Root Element & ภาษา"}</span>
 </a>
-<a onClick={() => setActiveTag("head")} href={"#deep-dive"} data-tag-target={"head"} className={"p-3.5 rounded-2xl glass-card text-center group border border-orange-500/30 hover:border-orange-500"}>
-<span className={"html-tag-label text-xs font-mono font-bold block transition"}><HtmlCode>{"<head>"}</HtmlCode></span>
-<span className={"text-[11px] text-slate-400 font-sarabun mt-1 block"}>{"คอนเทนเนอร์ Metadata"}</span>
+<a onClick={() => setActiveTag("head")} href={"#deep-dive"} data-tag-target={"head"} className={"p-4 sm:p-5 rounded-2xl glass-card text-center group border border-purple-500/30 hover:border-purple-500 flex flex-col items-center justify-center transition " + (activeTag === "head" ? "ring-2 ring-purple-500/50 border-purple-500" : "")}>
+<span className={"html-tag-label text-xs sm:text-sm font-mono font-bold block transition"}><HtmlCode>{"<head>"}</HtmlCode></span>
+<span className={"text-[11px] sm:text-xs text-slate-400 font-sarabun mt-1.5 block"}>{"คอนเทนเนอร์ Metadata"}</span>
 </a>
-<a onClick={() => setActiveTag("title")} href={"#deep-dive"} data-tag-target={"title"} className={"p-3.5 rounded-2xl glass-card text-center group border border-orange-500/30 hover:border-orange-500"}>
-<span className={"html-tag-label text-xs font-mono font-bold block transition"}><HtmlCode>{"<title>"}</HtmlCode></span>
-<span className={"text-[11px] text-slate-400 font-sarabun mt-1 block"}>{"ชื่อแท็บและผลค้นหา"}</span>
+<a onClick={() => setActiveTag("title")} href={"#deep-dive"} data-tag-target={"title"} className={"p-4 sm:p-5 rounded-2xl glass-card text-center group border border-purple-500/30 hover:border-purple-500 flex flex-col items-center justify-center transition " + (activeTag === "title" ? "ring-2 ring-purple-500/50 border-purple-500" : "")}>
+<span className={"html-tag-label text-xs sm:text-sm font-mono font-bold block transition"}><HtmlCode>{"<title>"}</HtmlCode></span>
+<span className={"text-[11px] sm:text-xs text-slate-400 font-sarabun mt-1.5 block"}>{"ชื่อแท็บและผลค้นหา"}</span>
 </a>
-<a onClick={() => setActiveTag("charset")} href={"#deep-dive"} data-tag-target={"charset"} className={"p-3.5 rounded-2xl glass-card text-center group border border-orange-500/30 hover:border-orange-500"}>
-<span className={"html-tag-label html-tag-label-long text-[11px] font-mono font-bold block transition"}><HtmlCode>{"<meta charset=\"UTF-8\">"}</HtmlCode></span>
-<span className={"text-[11px] text-slate-400 font-sarabun mt-1 block"}>{"การเข้ารหัสภาษาไทย"}</span>
+<a onClick={() => setActiveTag("charset")} href={"#deep-dive"} data-tag-target={"charset"} className={"p-4 sm:p-5 rounded-2xl glass-card text-center group border border-purple-500/30 hover:border-purple-500 flex flex-col items-center justify-center transition " + (activeTag === "charset" ? "ring-2 ring-purple-500/50 border-purple-500" : "")}>
+<span className={"html-tag-label html-tag-label-long text-xs sm:text-sm font-mono font-bold block transition"}><HtmlCode>{"<meta charset=\"UTF-8\">"}</HtmlCode></span>
+<span className={"text-[11px] sm:text-xs text-slate-400 font-sarabun mt-1.5 block"}>{"การเข้ารหัสภาษาไทย"}</span>
 </a>
-<a onClick={() => setActiveTag("body")} href={"#deep-dive"} data-tag-target={"body"} className={"p-3.5 rounded-2xl glass-card text-center group border border-rose-500/30 hover:border-rose-500"}>
-<span className={"html-tag-label text-xs font-mono font-bold block transition"}><HtmlCode>{"<body>"}</HtmlCode></span>
-<span className={"text-[11px] text-slate-400 font-sarabun mt-1 block"}>{"พื้นที่แสดงเนื้อหา"}</span>
+<a onClick={() => setActiveTag("body")} href={"#deep-dive"} data-tag-target={"body"} className={"p-4 sm:p-5 rounded-2xl glass-card text-center group border border-rose-500/30 hover:border-rose-500 flex flex-col items-center justify-center transition " + (activeTag === "body" ? "ring-2 ring-rose-500/50 border-rose-500" : "")}>
+<span className={"html-tag-label text-xs sm:text-sm font-mono font-bold block transition"}><HtmlCode>{"<body>"}</HtmlCode></span>
+<span className={"text-[11px] sm:text-xs text-slate-400 font-sarabun mt-1.5 block"}>{"พื้นที่แสดงเนื้อหา"}</span>
 </a>
 </div>
 </div>
@@ -56,7 +56,7 @@ return <>
 <section id={"learning-goals"} className={"py-14 border-t border-slate-800/80 bg-slate-950/60"}>
 <div className={"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"}>
 <div className={"text-center max-w-3xl mx-auto mb-10"}>
-<div className={"inline-flex items-center gap-2 text-indigo-400 text-xs font-mono uppercase tracking-wider mb-1"}>
+<div className={"inline-flex items-center gap-2 text-purple-400 text-xs font-mono uppercase tracking-wider mb-1"}>
 <IconTarget aria-hidden="true" className={"w-4 h-4"} />{" Core Learning Objectives\n        "}</div>
 <h2 className={"text-2xl sm:text-3xl font-bold text-white tracking-tight"}>{"\n          เป้าหมายการเรียนรู้: เข้าใจโครงสร้างและหน้าที่ของ Tag\n        "}</h2>
 <p className={"text-sm text-slate-400 font-sarabun mt-1"}>{"\n          สรุปความรู้สำคัญ 2 ด้านหลัก (K1 & K2) สำหรับการวางโครงสร้างเว็บเพจด้วย HTML5\n        "}</p>
@@ -64,12 +64,12 @@ return <>
 
 <div className={"grid grid-cols-1 md:grid-cols-2 gap-6 max-w-5xl mx-auto mb-12"}>
 
-<div className={"p-6 rounded-3xl bg-slate-900/80 border border-indigo-500/30 relative overflow-hidden group hover:border-indigo-500/60 transition"}>
-<div className={"absolute top-0 right-0 w-28 h-28 bg-indigo-500/10 rounded-full blur-2xl group-hover:bg-indigo-500/20 transition"}></div>
+<div className={"p-6 rounded-3xl bg-slate-900/80 border border-purple-500/30 relative overflow-hidden group hover:border-purple-500/60 transition"}>
+<div className={"absolute top-0 right-0 w-28 h-28 bg-purple-500/10 rounded-full blur-2xl group-hover:bg-purple-500/20 transition"}></div>
 <div className={"flex items-center gap-3 mb-3"}>
-<span className={"w-10 h-10 rounded-xl bg-indigo-600/30 border border-indigo-500/50 text-indigo-400 font-mono font-bold text-lg flex items-center justify-center"}>{"\n              K1\n            "}</span>
+<span className={"w-10 h-10 rounded-xl bg-purple-600/30 border border-purple-500/50 text-purple-400 font-mono font-bold text-lg flex items-center justify-center"}>{"\n              K1\n            "}</span>
 <div>
-<span className={"text-xs font-mono uppercase tracking-wider text-indigo-400"}>{"ควบคุม & จัดการระบบ"}</span>
+<span className={"text-xs font-mono uppercase tracking-wider text-purple-400"}>{"ควบคุม & จัดการระบบ"}</span>
 <h3 className={"text-base font-bold text-white"}>{"กลุ่มแท็กควบคุมหรือกำหนดข้อมูลของเว็บเพจ"}</h3>
 </div>
 </div>
@@ -104,13 +104,13 @@ return <>
 
 <div className={"lg:col-span-5 space-y-4"}>
 
-<div className={"p-4 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-indigo-500/50 transition"}>
+<div className={"p-4 rounded-2xl bg-slate-950/80 border border-slate-800 hover:border-purple-500/50 transition"}>
 <div className={"flex items-start gap-3"}>
-<span className={"w-6 h-6 rounded-full bg-indigo-600/30 text-indigo-400 flex items-center justify-center font-bold text-xs font-mono shrink-0 mt-0.5"}>{"1"}</span>
+<span className={"w-6 h-6 rounded-full bg-purple-600/30 text-purple-400 flex items-center justify-center font-bold text-xs font-mono shrink-0 mt-0.5"}>{"1"}</span>
 <div>
 <h4 className={"text-sm font-semibold text-white"}>{"ข้อความบนแท็บบนสุด (Tab Bar)"}</h4>
 <p className={"text-xs text-slate-400 font-sarabun mt-1"}>{"ชื่อเรื่องที่อยู่บนแท็บเบราว์เซอร์มาจากไหน?"}</p>
-<div className={"mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border text-xs font-mono"} style={{"background": "#312e81", "borderColor": "#6366f1", "color": "#c7d2fe"}}>
+<div className={"mt-2 inline-flex items-center gap-1.5 px-2.5 py-1 rounded-lg border text-xs font-mono"} style={{"background": "#581c87", "borderColor": "#8b5cf6", "color": "#e9d5ff"}}>
 <IconCornerDownRight aria-hidden="true" className={"w-3.5 h-3.5"} />{" คำตอบ: มาจากแท็ก "}<strong>{"<title>"}</strong>{" ใน <head>\n                  "}</div>
 </div>
 </div>
@@ -142,9 +142,9 @@ return <>
 </div>
 
 <div className={"flex-1 max-w-xs relative"}>
-<div className={"px-3 py-1.5 rounded-t-lg bg-slate-800 border-t-2 border-indigo-500 flex items-center justify-between text-xs text-indigo-200 font-medium"}>
+<div className={"px-3 py-1.5 rounded-t-lg bg-slate-800 border-t-2 border-purple-500 flex items-center justify-between text-xs text-purple-200 font-medium"}>
 <span className={"truncate font-mono"}>{"Document"}</span>
-<span className={"text-[10px] px-1.5 py-0.2 rounded bg-indigo-500/30 text-indigo-300 font-mono"}>{"จุดที่ 1"}</span>
+<span className={"text-[10px] px-1.5 py-0.2 rounded bg-purple-500/30 text-purple-300 font-mono"}>{"จุดที่ 1"}</span>
 </div>
 </div>
 </div>
@@ -171,35 +171,35 @@ return <>
 <section id={"deep-dive"} className={"py-16 border-t border-slate-800/80"}>
 <div className={"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"}>
 <div className={"text-center max-w-3xl mx-auto mb-10"}>
-<div className={"inline-flex items-center gap-2 text-indigo-400 text-xs font-mono uppercase tracking-wider mb-1"}>
+<div className={"inline-flex items-center gap-2 text-purple-400 text-xs font-mono uppercase tracking-wider mb-1"}>
 <IconBookOpen aria-hidden="true" className={"w-4 h-4"} />{" Deep-Dive Guide\n        "}</div>
 <h2 className={"text-2xl sm:text-4xl font-bold text-white tracking-tight"}>{"\n          เจาะลึก 6 แท็กพื้นฐานของ HTML\n        "}</h2>
 <p className={"mt-2 text-sm text-slate-400 font-sarabun"}>{"\n          ทำความเข้าใจหน้าที่ ไวยากรณ์ และตารางเปรียบเทียบผลกระทบ \"เมื่อมี\" vs \"เมื่อไม่มี\" แบบละเอียด\n        "}</p>
 
-<div className={"mt-6 grid grid-cols-2 sm:grid-cols-3 xl:grid-cols-6 gap-2 p-1.5 rounded-2xl glass-panel max-w-5xl mx-auto"}>
-<button onClick={() => setActiveTag("doctype")} className={"tag-tab-btn px-4 py-2 rounded-xl text-sm " + (activeTag === "doctype" ? "bg-indigo-600 text-white" : "bg-slate-800/80 text-slate-400")} aria-pressed={activeTag === "doctype"} data-tag-target={"doctype"}>
-<IconFileCode2 aria-hidden="true" className={"w-3.5 h-3.5"} />
-<span><HtmlCode>{"<!DOCTYPE html>"}</HtmlCode></span>
+<div className={"mt-6 grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-6 gap-2 sm:gap-3 p-3 rounded-2xl glass-panel max-w-7xl mx-auto items-center"}>
+<button onClick={() => setActiveTag("doctype")} className={"tag-tab-btn px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-mono font-semibold flex items-center justify-center gap-1.5 transition " + (activeTag === "doctype" ? "tag-tab-active bg-purple-600 text-white shadow-lg" : "tag-tab-inactive bg-slate-800/80 text-slate-400")} aria-pressed={activeTag === "doctype"} data-tag-target={"doctype"}>
+<IconFileCode2 aria-hidden="true" className={"w-4 h-4 shrink-0"} />
+<span className={"whitespace-nowrap"}>{"<!DOCTYPE html>"}</span>
 </button>
-<button onClick={() => setActiveTag("html")} className={"tag-tab-btn px-4 py-2 rounded-xl text-sm " + (activeTag === "html" ? "bg-indigo-600 text-white" : "bg-slate-800/80 text-slate-400")} aria-pressed={activeTag === "html"} data-tag-target={"html"}>
-<IconBox aria-hidden="true" className={"w-3.5 h-3.5"} />
-<span><HtmlCode>{"<html>"}</HtmlCode></span>
+<button onClick={() => setActiveTag("html")} className={"tag-tab-btn px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-mono font-semibold flex items-center justify-center gap-1.5 transition " + (activeTag === "html" ? "tag-tab-active bg-purple-600 text-white shadow-lg" : "tag-tab-inactive bg-slate-800/80 text-slate-400")} aria-pressed={activeTag === "html"} data-tag-target={"html"}>
+<IconBox aria-hidden="true" className={"w-4 h-4 shrink-0"} />
+<span className={"whitespace-nowrap"}>{"<html>"}</span>
 </button>
-<button onClick={() => setActiveTag("head")} className={"tag-tab-btn px-4 py-2 rounded-xl text-sm " + (activeTag === "head" ? "bg-indigo-600 text-white" : "bg-slate-800/80 text-slate-400")} aria-pressed={activeTag === "head"} data-tag-target={"head"}>
-<IconSettings2 aria-hidden="true" className={"w-3.5 h-3.5"} />
-<span><HtmlCode>{"<head>"}</HtmlCode></span>
+<button onClick={() => setActiveTag("head")} className={"tag-tab-btn px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-mono font-semibold flex items-center justify-center gap-1.5 transition " + (activeTag === "head" ? "tag-tab-active bg-purple-600 text-white shadow-lg" : "tag-tab-inactive bg-slate-800/80 text-slate-400")} aria-pressed={activeTag === "head"} data-tag-target={"head"}>
+<IconSettings2 aria-hidden="true" className={"w-4 h-4 shrink-0"} />
+<span className={"whitespace-nowrap"}>{"<head>"}</span>
 </button>
-<button onClick={() => setActiveTag("title")} className={"tag-tab-btn px-4 py-2 rounded-xl text-sm " + (activeTag === "title" ? "bg-indigo-600 text-white" : "bg-slate-800/80 text-slate-400")} aria-pressed={activeTag === "title"} data-tag-target={"title"}>
-<IconAppWindow aria-hidden="true" className={"w-3.5 h-3.5"} />
-<span><HtmlCode>{"<title>"}</HtmlCode></span>
+<button onClick={() => setActiveTag("title")} className={"tag-tab-btn px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-mono font-semibold flex items-center justify-center gap-1.5 transition " + (activeTag === "title" ? "tag-tab-active bg-purple-600 text-white shadow-lg" : "tag-tab-inactive bg-slate-800/80 text-slate-400")} aria-pressed={activeTag === "title"} data-tag-target={"title"}>
+<IconAppWindow aria-hidden="true" className={"w-4 h-4 shrink-0"} />
+<span className={"whitespace-nowrap"}>{"<title>"}</span>
 </button>
-<button onClick={() => setActiveTag("charset")} className={"tag-tab-btn px-4 py-2 rounded-xl text-sm " + (activeTag === "charset" ? "bg-indigo-600 text-white" : "bg-slate-800/80 text-slate-400")} aria-pressed={activeTag === "charset"} data-tag-target={"charset"}>
-<IconLanguages aria-hidden="true" className={"w-3.5 h-3.5"} />
-<span className={"tag-tab-long"}><HtmlCode>{"<meta charset=\"UTF-8\">"}</HtmlCode></span>
+<button onClick={() => setActiveTag("charset")} className={"tag-tab-btn px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-mono font-semibold flex items-center justify-center gap-1.5 transition " + (activeTag === "charset" ? "tag-tab-active bg-purple-600 text-white shadow-lg" : "tag-tab-inactive bg-slate-800/80 text-slate-400")} aria-pressed={activeTag === "charset"} data-tag-target={"charset"}>
+<IconLanguages aria-hidden="true" className={"w-4 h-4 shrink-0"} />
+<span className={"whitespace-nowrap"}>{"<meta charset=\"UTF-8\">"}</span>
 </button>
-<button onClick={() => setActiveTag("body")} className={"tag-tab-btn px-4 py-2 rounded-xl text-sm " + (activeTag === "body" ? "bg-indigo-600 text-white" : "bg-slate-800/80 text-slate-400")} aria-pressed={activeTag === "body"} data-tag-target={"body"}>
-<IconLayoutTemplate aria-hidden="true" className={"w-3.5 h-3.5"} />
-<span><HtmlCode>{"<body>"}</HtmlCode></span>
+<button onClick={() => setActiveTag("body")} className={"tag-tab-btn px-3.5 py-2.5 rounded-xl text-xs sm:text-sm font-mono font-semibold flex items-center justify-center gap-1.5 transition " + (activeTag === "body" ? "tag-tab-active bg-purple-600 text-white shadow-lg" : "tag-tab-inactive bg-slate-800/80 text-slate-400")} aria-pressed={activeTag === "body"} data-tag-target={"body"}>
+<IconLayoutTemplate aria-hidden="true" className={"w-4 h-4 shrink-0"} />
+<span className={"whitespace-nowrap"}>{"<body>"}</span>
 </button>
 </div>
 </div>
@@ -207,7 +207,7 @@ return <>
 <div className={"max-w-5xl mx-auto"}>
 
 <div hidden={activeTag !== "doctype"} id={"tag-panel-doctype"} className={"tag-detail-panel space-y-6"}>
-<div className={"glass-card p-6 sm:p-8 rounded-3xl border border-indigo-500/30"}>
+<div className={"glass-card p-6 sm:p-8 rounded-3xl border border-purple-500/30"}>
 <div className={"flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800"}>
 <div>
 <div className={"flex items-center gap-2"}>
@@ -216,7 +216,7 @@ return <>
 </div>
 <h3 className={"text-xl font-bold text-white mt-2"}>{"ประกาศชนิดเอกสาร HTML5"}</h3>
 </div>
-<div className={"text-xs font-mono text-slate-400 bg-slate-900 px-3 py-1.5 rounded-xl border border-slate-800 shrink-0"}>{"\n                ตำแหน่ง: "}<span className={"text-indigo-400"}>{"บรรทัดที่ 1 บนสุดเสมอ"}</span>
+<div className={"text-xs font-mono text-slate-400 bg-slate-900 px-3 py-1.5 rounded-xl border border-slate-800 shrink-0"}>{"\n                ตำแหน่ง: "}<span className={"text-purple-400"}>{"บรรทัดที่ 1 บนสุดเสมอ"}</span>
 </div>
 </div>
 
@@ -278,7 +278,7 @@ return <>
 </div>
 
 <div hidden={activeTag !== "html"} id={"tag-panel-html"} className={"tag-detail-panel space-y-6"}>
-<div className={"glass-card p-6 sm:p-8 rounded-3xl border border-indigo-500/30"}>
+<div className={"glass-card p-6 sm:p-8 rounded-3xl border border-purple-500/30"}>
 <div className={"flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800"}>
 <div>
 <div className={"flex items-center gap-2"}>
@@ -287,13 +287,13 @@ return <>
 </div>
 <h3 className={"text-xl font-bold text-white mt-2"}>{"รากฐานหลักของโครงสร้างเอกสาร HTML"}</h3>
 </div>
-<div className={"text-xs font-mono text-slate-400 bg-slate-900 px-3 py-1.5 rounded-xl border border-slate-800 shrink-0"}>{"\n                ตำแหน่ง: "}<span className={"text-indigo-400"}>{"ครอบ <head> และ <body> ทั้งหมด"}</span>
+<div className={"text-xs font-mono text-slate-400 bg-slate-900 px-3 py-1.5 rounded-xl border border-slate-800 shrink-0"}>{"\n                ตำแหน่ง: "}<span className={"text-purple-400"}>{"ครอบ <head> และ <body> ทั้งหมด"}</span>
 </div>
 </div>
 
 <div className={"py-4 text-sm text-slate-300 font-sarabun leading-relaxed space-y-2"}>
 <p>
-<strong>{"<html>"}</strong>{" คือ Element สูงสุด (Root Element) ของหน้าเว็บทุกหน้า และการใส่แอตทริบิวต์ "}<code className={"text-indigo-300"}>{"lang=\"th\""}</code>{" เป็นสิ่งจำเป็นอย่างยิ่งในการระบุว่าเนื้อหาของหน้านี้เป็น "}<strong>{"ภาษาไทย"}</strong>
+<strong>{"<html>"}</strong>{" คือ Element สูงสุด (Root Element) ของหน้าเว็บทุกหน้า และการใส่แอตทริบิวต์ "}<code className={"text-purple-300"}>{"lang=\"th\""}</code>{" เป็นสิ่งจำเป็นอย่างยิ่งในการระบุว่าเนื้อหาของหน้านี้เป็น "}<strong>{"ภาษาไทย"}</strong>
 </p>
 </div>
 
@@ -349,7 +349,7 @@ return <>
 </div>
 
 <div hidden={activeTag !== "head"} id={"tag-panel-head"} className={"tag-detail-panel space-y-6"}>
-<div className={"glass-card p-6 sm:p-8 rounded-3xl border border-indigo-500/30"}>
+<div className={"glass-card p-6 sm:p-8 rounded-3xl border border-purple-500/30"}>
 <div className={"flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800"}>
 <div>
 <div className={"flex items-center gap-2"}>
@@ -358,7 +358,7 @@ return <>
 </div>
 <h3 className={"text-xl font-bold text-white mt-2"}>{"ส่วนหัวเอกสารสำหรับเก็บข้อมูลระบบและ Metadata"}</h3>
 </div>
-<div className={"text-xs font-mono text-slate-400 bg-slate-900 px-3 py-1.5 rounded-xl border border-slate-800 shrink-0"}>{"\n                ตำแหน่ง: "}<span className={"text-indigo-400"}>{"อยู่ก่อนหน้า <body> เสมอ"}</span>
+<div className={"text-xs font-mono text-slate-400 bg-slate-900 px-3 py-1.5 rounded-xl border border-slate-800 shrink-0"}>{"\n                ตำแหน่ง: "}<span className={"text-purple-400"}>{"อยู่ก่อนหน้า <body> เสมอ"}</span>
 </div>
 </div>
 
@@ -419,7 +419,7 @@ return <>
 </div>
 
 <div hidden={activeTag !== "title"} id={"tag-panel-title"} className={"tag-detail-panel space-y-6"}>
-<div className={"glass-card p-6 sm:p-8 rounded-3xl border border-indigo-500/30"}>
+<div className={"glass-card p-6 sm:p-8 rounded-3xl border border-purple-500/30"}>
 <div className={"flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800"}>
 <div>
 <div className={"flex items-center gap-2"}>
@@ -428,7 +428,7 @@ return <>
 </div>
 <h3 className={"text-xl font-bold text-white mt-2"}>{"ชื่อของเอกสารหน้าเว็บ (Tab, SEO & Bookmark)"}</h3>
 </div>
-<div className={"text-xs font-mono text-slate-400 bg-slate-900 px-3 py-1.5 rounded-xl border border-slate-800 shrink-0"}>{"\n                ตำแหน่ง: "}<span className={"text-indigo-400"}>{"อยู่ภายใน <head> เท่านั้น"}</span>
+<div className={"text-xs font-mono text-slate-400 bg-slate-900 px-3 py-1.5 rounded-xl border border-slate-800 shrink-0"}>{"\n                ตำแหน่ง: "}<span className={"text-purple-400"}>{"อยู่ภายใน <head> เท่านั้น"}</span>
 </div>
 </div>
 
@@ -490,7 +490,7 @@ return <>
 </div>
 
 <div hidden={activeTag !== "charset"} id={"tag-panel-charset"} className={"tag-detail-panel space-y-6"}>
-<div className={"glass-card p-6 sm:p-8 rounded-3xl border border-indigo-500/30"}>
+<div className={"glass-card p-6 sm:p-8 rounded-3xl border border-purple-500/30"}>
 <div className={"flex flex-col sm:flex-row sm:items-center justify-between gap-4 pb-6 border-b border-slate-800"}>
 <div>
 <div className={"flex items-center gap-2"}>
@@ -609,12 +609,12 @@ return <>
 <section id={"quiz"} className={"py-16 border-t border-slate-800/80 bg-slate-950/40"}>
 <div className={"max-w-6xl mx-auto px-4 sm:px-6 lg:px-8"}>
 <div className={"text-center mb-8"}>
-<div className={"inline-flex items-center gap-2 text-indigo-400 text-xs font-mono uppercase tracking-wider mb-1"}>
+<div className={"inline-flex items-center gap-2 text-purple-400 text-xs font-mono uppercase tracking-wider mb-1"}>
 <IconPuzzle aria-hidden="true" className={"w-4 h-4"} />{" 4.2 แบบฝึกหัดในชั้นเรียน\n        "}</div>
 <h2 className={"text-2xl sm:text-3xl font-bold text-white tracking-tight"}>{"\n          กิจกรรมจำแนกกลุ่มและจับคู่หน้าที่ของ Tag HTML5\n        "}</h2>
 <p className={"text-sm text-slate-400 font-sarabun mt-1"}>{"\n          พิจารณา Tag ทั้ง 6 ตัว แล้วจำแนกว่าเป็นแท็กควบคุมระบบหรือแท็กแสดงผล พร้อมจับคู่ตำแหน่งหน้าที่การทำงาน\n        "}</p>
 </div>
-<div className={"glass-card p-6 sm:p-8 rounded-3xl border border-indigo-500/20 shadow-2xl"}>
+<div className={"glass-card p-6 sm:p-8 rounded-3xl border border-purple-500/20 shadow-2xl"}>
 <StructureQuiz />
 </div>
 </div>
@@ -623,7 +623,7 @@ return <>
 <footer className={"py-12 border-t border-slate-800/80 bg-slate-950 text-slate-400 text-xs font-sarabun"}>
 <div className={"max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 flex flex-col sm:flex-row items-center justify-between gap-4"}>
 <div className={"flex items-center gap-2"}>
-<div className={"w-6 h-6 rounded-lg bg-indigo-600 flex items-center justify-center text-white"}>
+<div className={"w-6 h-6 rounded-lg bg-purple-600 flex items-center justify-center text-white"}>
 <IconCode2 aria-hidden="true" className={"w-3.5 h-3.5"} />
 </div>
 <span className={"font-bold text-white font-prompt"}>{"HTML System Tags Guide"}</span>

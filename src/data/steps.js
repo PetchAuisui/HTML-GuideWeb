@@ -107,7 +107,7 @@ export const steps = [
         langBadge: "HTML Root Active ✓",
         langColor: "bg-emerald-500/20 text-emerald-300 border-emerald-500/40",
         charsetBadge: "UTF-8 Unicode Active ✨",
-        charsetColor: "bg-indigo-500/20 text-indigo-300 border-indigo-500/40",
+        charsetColor: "bg-purple-500/20 text-purple-300 border-purple-500/40",
         headingText: "ยินดีต้อนรับสู่เว็บไซต์ของเรา",
         headingStyle: "text-slate-300 text-base",
         arrowDirection: "charset"
@@ -140,7 +140,7 @@ export const steps = [
         langBadge: "HTML Root Active ✓",
         langColor: "bg-emerald-500/20 text-emerald-300 border-emerald-500/40",
         charsetBadge: "UTF-8 Active ✨",
-        charsetColor: "bg-indigo-500/20 text-indigo-300 border-indigo-500/40",
+        charsetColor: "bg-purple-500/20 text-purple-300 border-purple-500/40",
         headingText: "ยินดีต้อนรับสู่เว็บไซต์ของเรา",
         headingStyle: "text-slate-300 text-base",
         arrowDirection: "tab"
@@ -175,7 +175,7 @@ export const steps = [
         langBadge: "HTML Root Active ✓",
         langColor: "bg-emerald-500/20 text-emerald-300 border-emerald-500/40",
         charsetBadge: "UTF-8 Active ✨",
-        charsetColor: "bg-indigo-500/20 text-indigo-300 border-indigo-500/40",
+        charsetColor: "bg-purple-500/20 text-purple-300 border-purple-500/40",
         headingText: "",
         headingStyle: "hidden",
         arrowDirection: "body"

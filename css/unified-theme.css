@@ -19,7 +19,17 @@
 body{background-color:var(--bg)!important;color:var(--text);font-family:'Prompt',sans-serif}
 .bg-\[\#0b0f19\],.bg-slate-950{background-color:var(--bg)!important}
 .bg-slate-900,.bg-slate-950\/40,.bg-slate-950\/60{background-color:var(--panel)!important}
-.glass-panel,.glass-panel-light,.glass-card{background:linear-gradient(145deg,rgba(25,25,43,.92),rgba(14,14,24,.94))!important;border-color:var(--line)!important}
+html.dark .glass-panel, html.dark .glass-panel-light, html.dark .glass-card,
+body:not(.light) .glass-panel, body:not(.light) .glass-panel-light, body:not(.light) .glass-card {
+  background: linear-gradient(145deg,rgba(25,25,43,.92),rgba(14,14,24,.94)) !important;
+  border-color: var(--line) !important;
+}
+html:not(.dark) .glass-panel, html:not(.dark) .glass-panel-light, html:not(.dark) .glass-card,
+body.light .glass-panel, body.light .glass-panel-light, body.light .glass-card {
+  background: #ffffff !important;
+  border-color: #e2e8f0 !important;
+  box-shadow: 0 4px 12px -2px rgba(0, 0, 0, 0.05) !important;
+}
 .bg-indigo-600,.bg-brand-600{background-color:#7c3aed!important}.hover\:bg-indigo-500:hover{background-color:#8b5cf6!important}.text-indigo-400,.text-indigo-300{color:#c4b5fd!important}.border-indigo-500\/30,.border-indigo-500\/40{border-color:#8b5cf666!important}
 .bg-gradient-to-r.from-indigo-500,.bg-gradient-to-tr.from-indigo-600{background-image:linear-gradient(135deg,var(--purple),var(--pink))!important}
 .tag-tab.active,.step-nav-btn.step-indicator-active{border-color:var(--purple)!important;box-shadow:0 0 0 1px #8b5cf644!important}

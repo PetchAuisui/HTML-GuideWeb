@@ -44,14 +44,14 @@ body {
 }
 
 .glass-card:hover {
-  border-color: rgba(99, 102, 241, 0.4);
-  box-shadow: 0 12px 30px -10px rgba(99, 102, 241, 0.15);
+  border-color: rgba(139, 92, 246, 0.4);
+  box-shadow: 0 12px 30px -10px rgba(139, 92, 246, 0.15);
   transform: translateY(-2px);
 }
 
 /* Glowing effects */
 .glow-primary {
-  box-shadow: 0 0 35px -5px rgba(99, 102, 241, 0.3);
+  box-shadow: 0 0 35px -5px rgba(139, 92, 246, 0.3);
 }
 
 .glow-danger {
@@ -86,7 +86,7 @@ body {
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: rgba(99, 102, 241, 0.6);
+  background: rgba(139, 92, 246, 0.6);
 }
 
 /* Quirks Mode specific simulated visual anomalies */
@@ -135,15 +135,15 @@ body {
 @keyframes pulse-ring {
   0% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0.7);
+    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.7);
   }
   70% {
     transform: scale(1.05);
-    box-shadow: 0 0 0 10px rgba(99, 102, 241, 0);
+    box-shadow: 0 0 0 10px rgba(139, 92, 246, 0);
   }
   100% {
     transform: scale(0.95);
-    box-shadow: 0 0 0 0 rgba(99, 102, 241, 0);
+    box-shadow: 0 0 0 0 rgba(139, 92, 246, 0);
   }
 }
 
@@ -161,10 +161,10 @@ body {
 }
 
 .step-indicator-active {
-  background: #4f46e5 !important;
+  background: #8b5cf6 !important;
   color: #ffffff !important;
-  border-color: #6366f1 !important;
-  box-shadow: 0 4px 14px rgba(79, 70, 229, 0.4) !important;
+  border-color: #a78bfa !important;
+  box-shadow: 0 4px 14px rgba(139, 92, 246, 0.4) !important;
 }
 
 .step-indicator-done {
@@ -192,7 +192,7 @@ body {
 
 .browser-tab.active {
   background: #1e293b;
-  border-top: 2px solid #6366f1;
+  border-top: 2px solid #8b5cf6;
 }
 
 .browser-tab.inactive {
@@ -201,8 +201,8 @@ body {
 }
 
 .code-active-line {
-  background: rgba(99, 102, 241, 0.18);
-  border-left: 3px solid #818cf8;
+  background: rgba(139, 92, 246, 0.18);
+  border-left: 3px solid #c4b5fd;
   padding-left: 0.5rem;
   margin-left: -0.5rem;
   border-radius: 0 4px 4px 0;
@@ -255,7 +255,9 @@ html:not(.dark) body {
   color: #1e293b !important;
 }
 
-html:not(.dark) .bg-grid-pattern {
+html:not(.dark) .bg-grid-pattern,
+body.light.bg-grid-pattern,
+body.light .bg-grid-pattern {
   background-image:
     linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
@@ -542,10 +544,148 @@ pre code span,
 .code-token-text    { color: #d4d4d4 !important; } /* Off-white */
 .code-token-operator { color: #d4d4d4 !important; } /* Equals signs */
 
-/* Keep code-like labels consistent with VS Code, including interactive UI. */
-.tag-tab-btn { min-width: 0; overflow: hidden; }
-.tag-tab-btn > span { min-width: 0; overflow-wrap: anywhere; }
-.tag-tab-btn .tag-tab-long { white-space: normal !important; font-size: 12px; line-height: 1.35; }
+/* Light Mode Code Block Container & Syntax Tokens Overrides */
+html:not(.dark) pre,
+html:not(.dark) #step-code-content,
+html:not(.dark) #simulator-generated-code,
+body.light pre,
+body.light #step-code-content,
+body.light #simulator-generated-code {
+  background-color: #f8fafc !important;
+  color: #0f172a !important;
+  border-color: #cbd5e1 !important;
+}
+
+html:not(.dark) pre .code-token-tag,
+html:not(.dark) #step-code-content .code-token-tag,
+html:not(.dark) #simulator-generated-code .code-token-tag,
+body.light pre .code-token-tag,
+body.light #step-code-content .code-token-tag,
+body.light #simulator-generated-code .code-token-tag {
+  color: #1e40af !important;
+  font-weight: 600 !important;
+}
+
+html:not(.dark) pre .code-token-attr,
+html:not(.dark) #step-code-content .code-token-attr,
+html:not(.dark) #simulator-generated-code .code-token-attr,
+body.light pre .code-token-attr,
+body.light #step-code-content .code-token-attr,
+body.light #simulator-generated-code .code-token-attr {
+  color: #0284c7 !important;
+}
+
+html:not(.dark) pre .code-token-val,
+html:not(.dark) #step-code-content .code-token-val,
+html:not(.dark) #simulator-generated-code .code-token-val,
+body.light pre .code-token-val,
+body.light #step-code-content .code-token-val,
+body.light #simulator-generated-code .code-token-val {
+  color: #c2410c !important;
+}
+
+html:not(.dark) pre .code-token-punct,
+html:not(.dark) #step-code-content .code-token-punct,
+html:not(.dark) #simulator-generated-code .code-token-punct,
+body.light pre .code-token-punct,
+body.light #step-code-content .code-token-punct,
+body.light #simulator-generated-code .code-token-punct {
+  color: #475569 !important;
+}
+
+html:not(.dark) pre .code-token-comment,
+html:not(.dark) #step-code-content .code-token-comment,
+html:not(.dark) #simulator-generated-code .code-token-comment,
+body.light pre .code-token-comment,
+body.light #step-code-content .code-token-comment,
+body.light #simulator-generated-code .code-token-comment {
+  color: #15803d !important;
+  font-style: italic !important;
+}
+
+html:not(.dark) pre .code-token-text,
+html:not(.dark) #step-code-content .code-token-text,
+html:not(.dark) #simulator-generated-code .code-token-text,
+body.light pre .code-token-text,
+body.light #step-code-content .code-token-text,
+body.light #simulator-generated-code .code-token-text {
+  color: #0f172a !important;
+}
+
+html:not(.dark) .react-code code > span > small,
+body.light .react-code code > span > small {
+  color: #64748b !important;
+}
+
+/* ALL HTML Tag Labels & Buttons must NEVER wrap tag text into vertical lines */
+.html-tag-label,
+.html-tag-label *,
+.tag-tab-btn,
+.tag-tab-btn *,
+.react-step-nav button,
+.react-step-nav button *,
+.tag-pill,
+.tag-pill * {
+  white-space: nowrap !important;
+  word-break: normal !important;
+  overflow-wrap: normal !important;
+}
+
+.html-tag-label {
+  display: inline-block;
+  min-width: 0;
+  line-height: 1.3;
+}
+
+.html-tag-label-long {
+  font-size: 10px !important;
+  line-height: 1.2 !important;
+}
+
+/* Deep-Dive Tag Tab Buttons Layout & Contained Dimensions */
+.tag-tab-btn {
+  box-sizing: border-box !important;
+  padding: 6px 8px !important;
+  min-width: 0 !important;
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  gap: 4px !important;
+  overflow: hidden !important;
+  border-radius: 12px !important;
+}
+
+.tag-tab-btn > span {
+  display: inline-flex !important;
+  align-items: center !important;
+  justify-content: center !important;
+  min-width: 0 !important;
+  overflow: hidden !important;
+  white-space: nowrap !important;
+}
+
+.tag-tab-btn code,
+.tag-tab-btn .code-token-punct,
+.tag-tab-btn .code-token-tag,
+.tag-tab-btn .code-token-attr,
+.tag-tab-btn .code-token-val,
+.tag-tab-btn .code-token-operator {
+  font-size: 11px !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+}
+
+.tag-tab-btn .tag-tab-long code,
+.tag-tab-btn .tag-tab-long .code-token-punct,
+.tag-tab-btn .tag-tab-long .code-token-tag,
+.tag-tab-btn .tag-tab-long .code-token-attr,
+.tag-tab-btn .tag-tab-long .code-token-val,
+.tag-tab-btn .tag-tab-long .code-token-operator {
+  font-size: 9.5px !important;
+  line-height: 1 !important;
+  white-space: nowrap !important;
+}
+
 .tag-tab-btn .code-token-tag,
 .tag-tab-btn .code-token-attr,
 .tag-tab-btn .code-token-val,
@@ -556,57 +696,89 @@ pre code span,
 .react-step-nav .code-token-val,
 .react-step-nav .code-token-punct,
 .react-step-nav .code-token-operator { color: inherit !important; }
-.tag-tab-btn:not(.bg-indigo-600) .code-token-tag,
-.react-step-nav button:not(.active) .code-token-tag { color: #569cd6 !important; }
-.tag-tab-btn:not(.bg-indigo-600) .code-token-attr,
-.react-step-nav button:not(.active) .code-token-attr { color: #9cdcfe !important; }
-.tag-tab-btn:not(.bg-indigo-600) .code-token-val,
-.react-step-nav button:not(.active) .code-token-val { color: #ce9178 !important; }
-.tag-tab-btn:not(.bg-indigo-600) .code-token-punct,
-.react-step-nav button:not(.active) .code-token-punct { color: #808080 !important; }
 
-/* ========================================================
-   INLINE <code> IN PROSE (Paragraphs, List Items, Badges)
-   Scope STRICTLY to inline contexts outside pre
-   ======================================================== */
-html:not(.dark) p > code,
-html:not(.dark) li > code,
-html:not(.dark) td > code,
-html:not(.dark) span > code {
-  background-color: #fff7ed !important;
-  color: #c2410c !important;
-  border: 1px solid #fed7aa !important;
-  border-radius: 4px !important;
-  padding: 1px 5px !important;
-  font-size: 0.84em !important;
+/* Active Deep-Dive Tag Tab Buttons (SOLID PURPLE BACKGROUND + PURE WHITE TEXT in ALL MODES) */
+.tag-tab-btn.tag-tab-active,
+.tag-tab-btn[aria-pressed="true"],
+.tag-tab-btn.active,
+.tag-tab-btn.bg-purple-600,
+.tag-tab-btn.bg-indigo-600,
+html:not(.dark) .tag-tab-btn.tag-tab-active,
+html:not(.dark) .tag-tab-btn[aria-pressed="true"],
+html:not(.dark) .tag-tab-btn.active,
+html:not(.dark) .tag-tab-btn.bg-purple-600,
+html:not(.dark) .tag-tab-btn.bg-indigo-600,
+body.light .tag-tab-btn.tag-tab-active,
+body.light .tag-tab-btn[aria-pressed="true"],
+body.light .tag-tab-btn.active,
+body.light .tag-tab-btn.bg-purple-600,
+body.light .tag-tab-btn.bg-indigo-600 {
+  background-color: #7c3aed !important;
+  background-image: none !important;
+  border-color: #6d28d9 !important;
+  color: #ffffff !important;
+  box-shadow: 0 4px 14px rgba(124, 58, 237, 0.4) !important;
 }
 
-/* Syntax components already style their own tokens; never wrap them as prose pills. */
-html:not(.dark) .html-tag-label > code,
-html:not(.dark) .tag-tab-btn code,
-html:not(.dark) .tag-bank > span > code,
-html:not(.dark) .article-closing > code,
-.html-tag-label > code,
-.tag-tab-btn code,
-.tag-bank > span > code,
-.article-closing > code {
-  display: inline !important;
-  padding: 0 !important;
-  border: 0 !important;
-  border-radius: 0 !important;
-  background: transparent !important;
-  font: inherit !important;
+.tag-tab-btn.tag-tab-active *,
+.tag-tab-btn[aria-pressed="true"] *,
+.tag-tab-btn.active *,
+.tag-tab-btn.bg-purple-600 *,
+.tag-tab-btn.bg-indigo-600 *,
+html:not(.dark) .tag-tab-btn.tag-tab-active *,
+html:not(.dark) .tag-tab-btn[aria-pressed="true"] *,
+html:not(.dark) .tag-tab-btn.active *,
+html:not(.dark) .tag-tab-btn.bg-purple-600 *,
+html:not(.dark) .tag-tab-btn.bg-indigo-600 *,
+body.light .tag-tab-btn.tag-tab-active *,
+body.light .tag-tab-btn[aria-pressed="true"] *,
+body.light .tag-tab-btn.active *,
+body.light .tag-tab-btn.bg-purple-600 *,
+body.light .tag-tab-btn.bg-indigo-600 * {
+  color: #ffffff !important;
+  fill: #ffffff !important;
 }
 
-.html-tag-label {
-  min-width: 0;
-  line-height: 1.45;
-  overflow-wrap: anywhere;
+/* Inactive Deep-Dive Tag Tab Buttons in Light Mode */
+html:not(.dark) .tag-tab-btn.tag-tab-inactive:not(.tag-tab-active):not([aria-pressed="true"]),
+html:not(.dark) .tag-tab-btn:not(.tag-tab-active):not([aria-pressed="true"]):not(.bg-purple-600):not(.bg-indigo-600),
+body.light .tag-tab-btn.tag-tab-inactive:not(.tag-tab-active):not([aria-pressed="true"]),
+body.light .tag-tab-btn:not(.tag-tab-active):not([aria-pressed="true"]):not(.bg-purple-600):not(.bg-indigo-600) {
+  background-color: #ffffff !important;
+  background-image: none !important;
+  color: #1e293b !important;
+  border: 1px solid #cbd5e1 !important;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.04) !important;
 }
 
-.html-tag-label-long {
-  font-size: 10px !important;
+html:not(.dark) .tag-tab-btn.tag-tab-inactive:not(.tag-tab-active):not([aria-pressed="true"]):hover,
+html:not(.dark) .tag-tab-btn:not(.tag-tab-active):not([aria-pressed="true"]):not(.bg-purple-600):not(.bg-indigo-600):hover,
+body.light .tag-tab-btn.tag-tab-inactive:not(.tag-tab-active):not([aria-pressed="true"]):hover,
+body.light .tag-tab-btn:not(.tag-tab-active):not([aria-pressed="true"]):not(.bg-purple-600):not(.bg-indigo-600):hover {
+  background-color: #f1f5f9 !important;
+  border-color: #94a3b8 !important;
+  color: #0f172a !important;
 }
+
+html:not(.dark) .tag-tab-btn:not([aria-pressed="true"]):not(.active):not(.bg-purple-600):not(.bg-indigo-600) .code-token-tag,
+html:not(.dark) .react-step-nav button:not(.active) .code-token-tag,
+body.light .tag-tab-btn:not([aria-pressed="true"]):not(.active):not(.bg-purple-600):not(.bg-indigo-600) .code-token-tag,
+body.light .react-step-nav button:not(.active) .code-token-tag { color: #1e40af !important; font-weight: 600 !important; }
+
+html:not(.dark) .tag-tab-btn:not([aria-pressed="true"]):not(.active):not(.bg-purple-600):not(.bg-indigo-600) .code-token-attr,
+html:not(.dark) .react-step-nav button:not(.active) .code-token-attr,
+body.light .tag-tab-btn:not([aria-pressed="true"]):not(.active):not(.bg-purple-600):not(.bg-indigo-600) .code-token-attr,
+body.light .react-step-nav button:not(.active) .code-token-attr { color: #0284c7 !important; }
+
+html:not(.dark) .tag-tab-btn:not([aria-pressed="true"]):not(.active):not(.bg-purple-600):not(.bg-indigo-600) .code-token-val,
+html:not(.dark) .react-step-nav button:not(.active) .code-token-val,
+body.light .tag-tab-btn:not([aria-pressed="true"]):not(.active):not(.bg-purple-600):not(.bg-indigo-600) .code-token-val,
+body.light .react-step-nav button:not(.active) .code-token-val { color: #c2410c !important; }
+
+html:not(.dark) .tag-tab-btn:not([aria-pressed="true"]):not(.active):not(.bg-purple-600):not(.bg-indigo-600) .code-token-punct,
+html:not(.dark) .react-step-nav button:not(.active) .code-token-punct,
+body.light .tag-tab-btn:not([aria-pressed="true"]):not(.active):not(.bg-purple-600):not(.bg-indigo-600) .code-token-punct,
+body.light .react-step-nav button:not(.active) .code-token-punct { color: #475569 !important; }
 
 /* ========================================================
    SIMULATOR — Toggle Badges (เปิดใช้งาน / ปิดใช้งาน)

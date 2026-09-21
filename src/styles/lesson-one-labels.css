@@ -1,0 +1,99 @@
+/* Size these controls by available content width, including an open sidebar. */
+.page-lesson1 #hero .text-center.max-w-3xl,
+.page-lesson1 #deep-dive .text-center.max-w-3xl {
+  max-width: 1200px;
+}
+
+.page-lesson1 #hero h1 {
+  font-family: 'Prompt', sans-serif;
+  font-size: clamp(28px, 3.6vw, 48px);
+  line-height: 1.5;
+  letter-spacing: 0;
+}
+
+.page-lesson1 #hero p,
+.page-lesson1 #deep-dive .text-center > p {
+  max-width: 800px;
+  margin-left: auto;
+  margin-right: auto;
+  font-family: 'Sarabun', sans-serif;
+  line-height: 1.8;
+}
+
+.page-lesson1 #hero .grid,
+.page-lesson1 #deep-dive .text-center > .grid,
+.page-lesson1 .react-step-nav {
+  /* Cap at three columns; use two or one when labels need more room. */
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, max(var(--tag-card-min-width, 220px), calc((100% - 24px) / 3))), 1fr));
+  gap: 12px;
+}
+
+.page-lesson1 #hero .grid {
+  --tag-card-min-width: 240px;
+}
+
+.page-lesson1 #hero a[data-tag-target] {
+  min-width: 0;
+  min-height: 120px;
+  padding: 20px 16px;
+  gap: 8px;
+}
+
+.page-lesson1 #hero a[data-tag-target] > span:last-child {
+  font: 400 17px/1.7 'Sarabun', sans-serif;
+  margin-top: 0;
+}
+
+.page-lesson1 #hero .html-tag-label,
+.page-lesson1 #hero .html-tag-label *,
+.page-lesson1 #deep-dive .tag-tab-btn,
+.page-lesson1 #deep-dive .tag-tab-btn span,
+.page-lesson1 #deep-dive .tag-tab-btn code,
+.page-lesson1 .react-step-nav code,
+.page-lesson1 .react-step-nav code * {
+  font-family: Consolas, 'Courier New', 'Sarabun', monospace;
+  font-size: 14px !important;
+  line-height: 1.6 !important;
+  letter-spacing: 0;
+}
+
+.page-lesson1 #hero .html-tag-label,
+.page-lesson1 #hero .html-tag-label * {
+  font-size: 16px !important;
+}
+
+.page-lesson1 #deep-dive .tag-tab-btn,
+.page-lesson1 .react-step-nav button {
+  min-height: 52px;
+  padding: 12px 14px !important;
+  gap: 8px !important;
+}
+
+.page-lesson1 #deep-dive .tag-tab-btn,
+.page-lesson1 #deep-dive .tag-tab-btn > span,
+.page-lesson1 .react-step-nav code {
+  overflow: visible !important;
+  text-overflow: clip;
+}
+
+.page-lesson1 .react-step-nav button > span:first-child {
+  flex-shrink: 0;
+}
+
+.page-lesson1 .react-step-nav .code-token-text {
+  color: inherit !important;
+  font-family: 'Sarabun', sans-serif;
+}
+
+/* Keep highlighted tokens legible on the selected purple control in both themes. */
+.page-lesson1 #deep-dive .tag-tab-btn[aria-pressed='true'],
+.page-lesson1 .react-step-nav button.active {
+  background: #6d28d9 !important;
+  border-color: #7c3aed !important;
+  color: #fff !important;
+}
+
+.page-lesson1 #deep-dive .tag-tab-btn[aria-pressed='true'] *,
+.page-lesson1 .react-step-nav button.active * {
+  color: #fff !important;
+}
