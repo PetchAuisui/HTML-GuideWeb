@@ -1,4 +1,4 @@
-import { useState } from 'react'
+import { useMemo, useState } from 'react'
 import { Code2, Monitor, Play, RotateCcw } from 'lucide-react'
 import CodeEditor from './CodeEditor'
 
@@ -65,13 +65,44 @@ const mediaCode = `<!DOCTYPE html>
 export default function CodeSandbox({ lesson2 = false, lesson3 = false }) {
   const isLive = lesson2 || lesson3
   const initialCode = lesson3 ? mediaCode : lesson2 ? textCode : defaultCode
-  const missionsList = lesson3
-    ? ['เปลี่ยน URL หรือข้อความ alt ในแท็ก img', 'ลองเปลี่ยน href ของแท็ก a หรือเพิ่มลิงก์ใหม่', 'สังเกต target="_blank" เมื่อคลิกจะเปิดแท็บใหม่', 'ลองใช้แท็ก a ครอบ img เพื่อทำ Image Link']
-    : ['เปลี่ยนหัวข้อหลักจาก h1 เป็น h2', 'เพิ่มย่อหน้าใหม่ด้วย p', 'เพิ่มข้อมูลหลายบรรทัดด้วย br']
   const [code, setCode] = useState(initialCode)
   const [preview, setPreview] = useState(initialCode)
-  const [missions, setMissions] = useState(() => missionsList.map(() => false))
-  const reset = () => { setCode(initialCode); setPreview(initialCode); setMissions(missionsList.map(() => false)) }
+  const missions = useMemo(() => {
+    if (!isLive) return []
+    const parser = new DOMParser()
+    const current = parser.parseFromString(code, 'text/html')
+    const original = parser.parseFromString(initialCode, 'text/html')
+    const elements = (doc, selector) => [...doc.body.querySelectorAll(selector)]
+    const attr = (element, name) => (element.getAttribute(name) || '').trim()
+    // Compare counts per signature so unchanged examples never earn completion.
+    const added = (selector, signature, valid = () => true) => {
+      const counts = new Map()
+      for (const element of elements(original, selector)) {
+        const key = signature(element)
+        counts.set(key, (counts.get(key) || 0) + 1)
+      }
+      return elements(current, selector).some(element => {
+        const key = signature(element)
+        const remaining = counts.get(key) || 0
+        if (remaining) { counts.set(key, remaining - 1); return false }
+        return valid(element)
+      })
+    }
+    const link = element => attr(element, 'href')
+    const image = element => JSON.stringify([attr(element, 'src'), attr(element, 'alt')])
+    if (lesson3) return [
+      { title: 'เปลี่ยนรูปหรือคำอธิบายภาพ', hint: 'แก้ src หรือ alt ของ img ให้ต่างจากตัวอย่าง โดยไม่ปล่อยให้ว่าง', example: '<img src="https://placehold.co/400x240" alt="ภาพตัวอย่างของฉัน">', done: added('img', image, e => !!attr(e, 'src') && !!attr(e, 'alt')) },
+      { title: 'เปลี่ยนปลายทางหรือเพิ่มลิงก์', hint: 'แก้ href หรือเพิ่มแท็ก a ที่มีข้อความและปลายทาง', example: '<a href="https://example.com">อ่านเพิ่มเติม</a>', done: added('a[href]', link, e => !!link(e) && (!!e.textContent.trim() || !!e.querySelector('img'))) },
+      { title: 'เพิ่มลิงก์ที่เปิดแท็บใหม่', hint: 'เพิ่มลิงก์ใหม่ที่มี target="_blank" แล้วลองคลิกใน PREVIEW ระบบตรวจจากโค้ด ไม่ได้ตรวจการเปิดแท็บจริง', example: '<a href="https://example.com" target="_blank" rel="noopener noreferrer">เปิดแท็บใหม่</a>', done: added('a[target="_blank"][href]', link, e => !!link(e) && (!!e.textContent.trim() || !!e.querySelector('img'))) },
+      { title: 'สร้างลิงก์รูปภาพเพิ่มอีกหนึ่งรูป', hint: 'ใช้ a ครอบ img เพิ่มจากตัวอย่างเดิม พร้อมระบุ href และ src', example: '<a href="https://example.com"><img src="https://placehold.co/400x240" alt="คลิกเพื่ออ่านต่อ"></a>', done: elements(current, 'a[href] img[src]').filter(e => attr(e, 'src') && attr(e.closest('a'), 'href')).length > elements(original, 'a[href] img[src]').length },
+    ]
+    return [
+      { title: 'เปลี่ยนหัวข้อหลักเป็น h2', hint: 'เปลี่ยนทั้งแท็กเปิดและแท็กปิดของหัวข้อหลักจาก h1 เป็น h2', example: '<h2>คู่มือห้องสมุดสีเขียว</h2>', done: !current.body.querySelector('h1') && elements(current, 'h2').some(e => e.textContent.trim() === original.body.querySelector('h1')?.textContent.trim()) },
+      { title: 'เพิ่มย่อหน้าใหม่', hint: 'เพิ่มแท็ก p พร้อมข้อความอีกหนึ่งย่อหน้า', example: '<p>ข้อมูลเพิ่มเติมเกี่ยวกับห้องสมุด</p>', done: elements(current, 'p').filter(e => e.textContent.trim()).length > elements(original, 'p').length },
+      { title: 'เพิ่มการขึ้นบรรทัดใหม่', hint: 'เพิ่ม br อีกหนึ่งตำแหน่ง แล้วดูการขึ้นบรรทัดใน PREVIEW', example: 'วันจันทร์–ศุกร์<br>เวลา 08.00–20.00 น.', done: elements(current, 'br').length > elements(original, 'br').length },
+    ]
+  }, [code, initialCode, isLive, lesson3])
+  const reset = () => { setCode(initialCode); setPreview(initialCode) }
 
   const sectionId = isLive ? 'playground' : 'sandbox'
   const title = lesson3 ? 'ลองใส่ภาพ ลิงก์ และทดสอบคลิก' : lesson2 ? 'แก้โค้ด แล้วดูผลลัพธ์ทันที' : 'ทดลองเขียนโครงสร้าง HTML5'
@@ -85,6 +116,14 @@ export default function CodeSandbox({ lesson2 = false, lesson3 = false }) {
       </div>
       <div className="preview-pane"><div className="pane-title"><span><Monitor size={16} /> PREVIEW</span>{isLive && <span className="live-dot">LIVE</span>}</div><iframe id={isLive ? 'code-preview' : 'sandbox-preview-iframe'} title="ผลลัพธ์โค้ด HTML" sandbox="allow-scripts allow-same-origin allow-popups" srcDoc={preview} /></div>
     </div>
-    {isLive && <div className="missions"><strong>ภารกิจทดลอง</strong>{missionsList.map((label, index) => <label key={label}><input type="checkbox" checked={missions[index]} onChange={event => setMissions(current => current.map((value, i) => i === index ? event.target.checked : value))} /> {label}</label>)}</div>}
+    {isLive && <section className="sandbox-missions" aria-label="โจทย์ฝึกลองทำ">
+      <div className="mission-heading"><strong>โจทย์ฝึกลองทำ</strong><span role="status">สำเร็จ {missions.filter(mission => mission.done).length} / {missions.length} ข้อ</span></div>
+      <p>แก้โค้ดด้านบน ระบบจะตรวจให้อัตโนมัติเมื่อโค้ดตรงตามโจทย์ กด “เริ่มใหม่” เพื่อเริ่มฝึกอีกครั้ง</p>
+      <ol>{missions.map((mission, index) => <li key={mission.title} className={mission.done ? 'mission-complete' : ''}>
+        <div className="mission-heading"><strong>{index + 1}. {mission.title}</strong><span>{mission.done ? '✓ สำเร็จ' : 'ยังไม่สำเร็จ'}</span></div>
+        <p>{mission.hint}</p><details><summary>ดูตัวอย่างโค้ด</summary><pre><code>{mission.example}</code></pre></details>
+      </li>)}</ol>
+    </section>}
+
   </section>
 }
