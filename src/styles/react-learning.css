@@ -1,4 +1,35 @@
 html { scroll-behavior: smooth; }
+/* Simulator panels size to their content; generated code has its own row. */
+#lab .simulator-grid { align-items: start; }
+#lab .simulator-source { grid-column: 1 / -1; }
+#lab .react-panel h3 { margin: 0 0 18px; font-size: 18px; }
+#lab .react-toggles { gap: 0; }
+#lab .react-toggles label { min-height: 62px; border-color: var(--line); cursor: pointer; }
+#lab .react-toggles label code,
+#lab .react-toggles label code span { font-size: 15px; line-height: 1.6; }
+#lab .react-toggles label > span { font: 14px/1.5 'Sarabun', sans-serif; color: var(--muted); }
+#lab .react-toggles input { flex-shrink: 0; width: 38px; height: 22px; appearance: none; border: 1px solid var(--line); border-radius: 999px; background: var(--muted); position: relative; cursor: pointer; }
+#lab .react-toggles input::before { content: ''; position: absolute; width: 16px; height: 16px; left: 2px; top: 2px; background: white; border-radius: 50%; }
+#lab .react-toggles input:checked { background: #7c3aed; border-color: #7c3aed; }
+#lab .react-toggles input:checked::before { transform: translateX(16px); }
+#lab .react-presets button[aria-pressed='true'] { background: #6d28d9; border-color: #6d28d9; color: white; }
+#lab .simulator-browser { overflow: hidden; border: 1px solid var(--line); border-radius: 12px; background: white; }
+#lab .simulator-browser .pane-title { flex-wrap: wrap; gap: 8px; font-size: 13px; }
+#lab .react-preview { display: block; min-height: 220px; border-radius: 0; }
+#lab .simulator-result > p:last-child,
+#lab #simulator-impact-summary > p:last-child { margin-bottom: 0; }
+#lab .simulator-source .react-code { margin-bottom: 0; }
+#lab #simulator-impact-summary .react-notice {
+  background: #422006;
+  border-color: #d97706;
+  color: #fef3c7;
+  border-left-width: 4px;
+}
+body.light #lab #simulator-impact-summary .react-notice {
+  background: #fffbeb;
+  border-color: #f59e0b;
+  color: #92400e;
+}
 [hidden] { display: none !important; }
 .react-learning-section { max-width: 1240px; margin: 0 auto; padding: 64px 28px; scroll-margin-top: 90px; }
 .react-learning-section .section-heading { margin-bottom: 28px; }
