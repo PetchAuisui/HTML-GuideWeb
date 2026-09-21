@@ -21,7 +21,7 @@ export default function App() {
   useEffect(() => {
     const titles = { home: 'HTML Learning Lab · เลือกบทเรียน', lesson1: 'หน่วยที่ 1 · โครงสร้างพื้นฐาน HTML5', lesson2: 'หน่วยที่ 2 · การใส่เนื้อหาด้วยข้อความ' }
     document.title = titles[page]
-    const pageClasses = page === 'lesson1' ? 'font-prompt antialiased bg-grid-pattern' : page === 'lesson2' ? 'font-prompt' : ''
+    const pageClasses = 'font-prompt antialiased bg-grid-pattern'
     document.body.className = `${pageClasses} ${layout.theme}`.trim()
   }, [page, layout.theme])
 

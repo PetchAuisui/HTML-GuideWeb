@@ -255,7 +255,9 @@ html:not(.dark) body {
   color: #1e293b !important;
 }
 
-html:not(.dark) .bg-grid-pattern {
+html:not(.dark) .bg-grid-pattern,
+body.light.bg-grid-pattern,
+body.light .bg-grid-pattern {
   background-image:
     linear-gradient(to right, rgba(0, 0, 0, 0.05) 1px, transparent 1px),
     linear-gradient(to bottom, rgba(0, 0, 0, 0.05) 1px, transparent 1px);
