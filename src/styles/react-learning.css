@@ -113,6 +113,10 @@ body.light .advanced-exercise .exercise-lines b { color: #6d28d9; }
 body.light .react-step-nav button:not(.active), body.light .react-quiz-fields select { background: #f7f3fb; color: #443256; border-color: #d4c7e0; }
 body.light .page-lesson3 .quiz-section .section-heading > span,
 body.light .page-lesson3 .quiz-badge { color: #6d28d9; }
+body.light .page-lesson3 .quiz-section .section-heading > p code {
+  color: #5b21b6;
+  font-weight: 600;
+}
 body.light .page-lesson3 .quiz-box { border-color: #cfc2df; box-shadow: 0 16px 42px rgba(76, 29, 149, .08); }
 @media (max-width: 900px) { .react-code-grid { grid-template-columns: 1fr; } .react-step-nav { grid-template-columns: repeat(3, minmax(0, 1fr)); } }
 @media (max-width: 560px) { .react-learning-section { padding: 40px 18px; } .react-panel { padding: 18px; } .react-step-nav { grid-template-columns: repeat(2, minmax(0, 1fr)); } .react-toggles label { flex-wrap: wrap; } .vscode-editor { min-height: 360px; } }
