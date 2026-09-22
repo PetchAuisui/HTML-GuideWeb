@@ -136,7 +136,7 @@ export default function MediaQuiz() {
 
       <div className="quiz-box react-panel" style={{ padding: '32px' }}>
         <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '24px', flexWrap: 'wrap', gap: '12px' }}>
-          <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '14px', color: '#c4b5fd', fontFamily: 'Fira Code, monospace', fontWeight: 600 }}>
+          <div className="quiz-badge" style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', fontSize: '14px', fontFamily: 'Fira Code, monospace', fontWeight: 600 }}>
             <Sparkles size={18} /> เติมคำในช่องว่าง (5 ข้อ)
           </div>
           {isChecked && (
